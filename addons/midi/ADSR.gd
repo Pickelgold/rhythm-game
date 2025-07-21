@@ -62,17 +62,18 @@ var force_update:bool = false
 ## LinkedSampleを使用中
 var is_check_using_linked:bool
 
-## ADSステート
+## ADSステート - Realistic piano envelope with minimal sustain
 @onready var ads_state:Array[Bank.VolumeState] = [
-	Bank.VolumeState.new( 0.0, 0.0 ),
-	Bank.VolumeState.new( 0.2, -80.0 )
-	# { "time": 0.2, "jump_to": 0.0 },	# not implemented
+	Bank.VolumeState.new( 0.0, 0.0 ),      # Instant attack to full volume
+	Bank.VolumeState.new( 0.003, 0.0 ),    # Hold peak for 3ms (piano hammer strike)
+	Bank.VolumeState.new( 0.05, -3.0 ),    # Fast initial drop-off (50ms)
+	Bank.VolumeState.new( 0.3, -6.0 ),     # Settle to sustain level (300ms)
+	Bank.VolumeState.new( 0.8, -12.0 )     # Much shorter decay over 0.8 seconds
 ]
-## Rステート
+## Rステート - Natural piano release
 @onready var release_state:Array[Bank.VolumeState] = [
-	Bank.VolumeState.new( 0.0, 0.0 ),
-	Bank.VolumeState.new( 0.01, -80.0 )
-	# { "time": 0.2, "jump_to": 0.0 },	# not implemented
+	Bank.VolumeState.new( 0.0, 0.0 ),      # Start release from current level
+	Bank.VolumeState.new( 2.0, -60.0 )     # Natural piano release over 2 seconds
 ]
 
 ## 準備
@@ -158,7 +159,9 @@ func _update_adsr( delta:float ) -> void:
 	if use_state[last_state].time <= self.timer:
 		self.current_volume_db = use_state[last_state].volume_db
 		if self.releasing: self.stop( )
-		if self.auto_release_mode: self.request_release = true
+		# Only auto-release for drum tracks, and only if not already releasing
+		if self.auto_release_mode and not self.releasing and not self.request_release: 
+			self.request_release = true
 	else:
 		for state_number in range( 1, all_states ):
 			var state:Bank.VolumeState = use_state[state_number]
@@ -191,7 +194,11 @@ func _update_adsr( delta:float ) -> void:
 
 ## 音量を更新
 func _update_volume( ) -> void:
-	var v:float = self.current_volume_db + linear_to_db( float( self.velocity ) / 127.0 )# + self.instrument.volume_db
+	# Improved velocity curve for better dynamics
+	# Use a more musical velocity curve (velocity^2 for more expressive dynamics)
+	var velocity_factor:float = pow(float(self.velocity) / 127.0, 1.5)  # More expressive curve
+	var velocity_db:float = linear_to_db(velocity_factor)
+	var v:float = self.current_volume_db + velocity_db# + self.instrument.volume_db
 
 	if self.is_check_using_linked:
 		v = maxf( -80.0, linear_to_db( db_to_linear( v ) / self.polyphony_count / 2.0 ) )

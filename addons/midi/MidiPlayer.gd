@@ -804,6 +804,25 @@ func _process_track_event_note_on( channel:GodotMIDIPlayerChannelStatus, note:in
 				note_player.set_instrument( instrument )
 				note_player.hold = channel.hold
 				note_player.note_play( 0.0 )
+			else:
+				# Note skipped due to polyphony limit - force steal oldest player
+				print("Warning: Note skipped due to polyphony limit, forcing note steal")
+				var oldest_player:AudioStreamPlayerADSR = self._force_get_player()
+				if oldest_player != null:
+					oldest_player.note_stop()  # Force stop the old note
+					oldest_player.channel_number = channel.number
+					oldest_player.key_number = key_number
+					oldest_player.bus = self.midi_channel_bus_name % channel.number
+					oldest_player.velocity = velocity
+					oldest_player.pitch_bend = channel.pitch_bend
+					oldest_player.pitch_bend_sensitivity = channel.rpn.pitch_bend_sensitivity
+					oldest_player.modulation = channel.modulation
+					oldest_player.modulation_sensitivity = channel.rpn.modulation_sensitivity
+					oldest_player.auto_release_mode = channel.drum_track
+					oldest_player.polyphony_count = float( polyphony_count )
+					oldest_player.set_instrument( instrument )
+					oldest_player.hold = channel.hold
+					oldest_player.note_play( 0.0 )
 
 	channel.note_on[ assign_group ] = true
 
@@ -1073,6 +1092,20 @@ func _get_idle_player( ) -> AudioStreamPlayerADSR:
 
 	return oldest_audio_stream_player
 
+## 強制的にプレイヤーを取得する（ノートスキップ防止用）
+## @return	AudioStreamPlayerADSR
+func _force_get_player( ) -> AudioStreamPlayerADSR:
+	# Find the oldest playing note and force steal it
+	var oldest_audio_stream_player:AudioStreamPlayerADSR = null
+	var oldest:float = -1.0
+
+	for audio_stream_player in self.audio_stream_players:
+		if oldest < audio_stream_player.using_timer:
+			oldest_audio_stream_player = audio_stream_player
+			oldest = audio_stream_player.using_timer
+
+	return oldest_audio_stream_player
+
 ## 現在発音中の音色数を返す
 ## @warning	サウンドフォントの複数発音楽器の影響あり。純粋に同時note checked数を得る場合は全チャンネルステータスのnote_onを参照すること。
 ## @return		現在発音中の音色数
@@ -1082,3 +1115,25 @@ func get_now_playing_polyphony( ) -> int:
 		if audio_stream_player.playing:
 			polyphony += 1
 	return polyphony
+
+## 直接ノートを再生する（フリープレイ用）
+## @param	midi_note	MIDIノート番号
+## @param	velocity	ベロシティ
+## @param	channel		チャンネル番号
+func play_note_direct(midi_note: int, velocity: int = 100, channel: int = 0) -> void:
+	if self.bank == null: return
+	var channel_status = self.channel_status[channel]
+	self._process_track_event_note_on(channel_status, midi_note, velocity)
+
+## 直接ノートを停止する（フリープレイ用）
+## @param	midi_note	MIDIノート番号
+## @param	channel		チャンネル番号
+func stop_note_direct(midi_note: int, channel: int = 0) -> void:
+	var channel_status = self.channel_status[channel]
+	self._process_track_event_note_off(channel_status, midi_note)
+
+## フリープレイ用楽器設定
+## @param	program		プログラム番号
+## @param	channel		チャンネル番号
+func set_free_play_instrument(program: int, channel: int = 0) -> void:
+	self.channel_status[channel].program = program

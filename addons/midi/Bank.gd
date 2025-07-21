@@ -377,7 +377,8 @@ func _read_soundfont_preset_compose_sample( sf:SoundFont.SoundFontData, preset:P
 
 		for ibag_index in pbag.instrument.bags.size( ):
 			var ibag:TempSoundFontInstrumentBag = pbag.instrument.bags[ibag_index]
-			if ibag.vel_range.high < 100: continue
+			# Remove velocity filter to preserve all dynamic layers
+			# if ibag.vel_range.high < 100: continue
 			var sample:SoundFont.SoundFontSampleHeader = ibag.sample
 			var array_stream:Array[AudioStreamWAV] = []
 			var array_base_pitch:Array[float] = []
@@ -428,28 +429,25 @@ func _read_soundfont_preset_compose_sample( sf:SoundFont.SoundFontData, preset:P
 			var vel_range_min:int = vel_range.low
 			var vel_range_max:int = vel_range.high
 
-			# ADSRステート生成
+			# ADSRステート生成 - Piano-like realistic values
 			var adsr:TempSoundFontInstrumentBagADSR = ibag.adsr
-			var a:float = adsr.attack_vol_env_time
-			var d:float = adsr.decay_vol_env_time
-			var s:float = adsr.sustain_vol_env_db
-			var r:float = adsr.release_vol_env_time
+			var a:float = maxf(adsr.attack_vol_env_time, 0.003)  # Very fast attack like real piano (3ms)
+			var d:float = maxf(adsr.decay_vol_env_time, 0.3)     # Piano initial decay (300ms)
+			var s:float = maxf(adsr.sustain_vol_env_db, -6.0)    # Piano sustain level (-6dB)
+			var r:float = maxf(adsr.release_vol_env_time, 2.0)   # Long natural release (2s)
 			var volume_db:float = ibag.volume_db
 			var ads_state:Array[VolumeState]
-			if 0.001 < a:
-				ads_state = [
-					VolumeState.new( 0.0, -144.0 ),
-					VolumeState.new( a, 0.0 ),
-					VolumeState.new( a+d, s ),
-				]
-			else:
-				ads_state = [
-					VolumeState.new( 0.0, 0.0 ),
-					VolumeState.new( d, s ),
-				]
+			# Piano-like envelope: fast attack, rapid initial drop-off, minimal sustain
+			ads_state = [
+				VolumeState.new( 0.0, 0.0 ),        # Instant full attack
+				VolumeState.new( a, 0.0 ),          # Hold peak briefly
+				VolumeState.new( a + 0.05, -3.0 ),  # Fast initial drop-off (50ms)
+				VolumeState.new( a + d, s ),        # Settle to sustain level
+				VolumeState.new( a + d + 0.8, s - 6.0 ), # Much shorter decay over 0.8 seconds
+			]
 			var release_state:Array[VolumeState] = [
-				VolumeState.new( 0.0, s ),
-				VolumeState.new( r, -144.0 ),
+				VolumeState.new( 0.0, 0.0 ),        # Start release from current level
+				VolumeState.new( r, -60.0 ),        # Natural piano release over 2 seconds
 			]
 			for key_number in Vector2i( key_range.low, key_range.high + 1 ):
 				#if preset.number == drum_track_bank << 7:
