@@ -15,6 +15,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Background" type="ColorRect" parent="UI/MarginContainer"]
+layout_mode = 2
+color = Color(0.102, 0.102, 0.102, 1)
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 ratio = 1.3333
@@ -27,12 +31,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,12 +61,20 @@ text = "`"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control2" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect2"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control2/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,12 +91,20 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect3" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control3" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect3"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control3/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,12 +121,20 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control4" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect4"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control4/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,12 +151,20 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect5" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control5" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect5"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control5/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -137,12 +181,20 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect6" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control6" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect6"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control6/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -159,12 +211,20 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect7" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control7" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect7"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control7/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,12 +241,20 @@ text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect8" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control8" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect8"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control8/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -203,12 +271,20 @@ text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect9" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control9" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect9"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control9/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -225,12 +301,20 @@ text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect10" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control10" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect10"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control10/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -247,12 +331,20 @@ text = "9"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect11" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control11" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect11"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control11/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -269,12 +361,20 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect12" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control12" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect12"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control12/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -291,12 +391,20 @@ text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect13" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Control13" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/ColorRect13"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Control13/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -313,32 +421,48 @@ text = "="
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="SpacerControl" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
+
+[node name="Spacer" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/SpacerControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Row 2" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
+offset_left = -8.0
 offset_top = -11.5
-offset_right = 12.0
+offset_right = 8.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -346,12 +470,20 @@ text = "Tab"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control2" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect2"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control2/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -368,12 +500,20 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect3" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control3" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect3"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control3/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -390,12 +530,20 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control4" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect4"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control4/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -412,12 +560,20 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect5" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control5" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect5"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control5/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -434,12 +590,20 @@ text = "R"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect6" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control6" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect6"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control6/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -456,12 +620,20 @@ text = "T"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect7" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control7" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect7"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control7/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -478,12 +650,20 @@ text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect8" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control8" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect8"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control8/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -500,12 +680,20 @@ text = "U"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect9" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control9" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect9"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control9/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -522,12 +710,20 @@ text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect10" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control10" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect10"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control10/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -544,12 +740,20 @@ text = "O"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect11" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control11" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect11"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control11/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -566,12 +770,20 @@ text = "P"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect12" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Control12" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/ColorRect12"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Control12/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -588,23 +800,39 @@ text = "["
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="SpacerControl" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-color = Color(0, 0, 0, 0)
+
+[node name="Spacer" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/SpacerControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Row 3" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.75
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -621,12 +849,20 @@ text = "Caps"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control2" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect2"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control2/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -643,12 +879,20 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect3" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control3" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect3"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control3/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -665,12 +909,20 @@ text = "S"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control4" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect4"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control4/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -687,12 +939,20 @@ text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect5" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control5" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect5"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control5/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -709,12 +969,20 @@ text = "F"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect6" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control6" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect6"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control6/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -731,12 +999,20 @@ text = "G"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect7" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control7" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect7"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control7/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -753,12 +1029,20 @@ text = "H"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect8" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control8" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect8"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control8/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -775,12 +1059,20 @@ text = "J"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect9" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control9" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect9"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control9/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -797,12 +1089,20 @@ text = "K"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect10" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control10" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect10"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control10/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -819,12 +1119,20 @@ text = "L"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect11" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control11" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect11"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control11/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -841,12 +1149,20 @@ text = ";"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect12" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Control12" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/ColorRect12"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Control12/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -863,32 +1179,48 @@ text = "'"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="SpacerControl" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.75
-color = Color(0, 0, 0, 0)
+
+[node name="Spacer" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/SpacerControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Row 4" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.25
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
+offset_left = -16.0
 offset_top = -11.5
-offset_right = 24.0
+offset_right = 16.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -896,12 +1228,20 @@ text = "LShift"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control2" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect2"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control2/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -918,12 +1258,20 @@ text = "Z"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect3" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control3" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect3"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control3/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -940,12 +1288,20 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control4" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect4"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control4/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -962,12 +1318,20 @@ text = "C"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect5" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control5" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect5"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control5/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -984,12 +1348,20 @@ text = "V"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect6" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control6" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect6"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control6/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1006,12 +1378,20 @@ text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect7" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control7" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect7"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control7/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1028,12 +1408,20 @@ text = "N"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect8" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control8" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect8"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control8/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1050,12 +1438,20 @@ text = "M"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect9" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control9" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect9"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control9/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1072,12 +1468,20 @@ text = ","
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect10" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control10" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect10"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control10/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1094,12 +1498,20 @@ text = "."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect11" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control11" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect11"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control11/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1116,22 +1528,30 @@ text = "/"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect12" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Control12" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.25
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/ColorRect12"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Control12/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
+offset_left = -16.0
 offset_top = -11.5
-offset_right = 24.0
+offset_right = 16.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
