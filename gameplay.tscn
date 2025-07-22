@@ -809,22 +809,22 @@ text = "P"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Len 36" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 36" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Len 36"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Len 36"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Len 36/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
