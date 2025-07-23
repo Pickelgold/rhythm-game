@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c78qv8udolygl"]
+[gd_scene load_steps=5 format=3 uid="uid://2iyygmrr3bgu"]
 
 [ext_resource type="Script" uid="uid://brdvvugt8538w" path="res://addons/midi/MidiPlayer.gd" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://cdicid6vekh3p" path="res://scripts/FreePlayController.gd" id="2_freeplay"]
 [ext_resource type="Script" uid="uid://lg2q6vomebbm" path="res://scripts/KeyboardController.gd" id="3_keyboard"]
+[ext_resource type="Script" uid="uid://bumdsashuqb1d" path="res://scripts/NoteSpawnDemo.gd" id="4_demo"]
 
 [node name="Main" type="Node2D"]
 
@@ -43,6 +44,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,6 +92,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,6 +140,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,6 +188,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,6 +236,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -278,6 +284,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -325,6 +332,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,6 +380,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -419,6 +428,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -466,6 +476,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -513,6 +524,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -560,6 +572,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -607,6 +620,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -664,6 +678,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -711,6 +726,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -758,6 +774,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -805,6 +822,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -852,6 +870,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -899,6 +918,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -946,6 +966,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -993,6 +1014,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1040,6 +1062,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1087,6 +1110,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1134,6 +1158,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1181,6 +1206,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1238,6 +1264,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1285,6 +1312,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1332,6 +1360,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1379,6 +1408,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1426,6 +1456,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1473,6 +1504,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1520,6 +1552,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1567,6 +1600,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1614,6 +1648,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1661,6 +1696,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1708,6 +1744,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1755,6 +1792,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1812,6 +1850,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1859,6 +1898,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1906,6 +1946,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1953,6 +1994,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2000,6 +2042,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2047,6 +2090,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2094,6 +2138,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2141,6 +2186,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2188,6 +2234,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2235,6 +2282,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2282,6 +2330,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2330,6 +2379,7 @@ size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
 [node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2383,3 +2433,6 @@ midi_player = NodePath("../MidiPlayer")
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("3_keyboard")
+
+[node name="NoteSpawnDemo" type="Node" parent="."]
+script = ExtResource("4_demo")

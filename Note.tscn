@@ -3,22 +3,23 @@
 [ext_resource type="Script" path="res://scripts/Note.gd" id="1_note"]
 
 [node name="Note" type="ColorRect"]
-color = Color(0, 0.8, 1, 1)
+color = Color(0.3, 0.3, 0.3, 1)
 script = ExtResource("1_note")
 
-[node name="Label" type="Label" parent="."]
+[node name="TopLine" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "Note"
-horizontal_alignment = 1
-vertical_alignment = 1
+color = Color(1, 1, 1, 1)
+
+[node name="BottomLine" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+color = Color(1, 1, 1, 1)
