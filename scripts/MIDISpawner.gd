@@ -33,10 +33,9 @@ func _ready():
 	
 	# Load the MIDI file
 	if midi_loader.load_midi_file(midi_file_path):
-		print("MIDI file loaded successfully!")
 		_debug_print_notes()
 	else:
-		print("Failed to load MIDI file: ", midi_file_path)
+		pass
 
 func _process(delta):
 	if midi_loader == null:
@@ -76,7 +75,6 @@ func spawn_note(note_data: Dictionary):
 	var lane_judgement = get_lane_judgement(lane_number)
 	
 	if not lane_container or not lane_judgement:
-		print("Error: Could not find lane ", lane_number, " container or judgement")
 		return
 	
 	# Calculate judgement line thickness to match note lines
@@ -125,8 +123,6 @@ func spawn_note(note_data: Dictionary):
 	
 	# Start the note falling
 	note.start_falling(pixels_per_second)
-	
-	print("Spawned note in lane ", lane_number, " at time ", start_time, " (duration: ", duration, ")")
 
 func get_lane_container(lane_number: int) -> Node:
 	# Map lane number to row and position
@@ -174,16 +170,7 @@ func get_row_info_for_lane(lane_number: int) -> Dictionary:
 		return {}
 
 func _debug_print_notes():
-	var all_notes = midi_loader.get_all_notes()
-	print("=== MIDI Notes Debug ===")
-	print("Total notes: ", all_notes.size())
-	
-	for i in range(min(10, all_notes.size())):  # Print first 10 notes
-		var note = all_notes[i]
-		print("Note ", i + 1, ": Lane ", note["lane"], " | Start: ", note["start_time"], " | End: ", note["end_time"], " | MIDI: ", note["midi_note"])
-	
-	if all_notes.size() > 10:
-		print("... and ", all_notes.size() - 10, " more notes")
+	pass
 
 # Configuration functions
 func set_midi_file(path: String):
