@@ -52,6 +52,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -97,6 +111,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -148,6 +176,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -193,6 +235,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -244,6 +300,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -289,6 +359,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -340,6 +424,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -385,6 +483,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -436,6 +548,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -481,6 +607,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -532,6 +672,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -580,6 +734,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -625,6 +793,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -686,6 +868,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -731,6 +927,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -782,6 +992,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -827,6 +1051,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -878,6 +1116,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -923,6 +1175,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -974,6 +1240,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1019,6 +1299,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1070,6 +1364,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1115,6 +1423,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1166,6 +1488,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1211,6 +1547,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1272,6 +1622,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1317,6 +1681,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1368,6 +1746,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1413,6 +1805,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1464,6 +1870,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1509,6 +1929,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1560,6 +1994,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1605,6 +2053,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1656,6 +2118,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1701,6 +2177,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1752,6 +2242,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1797,6 +2301,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1858,6 +2376,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1903,6 +2435,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1954,6 +2500,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1999,6 +2559,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2050,6 +2624,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -2095,6 +2683,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2146,6 +2748,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -2191,6 +2807,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2242,6 +2872,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -2287,6 +2931,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2338,6 +2996,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -2384,6 +3056,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
