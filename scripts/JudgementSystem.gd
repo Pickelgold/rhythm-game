@@ -233,7 +233,7 @@ func _on_key_pressed(lane_number: int):
 	var timing_diff_ms = (current_song_time - closest_start_note["time"]) * 1000.0
 	
 	# Generate judgement text
-	var judgement_text = _format_judgement(timing_diff_ms, "Down")
+	var judgement_text = _format_judgement(timing_diff_ms, "↓")
 	
 	# Update the press judgement label
 	if press_labels.has(lane_number):
@@ -265,7 +265,7 @@ func _on_key_released(lane_number: int):
 	var timing_diff_ms = (current_song_time - end_time) * 1000.0
 	
 	# Generate judgement text for the release
-	var judgement_text = _format_judgement(timing_diff_ms, "Up")
+	var judgement_text = _format_judgement(timing_diff_ms, "↑")
 	
 	# Update the release judgement label
 	if release_labels.has(lane_number):
@@ -285,11 +285,11 @@ func _format_judgement(timing_diff_ms: float, type: String = "") -> String:
 	
 	var timing_text = ""
 	if rounded_diff == 0:
-		timing_text = "0ms"  # Perfect timing
+		timing_text = "0"  # Perfect timing
 	elif rounded_diff > 0:
-		timing_text = "+" + str(int(rounded_diff)) + "ms"
+		timing_text = "+" + str(int(rounded_diff))
 	else:
-		timing_text = str(int(rounded_diff)) + "ms"
+		timing_text = str(int(rounded_diff))
 	
 	# Add type suffix if provided
 	if type != "":
@@ -301,9 +301,9 @@ func _show_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
 	judged_notes[note_id] = true
 	
-	# Update the press judgement label to show "Miss Down"
+	# Update the press judgement label to show "Miss ↓"
 	if press_labels.has(lane_number):
-		press_labels[lane_number].text = "Miss Down"
+		press_labels[lane_number].text = "Miss ↓"
 		
 		# Add a timer to clear the text after a short delay
 		_clear_press_judgement_after_delay(lane_number, 1.0)
@@ -312,9 +312,9 @@ func _show_release_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
 	judged_notes[note_id] = true
 	
-	# Update the release judgement label to show "Miss Up"
+	# Update the release judgement label to show "Miss ↑"
 	if release_labels.has(lane_number):
-		release_labels[lane_number].text = "Miss Up"
+		release_labels[lane_number].text = "Miss ↑"
 		
 		# Add a timer to clear the text after a short delay
 		_clear_release_judgement_after_delay(lane_number, 1.0)
