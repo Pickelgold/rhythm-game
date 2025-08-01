@@ -53,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,11 +61,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
 layout_mode = 2
@@ -115,7 +123,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,11 +131,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38"]
 layout_mode = 2
@@ -177,7 +193,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,11 +201,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
 layout_mode = 2
@@ -239,7 +263,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -247,11 +271,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40"]
 layout_mode = 2
@@ -301,7 +333,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -309,11 +341,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
 layout_mode = 2
@@ -363,7 +403,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -371,11 +411,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42"]
 layout_mode = 2
@@ -425,7 +473,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -433,11 +481,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
 layout_mode = 2
@@ -487,7 +543,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -495,11 +551,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44"]
 layout_mode = 2
@@ -549,7 +613,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -557,11 +621,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
 layout_mode = 2
@@ -611,7 +683,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -619,11 +691,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46"]
 layout_mode = 2
@@ -673,7 +753,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -681,11 +761,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
 layout_mode = 2
@@ -735,7 +823,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -743,11 +831,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
 layout_mode = 2
@@ -797,7 +893,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -805,11 +901,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49"]
 layout_mode = 2
@@ -869,7 +973,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -877,11 +981,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
 layout_mode = 2
@@ -931,7 +1043,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -939,11 +1051,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26"]
 layout_mode = 2
@@ -993,7 +1113,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1001,11 +1121,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
 layout_mode = 2
@@ -1055,7 +1183,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1063,11 +1191,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28"]
 layout_mode = 2
@@ -1117,7 +1253,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1125,11 +1261,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
 layout_mode = 2
@@ -1179,7 +1323,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1187,11 +1331,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30"]
 layout_mode = 2
@@ -1241,7 +1393,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1249,11 +1401,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
 layout_mode = 2
@@ -1303,7 +1463,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1311,11 +1471,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32"]
 layout_mode = 2
@@ -1365,7 +1533,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1373,11 +1541,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
 layout_mode = 2
@@ -1427,7 +1603,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1435,11 +1611,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34"]
 layout_mode = 2
@@ -1489,7 +1673,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1497,11 +1681,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
 layout_mode = 2
@@ -1551,7 +1743,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1559,11 +1751,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
 layout_mode = 2
@@ -1623,7 +1823,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1631,11 +1831,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
 layout_mode = 2
@@ -1685,7 +1893,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1693,11 +1901,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14"]
 layout_mode = 2
@@ -1747,7 +1963,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1755,11 +1971,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
 layout_mode = 2
@@ -1809,7 +2033,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1817,11 +2041,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16"]
 layout_mode = 2
@@ -1871,7 +2103,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1879,11 +2111,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
 layout_mode = 2
@@ -1933,7 +2173,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1941,11 +2181,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18"]
 layout_mode = 2
@@ -1995,7 +2243,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2003,11 +2251,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
 layout_mode = 2
@@ -2057,7 +2313,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2065,11 +2321,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20"]
 layout_mode = 2
@@ -2119,7 +2383,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2127,11 +2391,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
 layout_mode = 2
@@ -2181,7 +2453,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2189,11 +2461,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22"]
 layout_mode = 2
@@ -2243,7 +2523,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2251,11 +2531,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
 layout_mode = 2
@@ -2305,7 +2593,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2313,11 +2601,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24"]
 layout_mode = 2
@@ -2377,7 +2673,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2385,11 +2681,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
 layout_mode = 2
@@ -2439,7 +2743,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2447,11 +2751,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2"]
 layout_mode = 2
@@ -2501,7 +2813,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2509,11 +2821,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
 layout_mode = 2
@@ -2563,7 +2883,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2571,11 +2891,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4"]
 layout_mode = 2
@@ -2625,7 +2953,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2633,11 +2961,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
 layout_mode = 2
@@ -2687,7 +3023,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2695,11 +3031,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6"]
 layout_mode = 2
@@ -2749,7 +3093,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2757,11 +3101,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
 layout_mode = 2
@@ -2811,7 +3163,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2819,11 +3171,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8"]
 layout_mode = 2
@@ -2873,7 +3233,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2881,11 +3241,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
 layout_mode = 2
@@ -2935,7 +3303,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2943,11 +3311,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10"]
 layout_mode = 2
@@ -2997,7 +3373,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3005,11 +3381,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
 layout_mode = 2
@@ -3060,7 +3444,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JudgementLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3068,11 +3452,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12"]
 layout_mode = 2

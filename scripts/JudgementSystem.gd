@@ -25,7 +25,8 @@ var judgement_window_ms: float = 200.0  # ±200ms window
 var current_song_time: float = 0.0
 
 # References to judgement labels for each lane
-var judgement_labels: Dictionary = {}
+var press_labels: Dictionary = {}
+var release_labels: Dictionary = {}
 
 
 func _ready():
@@ -64,29 +65,61 @@ func _setup_judgement_labels():
 	var row1 = ui_root.get_node("Row 1")
 	for lane in range(37, 50):
 		var lane_node = row1.get_node("Lane " + str(lane))
-		var label = lane_node.get_node("Background/JudgementLabel")
-		judgement_labels[lane] = label
+		# Check if this lane has the new VBoxContainer structure
+		if lane_node.get_node("Background").has_node("VBoxContainer"):
+			var vbox = lane_node.get_node("Background/VBoxContainer")
+			press_labels[lane] = vbox.get_node("PressLabel")
+			release_labels[lane] = vbox.get_node("ReleaseLabel")
+		else:
+			# Fallback to old single label structure
+			var label = lane_node.get_node("Background/JudgementLabel")
+			press_labels[lane] = label
+			release_labels[lane] = label
 	
 	# Row 2: Lanes 25-36
 	var row2 = ui_root.get_node("Row 2")
 	for lane in range(25, 37):
 		var lane_node = row2.get_node("Lane " + str(lane))
-		var label = lane_node.get_node("Background/JudgementLabel")
-		judgement_labels[lane] = label
+		# Check if this lane has the new VBoxContainer structure
+		if lane_node.get_node("Background").has_node("VBoxContainer"):
+			var vbox = lane_node.get_node("Background/VBoxContainer")
+			press_labels[lane] = vbox.get_node("PressLabel")
+			release_labels[lane] = vbox.get_node("ReleaseLabel")
+		else:
+			# Fallback to old single label structure
+			var label = lane_node.get_node("Background/JudgementLabel")
+			press_labels[lane] = label
+			release_labels[lane] = label
 	
 	# Row 3: Lanes 13-24
 	var row3 = ui_root.get_node("Row 3")
 	for lane in range(13, 25):
 		var lane_node = row3.get_node("Lane " + str(lane))
-		var label = lane_node.get_node("Background/JudgementLabel")
-		judgement_labels[lane] = label
+		# Check if this lane has the new VBoxContainer structure
+		if lane_node.get_node("Background").has_node("VBoxContainer"):
+			var vbox = lane_node.get_node("Background/VBoxContainer")
+			press_labels[lane] = vbox.get_node("PressLabel")
+			release_labels[lane] = vbox.get_node("ReleaseLabel")
+		else:
+			# Fallback to old single label structure
+			var label = lane_node.get_node("Background/JudgementLabel")
+			press_labels[lane] = label
+			release_labels[lane] = label
 	
 	# Row 4: Lanes 1-12
 	var row4 = ui_root.get_node("Row 4")
 	for lane in range(1, 13):
 		var lane_node = row4.get_node("Lane " + str(lane))
-		var label = lane_node.get_node("Background/JudgementLabel")
-		judgement_labels[lane] = label
+		# Check if this lane has the new VBoxContainer structure
+		if lane_node.get_node("Background").has_node("VBoxContainer"):
+			var vbox = lane_node.get_node("Background/VBoxContainer")
+			press_labels[lane] = vbox.get_node("PressLabel")
+			release_labels[lane] = vbox.get_node("ReleaseLabel")
+		else:
+			# Fallback to old single label structure
+			var label = lane_node.get_node("Background/JudgementLabel")
+			press_labels[lane] = label
+			release_labels[lane] = label
 
 func _update_active_notes():
 	if not midi_spawner or not midi_spawner.midi_loader:
@@ -152,7 +185,7 @@ func _update_active_notes():
 					should_show_miss = false
 			
 			if should_show_miss:
-				_show_miss(lane, end_note_id)
+				_show_release_miss(lane, end_note_id)
 
 func _on_key_pressed(lane_number: int):
 	# Check if key is already being held down (ignore key repeat)
@@ -200,14 +233,14 @@ func _on_key_pressed(lane_number: int):
 	var timing_diff_ms = (current_song_time - closest_start_note["time"]) * 1000.0
 	
 	# Generate judgement text
-	var judgement_text = _format_judgement(timing_diff_ms)
+	var judgement_text = _format_judgement(timing_diff_ms, "Down")
 	
-	# Update the judgement label
-	if judgement_labels.has(lane_number):
-		judgement_labels[lane_number].text = judgement_text
+	# Update the press judgement label
+	if press_labels.has(lane_number):
+		press_labels[lane_number].text = judgement_text
 		
 		# Add a timer to clear the text after a short delay
-		_clear_judgement_after_delay(lane_number, 1.0)
+		_clear_press_judgement_after_delay(lane_number, 1.0)
 
 func _on_key_released(lane_number: int):
 	# Mark key as no longer held down
@@ -232,52 +265,85 @@ func _on_key_released(lane_number: int):
 	var timing_diff_ms = (current_song_time - end_time) * 1000.0
 	
 	# Generate judgement text for the release
-	var judgement_text = _format_judgement(timing_diff_ms)
+	var judgement_text = _format_judgement(timing_diff_ms, "Up")
 	
-	# Update the judgement label
-	if judgement_labels.has(lane_number):
-		judgement_labels[lane_number].text = judgement_text
+	# Update the release judgement label
+	if release_labels.has(lane_number):
+		release_labels[lane_number].text = judgement_text
 		
 		# Add a timer to clear the text after a short delay
-		_clear_judgement_after_delay(lane_number, 1.0)
+		_clear_release_judgement_after_delay(lane_number, 1.0)
 
-func _format_judgement(timing_diff_ms: float) -> String:
+func _format_judgement(timing_diff_ms: float, type: String = "") -> String:
 	var abs_diff = abs(timing_diff_ms)
 	
 	if abs_diff >= judgement_window_ms:
-		return "Miss"
+		return "Miss " + type
 	
 	# Round to nearest millisecond
 	var rounded_diff = round(timing_diff_ms)
 	
+	var timing_text = ""
 	if rounded_diff == 0:
-		return "0ms"  # Perfect timing when pressed
+		timing_text = "0ms"  # Perfect timing
 	elif rounded_diff > 0:
-		return "+" + str(int(rounded_diff)) + "ms"
+		timing_text = "+" + str(int(rounded_diff)) + "ms"
 	else:
-		return str(int(rounded_diff)) + "ms"
+		timing_text = str(int(rounded_diff)) + "ms"
+	
+	# Add type suffix if provided
+	if type != "":
+		return timing_text + " " + type
+	else:
+		return timing_text
 
 func _show_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
 	judged_notes[note_id] = true
 	
-	# Update the judgement label to show "Miss"
-	if judgement_labels.has(lane_number):
-		judgement_labels[lane_number].text = "Miss"
+	# Update the press judgement label to show "Miss Down"
+	if press_labels.has(lane_number):
+		press_labels[lane_number].text = "Miss Down"
 		
 		# Add a timer to clear the text after a short delay
-		_clear_judgement_after_delay(lane_number, 1.0)
+		_clear_press_judgement_after_delay(lane_number, 1.0)
 
-func _clear_judgement_after_delay(lane_number: int, delay: float):
-	# Create a timer to clear the judgement text
+func _show_release_miss(lane_number: int, note_id: String):
+	# Mark this note as judged to prevent duplicate miss messages
+	judged_notes[note_id] = true
+	
+	# Update the release judgement label to show "Miss Up"
+	if release_labels.has(lane_number):
+		release_labels[lane_number].text = "Miss Up"
+		
+		# Add a timer to clear the text after a short delay
+		_clear_release_judgement_after_delay(lane_number, 1.0)
+
+func _clear_press_judgement_after_delay(lane_number: int, delay: float):
+	# Create a timer to clear the press judgement text
 	var timer = Timer.new()
 	timer.wait_time = delay
 	timer.one_shot = true
 	add_child(timer)
 	
 	timer.timeout.connect(func():
-		if judgement_labels.has(lane_number):
-			judgement_labels[lane_number].text = ""
+		if press_labels.has(lane_number):
+			press_labels[lane_number].text = ""
+		timer.queue_free()
+	)
+	
+	timer.start()
+
+func _clear_release_judgement_after_delay(lane_number: int, delay: float):
+	# Create a timer to clear the release judgement text
+	var timer = Timer.new()
+	timer.wait_time = delay
+	timer.one_shot = true
+	add_child(timer)
+	
+	timer.timeout.connect(func():
+		if release_labels.has(lane_number):
+			release_labels[lane_number].text = ""
 		timer.queue_free()
 	)
 	
