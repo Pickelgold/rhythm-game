@@ -197,14 +197,18 @@ func _on_key_pressed(lane_number: int):
 	
 	# Find the closest note START timing in this lane
 	if not active_notes_by_lane.has(lane_number):
-		# Wrong lane pressed - show miss
+		# Wrong lane pressed - show miss and mark as missed press
 		_show_miss(lane_number, "wrong_lane_" + str(current_song_time))
+		# Track this as a missed press so we can show release miss later
+		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	var lane_notes = active_notes_by_lane[lane_number]
 	if lane_notes.is_empty():
-		# No notes in this lane - show miss
+		# No notes in this lane - show miss and mark as missed press
 		_show_miss(lane_number, "no_notes_" + str(current_song_time))
+		# Track this as a missed press so we can show release miss later
+		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	# Find the closest note START timing point
@@ -220,7 +224,10 @@ func _on_key_pressed(lane_number: int):
 				closest_start_note = note_timing
 	
 	if closest_start_note == null:
+		# No valid start note found - show miss and mark as missed press
 		_show_miss(lane_number, "no_start_note_" + str(current_song_time))
+		# Track this as a missed press so we can show release miss later
+		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	# Mark this note start as judged to prevent duplicate judgements
@@ -253,6 +260,16 @@ func _on_key_released(lane_number: int):
 		return
 	
 	var hold_note_data = active_hold_notes[lane_number]
+	
+	# Check if this was a missed press (wrong lane or no notes)
+	if hold_note_data.has("missed_press") and hold_note_data["missed_press"]:
+		# This was a missed press, show release miss
+		_show_release_miss(lane_number, "missed_press_release_" + str(current_song_time))
+		# Remove from active hold notes
+		active_hold_notes.erase(lane_number)
+		return
+	
+	# This was a valid note press, handle normal release logic
 	var end_time = hold_note_data["end_time"]
 	var end_note_id = str(end_time) + "_" + str(lane_number) + "_end"
 	
