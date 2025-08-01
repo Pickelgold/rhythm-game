@@ -8,6 +8,12 @@ var midi_spawner: Node
 # Track active notes that can be judged (within timing window)
 var active_notes_by_lane: Dictionary = {}  # lane_number -> Array of note data
 
+# Track notes that have been judged to avoid duplicate judgements
+var judged_notes: Dictionary = {}  # note_id -> true
+
+# Track notes that were previously in the judgement window
+var previously_active_notes: Dictionary = {}  # note_id -> true
+
 # Timing configuration
 var judgement_window_ms: float = 100.0  # ±100ms window
 var current_song_time: float = 0.0
@@ -85,7 +91,7 @@ func _update_active_notes():
 	for lane in active_notes_by_lane.keys():
 		active_notes_by_lane[lane].clear()
 	
-	# Add notes that are within the judgement window
+	# Add notes that are within the judgement window and check for missed notes
 	var judgement_window_seconds = judgement_window_ms / 1000.0
 	
 	for note_data in all_notes:
@@ -93,30 +99,53 @@ func _update_active_notes():
 		var start_time = note_data["start_time"]
 		var end_time = note_data["end_time"]
 		
-		# Check if note start or end time is within judgement window
-		var start_diff = abs(start_time - current_song_time)
-		var end_diff = abs(end_time - current_song_time)
+		# Create unique IDs for start and end timing points
+		var start_note_id = str(start_time) + "_" + str(lane) + "_start"
+		var end_note_id = str(end_time) + "_" + str(lane) + "_end"
 		
-		if start_diff <= judgement_window_seconds or end_diff <= judgement_window_seconds:
-			# Add both start and end timing points
+		# Check if note start time is within judgement window
+		var start_diff = start_time - current_song_time
+		if abs(start_diff) <= judgement_window_seconds:
+			# Add start timing point
 			active_notes_by_lane[lane].append({
 				"time": start_time,
 				"type": "start",
-				"note_data": note_data
+				"note_data": note_data,
+				"note_id": start_note_id
 			})
+			# Mark as previously active so we can detect misses later
+			previously_active_notes[start_note_id] = true
+		elif start_diff < -judgement_window_seconds and previously_active_notes.has(start_note_id) and not judged_notes.has(start_note_id):
+			# Note start was previously in judgement window but has now passed without being hit - it's a miss
+			_show_miss(lane, start_note_id)
+		
+		# Check if note end time is within judgement window
+		var end_diff = end_time - current_song_time
+		if abs(end_diff) <= judgement_window_seconds:
+			# Add end timing point
 			active_notes_by_lane[lane].append({
 				"time": end_time,
 				"type": "end", 
-				"note_data": note_data
+				"note_data": note_data,
+				"note_id": end_note_id
 			})
+			# Mark as previously active so we can detect misses later
+			previously_active_notes[end_note_id] = true
+		elif end_diff < -judgement_window_seconds and previously_active_notes.has(end_note_id) and not judged_notes.has(end_note_id):
+			# Note end was previously in judgement window but has now passed without being hit - it's a miss
+			_show_miss(lane, end_note_id)
 
 func _on_key_pressed(lane_number: int):
 	# Find the closest note timing in this lane
 	if not active_notes_by_lane.has(lane_number):
+		# Wrong lane pressed - show miss
+		_show_miss(lane_number, "wrong_lane_" + str(current_song_time))
 		return
 	
 	var lane_notes = active_notes_by_lane[lane_number]
 	if lane_notes.is_empty():
+		# No notes in this lane - show miss
+		_show_miss(lane_number, "no_notes_" + str(current_song_time))
 		return
 	
 	# Find the closest timing point
@@ -130,7 +159,11 @@ func _on_key_pressed(lane_number: int):
 			closest_note = note_timing
 	
 	if closest_note == null:
+		_show_miss(lane_number, "no_closest_" + str(current_song_time))
 		return
+	
+	# Mark this note as judged to prevent duplicate judgements
+	judged_notes[closest_note["note_id"]] = true
 	
 	# Calculate timing difference in milliseconds
 	var timing_diff_ms = (current_song_time - closest_note["time"]) * 1000.0
@@ -142,7 +175,7 @@ func _on_key_pressed(lane_number: int):
 	if judgement_labels.has(lane_number):
 		judgement_labels[lane_number].text = judgement_text
 		
-		# Optional: Add a timer to clear the text after a short delay
+		# Add a timer to clear the text after a short delay
 		_clear_judgement_after_delay(lane_number, 1.0)
 
 func _format_judgement(timing_diff_ms: float) -> String:
@@ -160,6 +193,17 @@ func _format_judgement(timing_diff_ms: float) -> String:
 		return "+" + str(int(rounded_diff)) + "ms"
 	else:
 		return str(int(rounded_diff)) + "ms"
+
+func _show_miss(lane_number: int, note_id: String):
+	# Mark this note as judged to prevent duplicate miss messages
+	judged_notes[note_id] = true
+	
+	# Update the judgement label to show "Miss"
+	if judgement_labels.has(lane_number):
+		judgement_labels[lane_number].text = "Miss"
+		
+		# Add a timer to clear the text after a short delay
+		_clear_judgement_after_delay(lane_number, 1.0)
 
 func _clear_judgement_after_delay(lane_number: int, delay: float):
 	# Create a timer to clear the judgement text

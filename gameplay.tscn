@@ -3106,7 +3106,6 @@ vertical_alignment = 1
 
 [node name="MidiPlayer" type="Node" parent="AudioManager"]
 script = ExtResource("1_fyqef")
-file = "res://beatmaps/I.mid"
 volume_db = 0.0
 load_all_voices_from_soundfont = false
 soundfont = "res://soundfonts/Aspirin_160_GMGS_2015.sf2"
@@ -3123,6 +3122,7 @@ script = ExtResource("3_keyboard")
 
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
+midi_file_path = "res://beatmaps/Twinkle Twinkle Little Star.mid"
 
 [node name="JudgementSystem" type="Node" parent="."]
 script = ExtResource("5_judgement_system")

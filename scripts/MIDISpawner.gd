@@ -10,21 +10,29 @@ var MIDIBeatmapLoaderScript = preload("res://scripts/MIDIBeatmapLoader.gd")
 var midi_loader
 
 # Timing variables
-var current_song_time: float = 0.0
-var lookahead_time: float = 2.0  # How far ahead to spawn notes
+var current_song_time: float = 0.0  # Start at 0, will be adjusted based on lookahead
 var pixels_per_second: float = 200.0
+
+# Dynamic lookahead time based on screen height and speed
+var lookahead_time: float = 0.0  # Will be calculated based on lane height and speed
 
 # Tracking spawned notes to avoid duplicates
 var spawned_notes: Dictionary = {}
 
-# Configuration
-var midi_file_path: String = "res://beatmaps/I.mid"
-var base_midi_note: int = 36  # C2
-var enabled_channels: Array[int] = [2, 3, 4, 5, 6, 7, 8, 10]  # Use all channels found in the MIDI file
+# Configuration - Exported variables for Inspector
+@export_file("*.mid") var midi_file_path: String = "res://beatmaps/I.mid"
+@export var base_midi_note: int = 36  # C2
+@export var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
 
 func _ready():
 	# Wait a frame to ensure the scene is fully loaded
 	await get_tree().process_frame
+	
+	# Calculate dynamic lookahead time based on lane height and speed
+	_calculate_lookahead_time()
+	
+	# Set starting time to negative lookahead to catch early notes
+	current_song_time = -lookahead_time
 	
 	# Initialize MIDI loader
 	midi_loader = MIDIBeatmapLoaderScript.new()
@@ -169,12 +177,38 @@ func get_row_info_for_lane(lane_number: int) -> Dictionary:
 	else:
 		return {}
 
+func _calculate_lookahead_time():
+	# Get the lane container height to calculate how long notes need to travel
+	var sample_container = get_lane_container(37)  # Use lane 37 as sample
+	if not sample_container:
+		# Fallback to default if we can't get container size
+		lookahead_time = 2.0
+		return
+	
+	# Get the background container (parent of NoteContainer)
+	var background = sample_container.get_parent()
+	if not background:
+		lookahead_time = 2.0
+		return
+	
+	# Calculate how long it takes for a note to travel from top to judgement line
+	var lane_height = background.size.y
+	var travel_time = lane_height / pixels_per_second
+	
+	# Add a small buffer (0.1 seconds) to ensure notes spawn slightly above the visible area
+	lookahead_time = travel_time + 0.1
+	
+	print("Calculated lookahead time: ", lookahead_time, " seconds (lane height: ", lane_height, "px)")
+
 func _debug_print_notes():
 	pass
 
 # Configuration functions
 func set_midi_file(path: String):
 	midi_file_path = path
+	# Reset spawned notes when changing songs
+	spawned_notes.clear()
+	current_song_time = -lookahead_time
 	if midi_loader:
 		midi_loader.load_midi_file(path)
 
@@ -189,5 +223,5 @@ func set_enabled_channels(channels: Array[int]):
 		midi_loader.set_enabled_channels(channels)
 
 func reset_song_time():
-	current_song_time = 0.0
+	current_song_time = -lookahead_time
 	spawned_notes.clear()
