@@ -238,6 +238,7 @@ func _on_key_pressed(lane_number: int):
 	# Update the press judgement label
 	if press_labels.has(lane_number):
 		press_labels[lane_number].text = judgement_text
+		_set_label_color(press_labels[lane_number], timing_diff_ms)
 		
 		# Add a timer to clear the text after a short delay
 		_clear_press_judgement_after_delay(lane_number, 1.0)
@@ -270,6 +271,7 @@ func _on_key_released(lane_number: int):
 	# Update the release judgement label
 	if release_labels.has(lane_number):
 		release_labels[lane_number].text = judgement_text
+		_set_label_color(release_labels[lane_number], timing_diff_ms)
 		
 		# Add a timer to clear the text after a short delay
 		_clear_release_judgement_after_delay(lane_number, 1.0)
@@ -297,6 +299,23 @@ func _format_judgement(timing_diff_ms: float, type: String = "") -> String:
 	else:
 		return timing_text
 
+func _set_label_color(label: Label, timing_diff_ms: float):
+	# Set color based on timing accuracy
+	var abs_diff = abs(timing_diff_ms)
+	
+	if abs_diff >= judgement_window_ms:
+		# Miss - Red
+		label.modulate = Color.RED
+	elif timing_diff_ms == 0:
+		# Perfect timing - Green
+		label.modulate = Color.GREEN
+	elif timing_diff_ms < 0:
+		# Early hit - Orange
+		label.modulate = Color.ORANGE
+	else:
+		# Late hit - Magenta
+		label.modulate = Color.MAGENTA
+
 func _show_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
 	judged_notes[note_id] = true
@@ -304,6 +323,7 @@ func _show_miss(lane_number: int, note_id: String):
 	# Update the press judgement label to show "Miss ↓"
 	if press_labels.has(lane_number):
 		press_labels[lane_number].text = "Miss ↓"
+		press_labels[lane_number].modulate = Color.RED
 		
 		# Add a timer to clear the text after a short delay
 		_clear_press_judgement_after_delay(lane_number, 1.0)
@@ -315,6 +335,7 @@ func _show_release_miss(lane_number: int, note_id: String):
 	# Update the release judgement label to show "Miss ↑"
 	if release_labels.has(lane_number):
 		release_labels[lane_number].text = "Miss ↑"
+		release_labels[lane_number].modulate = Color.RED
 		
 		# Add a timer to clear the text after a short delay
 		_clear_release_judgement_after_delay(lane_number, 1.0)
@@ -329,6 +350,7 @@ func _clear_press_judgement_after_delay(lane_number: int, delay: float):
 	timer.timeout.connect(func():
 		if press_labels.has(lane_number):
 			press_labels[lane_number].text = ""
+			press_labels[lane_number].modulate = Color.WHITE  # Reset color
 		timer.queue_free()
 	)
 	
@@ -344,6 +366,7 @@ func _clear_release_judgement_after_delay(lane_number: int, delay: float):
 	timer.timeout.connect(func():
 		if release_labels.has(lane_number):
 			release_labels[lane_number].text = ""
+			release_labels[lane_number].modulate = Color.WHITE  # Reset color
 		timer.queue_free()
 	)
 	
