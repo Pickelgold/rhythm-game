@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2iyygmrr3bgu"]
+[gd_scene load_steps=6 format=3 uid="uid://2iyygmrr3bgu"]
 
 [ext_resource type="Script" uid="uid://brdvvugt8538w" path="res://addons/midi/MidiPlayer.gd" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://cdicid6vekh3p" path="res://scripts/FreePlayController.gd" id="2_freeplay"]
 [ext_resource type="Script" uid="uid://lg2q6vomebbm" path="res://scripts/KeyboardController.gd" id="3_keyboard"]
 [ext_resource type="Script" uid="uid://ufaxmhjmxqel" path="res://scripts/MIDISpawner.gd" id="4_midi_spawner"]
+[ext_resource type="Script" uid="uid://bw63y8ipai8gu" path="res://scripts/JudgementSystem.gd" id="5_judgement_system"]
 
 [node name="Main" type="Node2D"]
 
@@ -3122,3 +3123,6 @@ script = ExtResource("3_keyboard")
 
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
+
+[node name="JudgementSystem" type="Node" parent="."]
+script = ExtResource("5_judgement_system")

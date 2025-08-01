@@ -154,7 +154,7 @@ func get_lane_judgement(lane_number: int) -> Node:
 	if not lane_node:
 		return null
 	
-	return lane_node.get_node("Judgement")
+	return lane_node.get_node("JudgementLine")
 
 func get_row_info_for_lane(lane_number: int) -> Dictionary:
 	# Map lane numbers to their respective rows
