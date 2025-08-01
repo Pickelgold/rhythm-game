@@ -21,11 +21,12 @@ var held_keys: Dictionary = {}  # lane_number -> true
 var active_hold_notes: Dictionary = {}  # lane_number -> note_data
 
 # Timing configuration
-var judgement_window_ms: float = 100.0  # ±100ms window
+var judgement_window_ms: float = 200.0  # ±200ms window
 var current_song_time: float = 0.0
 
 # References to judgement labels for each lane
 var judgement_labels: Dictionary = {}
+
 
 func _ready():
 	# Wait for scene to be fully loaded
