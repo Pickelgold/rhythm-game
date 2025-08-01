@@ -14,6 +14,12 @@ var judged_notes: Dictionary = {}  # note_id -> true
 # Track notes that were previously in the judgement window
 var previously_active_notes: Dictionary = {}  # note_id -> true
 
+# Track which keys are currently held down for hold notes
+var held_keys: Dictionary = {}  # lane_number -> true
+
+# Track active hold notes (notes that have been started but not ended)
+var active_hold_notes: Dictionary = {}  # lane_number -> note_data
+
 # Timing configuration
 var judgement_window_ms: float = 100.0  # ±100ms window
 var current_song_time: float = 0.0
@@ -32,6 +38,7 @@ func _ready():
 	# Connect to keyboard controller signals
 	if keyboard_controller:
 		keyboard_controller.key_pressed.connect(_on_key_pressed)
+		keyboard_controller.key_released.connect(_on_key_released)
 	
 	# Initialize judgement labels dictionary
 	_setup_judgement_labels()
@@ -132,11 +139,29 @@ func _update_active_notes():
 			# Mark as previously active so we can detect misses later
 			previously_active_notes[end_note_id] = true
 		elif end_diff < -judgement_window_seconds and previously_active_notes.has(end_note_id) and not judged_notes.has(end_note_id):
-			# Note end was previously in judgement window but has now passed without being hit - it's a miss
-			_show_miss(lane, end_note_id)
+			# Only show miss for note end if the key is not being held down AND there's no active hold note
+			# OR if this note end doesn't match the current active hold note
+			var should_show_miss = true
+			
+			if held_keys.has(lane) and active_hold_notes.has(lane):
+				# Check if this note end belongs to the currently active hold note
+				var active_note = active_hold_notes[lane]
+				if active_note["start_time"] == note_data["start_time"] and active_note["end_time"] == note_data["end_time"]:
+					# This is the end of the currently held note - don't show miss
+					should_show_miss = false
+			
+			if should_show_miss:
+				_show_miss(lane, end_note_id)
 
 func _on_key_pressed(lane_number: int):
-	# Find the closest note timing in this lane
+	# Check if key is already being held down (ignore key repeat)
+	if held_keys.has(lane_number):
+		return
+	
+	# Mark key as held down
+	held_keys[lane_number] = true
+	
+	# Find the closest note START timing in this lane
 	if not active_notes_by_lane.has(lane_number):
 		# Wrong lane pressed - show miss
 		_show_miss(lane_number, "wrong_lane_" + str(current_song_time))
@@ -148,27 +173,64 @@ func _on_key_pressed(lane_number: int):
 		_show_miss(lane_number, "no_notes_" + str(current_song_time))
 		return
 	
-	# Find the closest timing point
-	var closest_note = null
+	# Find the closest note START timing point
+	var closest_start_note = null
 	var closest_time_diff = INF
 	
 	for note_timing in lane_notes:
-		var time_diff = abs(note_timing["time"] - current_song_time)
-		if time_diff < closest_time_diff:
-			closest_time_diff = time_diff
-			closest_note = note_timing
+		# Only consider note starts for key press events
+		if note_timing["type"] == "start":
+			var time_diff = abs(note_timing["time"] - current_song_time)
+			if time_diff < closest_time_diff:
+				closest_time_diff = time_diff
+				closest_start_note = note_timing
 	
-	if closest_note == null:
-		_show_miss(lane_number, "no_closest_" + str(current_song_time))
+	if closest_start_note == null:
+		_show_miss(lane_number, "no_start_note_" + str(current_song_time))
 		return
 	
-	# Mark this note as judged to prevent duplicate judgements
-	judged_notes[closest_note["note_id"]] = true
+	# Mark this note start as judged to prevent duplicate judgements
+	judged_notes[closest_start_note["note_id"]] = true
+	
+	# Start tracking this hold note
+	active_hold_notes[lane_number] = closest_start_note["note_data"]
 	
 	# Calculate timing difference in milliseconds
-	var timing_diff_ms = (current_song_time - closest_note["time"]) * 1000.0
+	var timing_diff_ms = (current_song_time - closest_start_note["time"]) * 1000.0
 	
 	# Generate judgement text
+	var judgement_text = _format_judgement(timing_diff_ms)
+	
+	# Update the judgement label
+	if judgement_labels.has(lane_number):
+		judgement_labels[lane_number].text = judgement_text
+		
+		# Add a timer to clear the text after a short delay
+		_clear_judgement_after_delay(lane_number, 1.0)
+
+func _on_key_released(lane_number: int):
+	# Mark key as no longer held down
+	held_keys.erase(lane_number)
+	
+	# Check if there was an active hold note in this lane
+	if not active_hold_notes.has(lane_number):
+		# No active hold note - this might be a miss or just a tap
+		return
+	
+	var hold_note_data = active_hold_notes[lane_number]
+	var end_time = hold_note_data["end_time"]
+	var end_note_id = str(end_time) + "_" + str(lane_number) + "_end"
+	
+	# Remove from active hold notes
+	active_hold_notes.erase(lane_number)
+	
+	# Mark the end as judged to prevent miss detection
+	judged_notes[end_note_id] = true
+	
+	# Calculate timing difference for the note end
+	var timing_diff_ms = (current_song_time - end_time) * 1000.0
+	
+	# Generate judgement text for the release
 	var judgement_text = _format_judgement(timing_diff_ms)
 	
 	# Update the judgement label
@@ -188,7 +250,7 @@ func _format_judgement(timing_diff_ms: float) -> String:
 	var rounded_diff = round(timing_diff_ms)
 	
 	if rounded_diff == 0:
-		return "0ms"
+		return "0ms"  # Perfect timing when pressed
 	elif rounded_diff > 0:
 		return "+" + str(int(rounded_diff)) + "ms"
 	else:

@@ -122,8 +122,11 @@ func spawn_note(note_data: Dictionary):
 	var time_until_hit = start_time - current_song_time
 	var travel_distance = time_until_hit * pixels_per_second
 	
-	# Position the note above the container
-	var start_y_position = -total_note_height - travel_distance
+	# Position the note so its bottom line aligns with judgement line at perfect timing
+	# The judgement line is at the bottom of the lane container (where the JudgementLine ColorRect is)
+	# When time_until_hit = 0, the note's bottom should be at the container's bottom
+	var perfect_timing_y = lane_container.size.y - judgement_thickness
+	var start_y_position = perfect_timing_y - total_note_height - travel_distance
 	note.position = Vector2(0, start_y_position)
 	
 	# Add the note to the container
@@ -197,8 +200,6 @@ func _calculate_lookahead_time():
 	
 	# Add a small buffer (0.1 seconds) to ensure notes spawn slightly above the visible area
 	lookahead_time = travel_time + 0.1
-	
-	print("Calculated lookahead time: ", lookahead_time, " seconds (lane height: ", lane_height, "px)")
 
 func _debug_print_notes():
 	pass

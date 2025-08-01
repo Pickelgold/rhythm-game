@@ -2,6 +2,8 @@ extends Control
 
 # Signal emitted when a key is pressed with the corresponding lane number
 signal key_pressed(lane_number: int)
+# Signal emitted when a key is released with the corresponding lane number
+signal key_released(lane_number: int)
 
 # Dictionary to map keys to their ColorRect nodes
 var key_map = {}
@@ -161,6 +163,10 @@ func _input(event):
 			else:
 				# Key released - restore original color
 				restore_original_color(key_rect)
+				
+				# Emit signal for judgement system
+				if lane_number != -1:
+					key_released.emit(lane_number)
 
 func restore_original_color(key_rect):
 	# All keys use the same normal color
