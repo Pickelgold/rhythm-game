@@ -52,7 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -100,7 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -148,7 +148,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -196,7 +196,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -244,7 +244,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -292,7 +292,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -340,7 +340,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -388,7 +388,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -436,7 +436,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -484,7 +484,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -532,7 +532,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -580,7 +580,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -628,7 +628,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -686,7 +686,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -734,7 +734,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -782,7 +782,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -830,7 +830,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -878,7 +878,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -926,7 +926,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -974,7 +974,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1022,7 +1022,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1070,7 +1070,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1118,7 +1118,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1166,7 +1166,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1214,7 +1214,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1272,7 +1272,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1320,7 +1320,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1368,7 +1368,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1416,7 +1416,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1464,7 +1464,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1512,7 +1512,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1560,7 +1560,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1608,7 +1608,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1656,7 +1656,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1704,7 +1704,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1752,7 +1752,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1800,7 +1800,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1858,7 +1858,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1906,7 +1906,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -1954,7 +1954,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2002,7 +2002,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2050,7 +2050,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2098,7 +2098,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2146,7 +2146,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2194,7 +2194,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2242,7 +2242,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2290,7 +2290,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2338,7 +2338,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -2387,7 +2387,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Judgement" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
