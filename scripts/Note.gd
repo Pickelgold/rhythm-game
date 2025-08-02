@@ -1,4 +1,4 @@
-extends ColorRect
+extends VBoxContainer
 class_name Note
 
 var start_time: float = 0.0
@@ -34,11 +34,6 @@ func stop_falling():
 	is_falling = false
 
 func _process(delta):
-	if is_falling:
-		position.y += (lane_percentage_per_second * lane_height) * delta
-		
-		# Check if note has fallen completely off screen (below container)
-		var parent_container = get_parent()
-		if parent_container and position.y > parent_container.size.y + size.y:
-			# Note has fallen off screen, remove it
-			queue_free()
+	# Note positioning is now handled by MIDISpawner using absolute time
+	# This function is kept for compatibility but movement logic is disabled
+	pass

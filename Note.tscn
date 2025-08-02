@@ -2,24 +2,24 @@
 
 [ext_resource type="Script" path="res://scripts/Note.gd" id="1_note"]
 
-[node name="Note" type="ColorRect"]
-color = Color(0.3, 0.3, 0.3, 1)
+[node name="Note" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 3
+anchors_preset = 0
+theme_override_constants/separation = 0
 script = ExtResource("1_note")
 
 [node name="TopLine" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 2.0
-grow_horizontal = 2
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
 color = Color(1, 1, 1, 1)
 
+[node name="Body" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.3, 0.3, 0.3, 1)
+
 [node name="BottomLine" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-grow_horizontal = 2
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
 color = Color(1, 1, 1, 1)

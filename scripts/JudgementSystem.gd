@@ -327,11 +327,11 @@ func _set_label_color(label: Label, timing_diff_ms: float):
 		# Perfect timing - Green
 		label.modulate = Color.GREEN
 	elif timing_diff_ms < 0:
-		# Early hit - Orange
-		label.modulate = Color.ORANGE
-	else:
-		# Late hit - Magenta
+		# Early hit - Magenta
 		label.modulate = Color.MAGENTA
+	else:
+		# Late hit - Orange
+		label.modulate = Color.ORANGE
 
 func _show_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
