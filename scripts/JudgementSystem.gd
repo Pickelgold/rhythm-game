@@ -57,6 +57,15 @@ func _process(delta):
 	# Update active notes (add notes entering judgement zone, remove notes leaving it)
 	_update_active_notes()
 
+# Get precise song time at the exact moment of input (not frame-dependent)
+func get_precise_song_time() -> float:
+	if not midi_spawner or not midi_spawner.is_song_playing:
+		return midi_spawner.song_offset_seconds if midi_spawner else 0.0
+	
+	var current_time_msec = Time.get_ticks_msec()
+	var elapsed_seconds = (current_time_msec - midi_spawner.song_start_time_msec) / 1000.0
+	return midi_spawner.song_offset_seconds + elapsed_seconds
+
 func _setup_judgement_labels():
 	# Get references to all judgement labels
 	var ui_root = get_node("../UI/MarginContainer/AspectRatioContainer/VBoxContainer")
@@ -236,8 +245,10 @@ func _on_key_pressed(lane_number: int):
 	# Start tracking this hold note
 	active_hold_notes[lane_number] = closest_start_note["note_data"]
 	
-	# Calculate timing difference in milliseconds
-	var timing_diff_ms = (current_song_time - closest_start_note["time"]) * 1000.0
+	# Calculate timing difference using PRECISE time in milliseconds
+	var precise_input_time_ms = get_precise_song_time() * 1000.0
+	var note_time_ms = closest_start_note["time"] * 1000.0
+	var timing_diff_ms = round(precise_input_time_ms - note_time_ms)
 	
 	# Generate judgement text
 	var judgement_text = _format_judgement(timing_diff_ms, "↓")
@@ -279,8 +290,10 @@ func _on_key_released(lane_number: int):
 	# Mark the end as judged to prevent miss detection
 	judged_notes[end_note_id] = true
 	
-	# Calculate timing difference for the note end
-	var timing_diff_ms = (current_song_time - end_time) * 1000.0
+	# Calculate timing difference for the note end using PRECISE time in milliseconds
+	var precise_input_time_ms = get_precise_song_time() * 1000.0
+	var note_end_time_ms = end_time * 1000.0
+	var timing_diff_ms = round(precise_input_time_ms - note_end_time_ms)
 	
 	# Generate judgement text for the release
 	var judgement_text = _format_judgement(timing_diff_ms, "↑")
@@ -299,7 +312,7 @@ func _format_judgement(timing_diff_ms: float, type: String = "") -> String:
 	if abs_diff >= judgement_window_ms:
 		return "Miss " + type
 	
-	# Round to nearest millisecond
+	# Round to nearest millisecond for display (but keep internal precision)
 	var rounded_diff = round(timing_diff_ms)
 	
 	var timing_text = ""
@@ -323,7 +336,7 @@ func _set_label_color(label: Label, timing_diff_ms: float):
 	if abs_diff >= judgement_window_ms:
 		# Miss - Red
 		label.modulate = Color.RED
-	elif timing_diff_ms == 0:
+	elif abs_diff < 0.05:  # Very close to perfect (within 0.05ms)
 		# Perfect timing - Green
 		label.modulate = Color.GREEN
 	elif timing_diff_ms < 0:

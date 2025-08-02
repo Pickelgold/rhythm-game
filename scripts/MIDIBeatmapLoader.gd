@@ -34,14 +34,16 @@ func load_midi_file(path: String) -> bool:
 	
 	return true
 
-# Convert MIDI ticks to seconds
+# Convert MIDI ticks to seconds with improved precision
 func convert_midi_time_to_seconds(midi_ticks: int) -> float:
 	# Default tempo: 120 BPM = 500000 microseconds per beat
-	# This is a simplified conversion - could be enhanced to handle tempo changes
+	# Use higher precision calculation to minimize floating-point errors
 	var microseconds_per_beat = 500000.0
 	var ticks_per_beat = float(timebase)
-	var seconds_per_tick = (microseconds_per_beat / 1000000.0) / ticks_per_beat
-	return midi_ticks * seconds_per_tick
+	
+	# Calculate microseconds first, then convert to seconds to maintain precision
+	var total_microseconds = (midi_ticks * microseconds_per_beat) / ticks_per_beat
+	return total_microseconds / 1000000.0
 
 # Process all MIDI notes and convert them to game format
 func _process_midi_notes():
