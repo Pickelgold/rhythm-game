@@ -134,10 +134,6 @@ func _update_active_notes():
 	if not midi_spawner or not midi_spawner.midi_loader:
 		return
 	
-	# Clear current active notes
-	for lane in active_notes_by_lane.keys():
-		active_notes_by_lane[lane].clear()
-	
 	# Get notes in a wider time range to avoid missing notes due to timing precision
 	var judgement_window_seconds = judgement_window_ms / 1000.0
 	var search_start = current_song_time - judgement_window_seconds - 0.1  # Extra buffer
@@ -145,6 +141,10 @@ func _update_active_notes():
 	
 	# Use the optimized time range query instead of processing all notes
 	var nearby_notes = midi_spawner.midi_loader.get_notes_in_timerange(search_start, search_end)
+	
+	# Clear current active notes
+	for lane in active_notes_by_lane.keys():
+		active_notes_by_lane[lane].clear()
 	
 	for note_data in nearby_notes:
 		var lane = note_data["lane"]
