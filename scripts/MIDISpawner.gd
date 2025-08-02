@@ -186,9 +186,13 @@ func spawn_notes_at_exact_time():
 	if not midi_loader:
 		return
 	
-	var all_notes = midi_loader.get_all_notes()
+	# Only check notes that are near the current spawn time to avoid processing all notes every frame
+	var spawn_window_start = current_song_time - 0.1  # Small buffer for precision
+	var spawn_window_end = current_song_time + lookahead_time + 0.1  # Look ahead for notes to spawn
 	
-	for note_data in all_notes:
+	var nearby_notes = midi_loader.get_notes_in_timerange(spawn_window_start, spawn_window_end)
+	
+	for note_data in nearby_notes:
 		var note_id = str(note_data["start_time"]) + "_" + str(note_data["lane"])
 		
 		# Skip if already spawned
