@@ -6,7 +6,8 @@ var end_time: float = 0.0
 var lane_number: int = 0
 
 # Movement properties
-var fall_speed: float = 200.0  # pixels per second
+var lane_percentage_per_second: float = 1.0  # percentage of lane per second
+var lane_height: float = 0.0  # height of the lane container
 var is_falling: bool = false
 
 # Visual properties
@@ -24,8 +25,9 @@ func get_total_line_thickness() -> float:
 	# Returns the total thickness of both lines (top + bottom)
 	return line_thickness * 2.0
 
-func start_falling(speed: float = 200.0):
-	fall_speed = speed
+func start_falling(percentage_speed: float = 0.5, container_height: float = 400.0):
+	lane_percentage_per_second = percentage_speed
+	lane_height = container_height
 	is_falling = true
 
 func stop_falling():
@@ -33,7 +35,7 @@ func stop_falling():
 
 func _process(delta):
 	if is_falling:
-		position.y += fall_speed * delta
+		position.y += (lane_percentage_per_second * lane_height) * delta
 		
 		# Check if note has fallen completely off screen (below container)
 		var parent_container = get_parent()
