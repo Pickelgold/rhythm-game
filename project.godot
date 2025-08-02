@@ -22,6 +22,7 @@ window/size/viewport_height=1200
 window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=1
 
 [rendering]
 
