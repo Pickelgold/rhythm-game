@@ -262,8 +262,8 @@ func spawn_note_precise(note_data: Dictionary):
 	var judgement_line_y = lane_container.size.y - judgement_thickness
 	var exact_y = judgement_line_y - (time_until_hit * note_speed_pixels_per_second) - note.size.y
 	
-	# Position the note precisely
-	note.position = Vector2(0, exact_y)
+	# Position the note precisely (rounded to whole pixels to prevent flickering)
+	note.position = Vector2(0, round(exact_y))
 	
 	# Add the note to the container and active notes list
 	lane_container.add_child(note)
@@ -292,8 +292,8 @@ func update_note_positions():
 		var judgement_line_y = lane_container.size.y - get_lane_judgement(note.lane_number).size.y
 		var exact_y = judgement_line_y - (time_until_hit * note_speed_pixels_per_second) - note.size.y
 		
-		# Update note position
-		note.position.y = exact_y
+		# Update note position (rounded to whole pixels to prevent flickering)
+		note.position.y = round(exact_y)
 		
 		# Remove notes that have fallen off screen
 		if note.position.y > lane_container.size.y + note.size.y:
