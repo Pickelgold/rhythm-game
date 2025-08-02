@@ -13,6 +13,9 @@ config_version=5
 config/name="Rhythm Game"
 run/main_scene="uid://2iyygmrr3bgu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [display]
@@ -22,7 +25,6 @@ window/size/viewport_height=1200
 window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/vsync/vsync_mode=1
 
 [rendering]
 
