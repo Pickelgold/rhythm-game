@@ -260,7 +260,7 @@ func spawn_note_precise(note_data: Dictionary):
 	# Calculate exact initial position based on time until hit
 	var time_until_hit = start_time - current_song_time
 	var judgement_line_y = lane_container.size.y - judgement_thickness
-	var exact_y = judgement_line_y - (time_until_hit * note_speed_pixels_per_second) - note.size.y
+	var exact_y = judgement_line_y - (time_until_hit * note_speed_pixels_per_second) - note.size.y + judgement_thickness
 	
 	# Position the note precisely (rounded to whole pixels to prevent flickering)
 	note.position = Vector2(0, round(exact_y))
@@ -290,7 +290,8 @@ func update_note_positions():
 		
 		# Calculate exact Y position
 		var judgement_line_y = lane_container.size.y - get_lane_judgement(note.lane_number).size.y
-		var exact_y = judgement_line_y - (time_until_hit * note_speed_pixels_per_second) - note.size.y
+		var judgement_thickness = get_lane_judgement(note.lane_number).size.y
+		var exact_y = judgement_line_y - (time_until_hit * note_speed_pixels_per_second) - note.size.y + judgement_thickness
 		
 		# Update note position (rounded to whole pixels to prevent flickering)
 		note.position.y = round(exact_y)
