@@ -68,7 +68,7 @@ func get_precise_song_time() -> float:
 
 func _setup_judgement_labels():
 	# Get references to all judgement labels
-	var ui_root = get_node("../UI/MarginContainer/AspectRatioContainer/VBoxContainer")
+	var ui_root = get_node("../UI/MarginContainer/HBoxContainer/GameplayArea")
 	
 	# Row 1: Lanes 37-49
 	var row1 = ui_root.get_node("Row 1")

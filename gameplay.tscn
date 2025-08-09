@@ -21,30 +21,52 @@ grow_vertical = 2
 layout_mode = 2
 color = Color(0.0383972, 0.0383972, 0.0383971, 1)
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI/MarginContainer"]
-layout_mode = 2
-ratio = 1.3333
-stretch_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 
-[node name="Row 1" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
+[node name="LeftUI" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accuracy" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Lane 37" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="AccuracyLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/LeftUI/Accuracy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "100.00%"
+
+[node name="UnstableRate" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="Combo" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameplayArea" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="Row 1" type="HBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lane 37" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -53,7 +75,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,26 +89,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 37/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 37/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -103,18 +125,18 @@ text = "`"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 38" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 38" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -123,7 +145,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -137,26 +159,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 38/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 38/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,18 +195,18 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 39" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 39" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -193,7 +215,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,26 +229,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 39/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 39/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -243,18 +265,18 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 40" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 40" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -263,7 +285,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -277,26 +299,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 40/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 40/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -313,18 +335,18 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 41" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 41" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -333,7 +355,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,26 +369,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 41/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 41/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -383,18 +405,18 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 42" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 42" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -403,7 +425,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -417,26 +439,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 42/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 42/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -453,18 +475,18 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 43" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 43" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -473,7 +495,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -487,26 +509,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 43/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 43/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -523,18 +545,18 @@ text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 44" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 44" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -543,7 +565,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -557,26 +579,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 44/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 44/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -593,18 +615,18 @@ text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 45" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 45" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -613,7 +635,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -627,26 +649,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 45/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 45/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -663,18 +685,18 @@ text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 46" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 46" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -683,7 +705,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -697,26 +719,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 46/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 46/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -733,18 +755,18 @@ text = "9"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 47" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 47" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -753,7 +775,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -767,26 +789,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 47/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 47/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -803,18 +825,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 48" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 48" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -823,7 +845,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -837,26 +859,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 48/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 48/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -873,18 +895,18 @@ text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 49" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Lane 49" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -893,7 +915,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -907,26 +929,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1/Lane 49/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1/Lane 49/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -943,28 +965,28 @@ text = "="
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer 1" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 1"]
+[node name="Spacer 1" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="Row 2" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
+[node name="Row 2" type="HBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Lane 25" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 25" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -973,7 +995,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -987,26 +1009,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 25/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 25/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1023,18 +1045,18 @@ text = "Tab"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 26" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 26" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1043,7 +1065,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1057,26 +1079,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 26/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 26/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1093,18 +1115,18 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 27" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 27" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1113,7 +1135,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1127,26 +1149,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 27/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 27/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1163,18 +1185,18 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 28" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 28" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1183,7 +1205,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1197,26 +1219,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 28/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 28/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1233,18 +1255,18 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 29" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 29" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1253,7 +1275,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1267,26 +1289,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 29/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 29/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1303,18 +1325,18 @@ text = "R"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 30" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 30" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1323,7 +1345,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1337,26 +1359,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 30/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 30/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1373,18 +1395,18 @@ text = "T"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 31" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 31" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1393,7 +1415,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1407,26 +1429,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 31/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 31/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1443,18 +1465,18 @@ text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 32" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 32" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1463,7 +1485,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1477,26 +1499,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 32/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 32/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1513,18 +1535,18 @@ text = "U"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 33" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 33" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1533,7 +1555,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1547,26 +1569,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 33/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 33/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1583,18 +1605,18 @@ text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 34" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 34" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1603,7 +1625,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1617,26 +1639,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 34/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 34/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1653,18 +1675,18 @@ text = "O"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 35" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 35" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1673,7 +1695,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1687,26 +1709,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 35/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 35/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1723,18 +1745,18 @@ text = "P"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 36" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Lane 36" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1743,7 +1765,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1757,26 +1779,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2/Lane 36/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2/Lane 36/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1793,28 +1815,28 @@ text = "["
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer 2" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 2"]
+[node name="Spacer 2" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="Row 3" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
+[node name="Row 3" type="HBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Lane 13" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 13" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.75
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1823,7 +1845,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1837,26 +1859,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 13/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 13/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1873,18 +1895,18 @@ text = "Caps"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 14" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 14" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1893,7 +1915,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1907,26 +1929,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 14/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 14/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1943,18 +1965,18 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 15" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 15" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1963,7 +1985,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1977,26 +1999,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 15/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 15/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2013,18 +2035,18 @@ text = "S"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 16" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 16" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2033,7 +2055,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2047,26 +2069,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 16/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 16/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2083,18 +2105,18 @@ text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 17" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 17" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2103,7 +2125,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2117,26 +2139,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 17/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 17/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2153,18 +2175,18 @@ text = "F"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 18" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 18" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2173,7 +2195,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2187,26 +2209,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 18/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 18/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2223,18 +2245,18 @@ text = "G"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 19" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 19" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2243,7 +2265,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2257,26 +2279,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 19/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 19/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2293,18 +2315,18 @@ text = "H"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 20" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 20" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2313,7 +2335,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2327,26 +2349,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 20/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 20/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2363,18 +2385,18 @@ text = "J"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 21" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 21" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2383,7 +2405,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2397,26 +2419,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 21/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 21/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2433,18 +2455,18 @@ text = "K"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 22" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 22" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2453,7 +2475,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2467,26 +2489,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 22/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 22/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2503,18 +2525,18 @@ text = "L"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 23" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 23" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2523,7 +2545,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2537,26 +2559,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 23/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 23/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2573,18 +2595,18 @@ text = ";"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 24" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Lane 24" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2593,7 +2615,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2607,26 +2629,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3/Lane 24/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3/Lane 24/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2643,28 +2665,28 @@ text = "'"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer 3" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 3"]
+[node name="Spacer 3" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.75
 
-[node name="Row 4" type="HBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer"]
+[node name="Row 4" type="HBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Lane 1" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 1" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.25
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2673,7 +2695,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2687,26 +2709,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 1/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 1/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2723,18 +2745,18 @@ text = "LShift"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 2" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 2" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2743,7 +2765,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2757,26 +2779,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 2/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 2/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2793,18 +2815,18 @@ text = "Z"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 3" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 3" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2813,7 +2835,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2827,26 +2849,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 3/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 3/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2863,18 +2885,18 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 4" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 4" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2883,7 +2905,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2897,26 +2919,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 4/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 4/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2933,18 +2955,18 @@ text = "C"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 5" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 5" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -2953,7 +2975,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2967,26 +2989,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 5/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 5/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3003,18 +3025,18 @@ text = "V"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 6" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 6" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3023,7 +3045,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3037,26 +3059,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 6/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 6/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3073,18 +3095,18 @@ text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 7" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 7" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3093,7 +3115,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3107,26 +3129,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 7/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 7/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3143,18 +3165,18 @@ text = "N"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 8" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 8" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3163,7 +3185,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3177,26 +3199,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 8/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 8/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3213,18 +3235,18 @@ text = "M"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 9" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 9" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3233,7 +3255,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3247,26 +3269,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 9/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 9/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3283,18 +3305,18 @@ text = ","
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 10" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 10" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3303,7 +3325,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3317,26 +3339,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 10/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 10/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3353,18 +3375,18 @@ text = "."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 11" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 11" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3373,7 +3395,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3387,26 +3409,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 11/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 11/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3423,19 +3445,19 @@ text = "/"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lane 12" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4"]
+[node name="Lane 12" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.25
 theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12"]
+[node name="Background" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
 
-[node name="NoteContainer" type="Control" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background"]
+[node name="NoteContainer" type="Control" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -3444,7 +3466,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3458,26 +3480,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background/VBoxContainer"]
+[node name="ReleaseLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="PressLabel" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Background/VBoxContainer"]
+[node name="PressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12/Background/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12"]
+[node name="JudgementLine" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
-color = Color(1, 0.843137, 0, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12"]
+[node name="Receptor" type="ColorRect" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
-[node name="Label" type="Label" parent="UI/MarginContainer/AspectRatioContainer/VBoxContainer/Row 4/Lane 12/Receptor"]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/GameplayArea/Row 4/Lane 12/Receptor"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3493,6 +3515,23 @@ grow_vertical = 2
 text = "RShift"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RightUI" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Username" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NowPlaying" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="SongProgress" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="AudioManager" type="Node" parent="."]
 
