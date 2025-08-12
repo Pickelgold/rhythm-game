@@ -23,28 +23,58 @@ color = Color(0.0383972, 0.0383972, 0.0383971, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="LeftUI" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
+[node name="LeftUI" type="MarginContainer" parent="UI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Accuracy" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
+layout_mode = 2
+
+[node name="Accuracy" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="AccuracyLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/LeftUI/Accuracy"]
+[node name="AccuracyPercentage" type="Label" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer/Accuracy"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 0
+theme_override_font_sizes/font_size = 40
 text = "100.00%"
+horizontal_alignment = 2
 
-[node name="UnstableRate" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
+[node name="AccuracyLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer/Accuracy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Accuracy"
+horizontal_alignment = 2
+
+[node name="UnstableRate" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
 
-[node name="Combo" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI"]
+[node name="Combo" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="ComboCounter" type="Label" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer/Combo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0x"
+horizontal_alignment = 2
+
+[node name="ComboLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer/Combo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Combo"
+horizontal_alignment = 2
 
 [node name="GameplayArea" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -3516,22 +3546,65 @@ text = "RShift"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RightUI" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
+[node name="RightUI" type="MarginContainer" parent="UI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Username" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+layout_mode = 2
+
+[node name="Username" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="NowPlaying" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+[node name="UsernameLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer/Username"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Username"
+autowrap_mode = 1
+
+[node name="OnlineStatus" type="HBoxContainer" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer/Username"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="OnlineSymbol" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer/Username/OnlineStatus"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "⬤"
+
+[node name="OnlineLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer/Username/OnlineStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = " Online"
+
+[node name="NowPlaying" type="CenterContainer" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
 
-[node name="SongProgress" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI"]
+[node name="SongProgress" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Time" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer/SongProgress"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0:00 /
+0:00"
+
+[node name="ProgressLabel" type="Label" parent="UI/MarginContainer/HBoxContainer/RightUI/HBoxContainer/SongProgress"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Progress"
 
 [node name="AudioManager" type="Node" parent="."]
 

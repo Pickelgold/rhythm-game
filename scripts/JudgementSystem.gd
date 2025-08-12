@@ -21,7 +21,7 @@ var held_keys: Dictionary = {}  # lane_number -> true
 var active_hold_notes: Dictionary = {}  # lane_number -> note_data
 
 # Timing configuration
-var judgement_window_ms: float = 200.0  # ±200ms window
+var judgement_window_ms: float = 300.0  # ±300ms window
 var current_song_time: float = 0.0
 
 # References to judgement labels for each lane
