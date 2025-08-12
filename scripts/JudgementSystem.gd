@@ -30,6 +30,10 @@ var total_notes_attempted: int = 0
 var max_points_per_note: int = 300  # Same as judgement_window_ms
 var accuracy_label: Label
 
+# Combo tracking
+var current_combo: int = 0
+var combo_counter_label: Label
+
 # References to judgement labels for each lane
 var press_labels: Dictionary = {}
 var release_labels: Dictionary = {}
@@ -74,7 +78,10 @@ func get_precise_song_time() -> float:
 
 func _setup_judgement_labels():
 	# Get reference to accuracy label
-	accuracy_label = get_node("../UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer/Accuracy/AccuracyPercentage")
+	accuracy_label = get_node("../UI/MarginContainer/HBoxContainer/LeftUI/VBoxContainer/Accuracy/AccuracyPercentage")
+	
+	# Get reference to combo counter label
+	combo_counter_label = get_node("../UI/MarginContainer/HBoxContainer/LeftUI/VBoxContainer/Combo/ComboCounter")
 	
 	# Get references to all judgement labels
 	var ui_root = get_node("../UI/MarginContainer/HBoxContainer/GameplayArea")
@@ -266,6 +273,9 @@ func _on_key_pressed(lane_number: int):
 	var points = _calculate_points(int(timing_diff_ms))
 	_add_score(points)
 	
+	# Increment combo for successful hit
+	_increment_combo()
+	
 	# Generate judgement text
 	var judgement_text = _format_judgement(timing_diff_ms, "↓")
 	
@@ -314,6 +324,9 @@ func _on_key_released(lane_number: int):
 	# Calculate and add score for this release
 	var points = _calculate_points(int(timing_diff_ms))
 	_add_score(points)
+	
+	# Increment combo for successful release
+	_increment_combo()
 	
 	# Generate judgement text for the release
 	var judgement_text = _format_judgement(timing_diff_ms, "↑")
@@ -373,6 +386,9 @@ func _show_miss(lane_number: int, note_id: String):
 	# Add miss to accuracy tracking (0 points)
 	_add_score(0)
 	
+	# Reset combo on miss
+	_reset_combo()
+	
 	# Update the press judgement label to show "Miss ↓"
 	if press_labels.has(lane_number):
 		press_labels[lane_number].text = "Miss ↓"
@@ -387,6 +403,9 @@ func _show_release_miss(lane_number: int, note_id: String):
 	
 	# Add miss to accuracy tracking (0 points)
 	_add_score(0)
+	
+	# Reset combo on miss
+	_reset_combo()
 	
 	# Update the release judgement label to show "Miss ↑"
 	if release_labels.has(lane_number):
@@ -447,3 +466,18 @@ func _update_accuracy_display():
 	
 	var accuracy_percentage = (float(total_hit_points) / float(total_notes_attempted * max_points_per_note)) * 100.0
 	accuracy_label.text = "%.2f%%" % accuracy_percentage
+
+# Increment combo by 1 and update display
+func _increment_combo():
+	current_combo += 1
+	_update_combo_display()
+
+# Reset combo to 0 and update display
+func _reset_combo():
+	current_combo = 0
+	_update_combo_display()
+
+# Update the combo counter display
+func _update_combo_display():
+	if combo_counter_label:
+		combo_counter_label.text = str(current_combo) + "x"
