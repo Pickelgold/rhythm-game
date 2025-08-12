@@ -269,6 +269,14 @@ func _on_key_pressed(lane_number: int):
 	var note_time_ms = closest_start_note["time"] * 1000.0
 	var timing_diff_ms = round(precise_input_time_ms - note_time_ms)
 	
+	# Check if this is outside the judgement window (miss)
+	if abs(timing_diff_ms) >= judgement_window_ms:
+		# This is a miss - reset combo and show miss
+		_show_miss(lane_number, closest_start_note["note_id"])
+		# Track this as a missed press so we can show release miss later
+		active_hold_notes[lane_number] = {"missed_press": true}
+		return
+	
 	# Calculate and add score for this hit
 	var points = _calculate_points(int(timing_diff_ms))
 	_add_score(points)
@@ -320,6 +328,12 @@ func _on_key_released(lane_number: int):
 	var precise_input_time_ms = get_precise_song_time() * 1000.0
 	var note_end_time_ms = end_time * 1000.0
 	var timing_diff_ms = round(precise_input_time_ms - note_end_time_ms)
+	
+	# Check if this is outside the judgement window (miss)
+	if abs(timing_diff_ms) >= judgement_window_ms:
+		# This is a miss - reset combo and show miss
+		_show_release_miss(lane_number, end_note_id)
+		return
 	
 	# Calculate and add score for this release
 	var points = _calculate_points(int(timing_diff_ms))
