@@ -24,6 +24,12 @@ var active_hold_notes: Dictionary = {}  # lane_number -> note_data
 var judgement_window_ms: float = 300.0  # ±300ms window
 var current_song_time: float = 0.0
 
+# Accuracy tracking
+var total_hit_points: int = 0
+var total_notes_attempted: int = 0
+var max_points_per_note: int = 300  # Same as judgement_window_ms
+var accuracy_label: Label
+
 # References to judgement labels for each lane
 var press_labels: Dictionary = {}
 var release_labels: Dictionary = {}
@@ -67,6 +73,9 @@ func get_precise_song_time() -> float:
 	return midi_spawner.song_offset_seconds + elapsed_seconds
 
 func _setup_judgement_labels():
+	# Get reference to accuracy label
+	accuracy_label = get_node("../UI/MarginContainer/HBoxContainer/LeftUI/HBoxContainer/Accuracy/AccuracyPercentage")
+	
 	# Get references to all judgement labels
 	var ui_root = get_node("../UI/MarginContainer/HBoxContainer/GameplayArea")
 	
@@ -184,16 +193,17 @@ func _update_active_notes():
 			# Mark as previously active so we can detect misses later
 			previously_active_notes[end_note_id] = true
 		elif end_diff < -judgement_window_seconds and previously_active_notes.has(end_note_id) and not judged_notes.has(end_note_id):
-			# Only show miss for note end if the key is not being held down AND there's no active hold note
-			# OR if this note end doesn't match the current active hold note
+			# Check if this note end should show a miss
 			var should_show_miss = true
 			
+			# Only skip the miss if the key is currently held AND there's an active hold note 
+			# AND that hold note matches this note end
 			if held_keys.has(lane) and active_hold_notes.has(lane):
-				# Check if this note end belongs to the currently active hold note
 				var active_note = active_hold_notes[lane]
-				if active_note["start_time"] == note_data["start_time"] and active_note["end_time"] == note_data["end_time"]:
-					# This is the end of the currently held note - don't show miss
-					should_show_miss = false
+				if active_note.has("start_time") and active_note.has("end_time"):
+					if active_note["start_time"] == note_data["start_time"] and active_note["end_time"] == note_data["end_time"]:
+						# This is the end of the currently held note - don't show miss
+						should_show_miss = false
 			
 			if should_show_miss:
 				_show_release_miss(lane, end_note_id)
@@ -252,6 +262,10 @@ func _on_key_pressed(lane_number: int):
 	var note_time_ms = closest_start_note["time"] * 1000.0
 	var timing_diff_ms = round(precise_input_time_ms - note_time_ms)
 	
+	# Calculate and add score for this hit
+	var points = _calculate_points(int(timing_diff_ms))
+	_add_score(points)
+	
 	# Generate judgement text
 	var judgement_text = _format_judgement(timing_diff_ms, "↓")
 	
@@ -296,6 +310,10 @@ func _on_key_released(lane_number: int):
 	var precise_input_time_ms = get_precise_song_time() * 1000.0
 	var note_end_time_ms = end_time * 1000.0
 	var timing_diff_ms = round(precise_input_time_ms - note_end_time_ms)
+	
+	# Calculate and add score for this release
+	var points = _calculate_points(int(timing_diff_ms))
+	_add_score(points)
 	
 	# Generate judgement text for the release
 	var judgement_text = _format_judgement(timing_diff_ms, "↑")
@@ -352,6 +370,9 @@ func _show_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
 	judged_notes[note_id] = true
 	
+	# Add miss to accuracy tracking (0 points)
+	_add_score(0)
+	
 	# Update the press judgement label to show "Miss ↓"
 	if press_labels.has(lane_number):
 		press_labels[lane_number].text = "Miss ↓"
@@ -363,6 +384,9 @@ func _show_miss(lane_number: int, note_id: String):
 func _show_release_miss(lane_number: int, note_id: String):
 	# Mark this note as judged to prevent duplicate miss messages
 	judged_notes[note_id] = true
+	
+	# Add miss to accuracy tracking (0 points)
+	_add_score(0)
 	
 	# Update the release judgement label to show "Miss ↑"
 	if release_labels.has(lane_number):
@@ -403,3 +427,23 @@ func _clear_release_judgement_after_delay(lane_number: int, delay: float):
 	)
 	
 	timer.start()
+
+# Calculate points based on timing accuracy
+func _calculate_points(timing_diff_ms: int) -> int:
+	var abs_diff = abs(timing_diff_ms)
+	return max(0, max_points_per_note - abs_diff)
+
+# Add score and update accuracy display
+func _add_score(points: int):
+	total_hit_points += points
+	total_notes_attempted += 1
+	_update_accuracy_display()
+
+# Update the accuracy percentage display
+func _update_accuracy_display():
+	if total_notes_attempted == 0:
+		accuracy_label.text = "100.00%"
+		return
+	
+	var accuracy_percentage = (float(total_hit_points) / float(total_notes_attempted * max_points_per_note)) * 100.0
+	accuracy_label.text = "%.2f%%" % accuracy_percentage
