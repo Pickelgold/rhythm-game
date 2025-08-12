@@ -208,3 +208,15 @@ func set_enabled_channels(channels: Array[int]):
 	enabled_channels = channels
 	if smf_data != null:
 		_process_midi_notes()  # Reprocess with new channels
+
+# Get the total duration of the song (latest end time of all notes)
+func get_total_duration() -> float:
+	if processed_notes.is_empty():
+		return 0.0
+	
+	var max_end_time = 0.0
+	for note in processed_notes:
+		if note["end_time"] > max_end_time:
+			max_end_time = note["end_time"]
+	
+	return max_end_time
