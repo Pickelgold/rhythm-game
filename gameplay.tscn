@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://2iyygmrr3bgu"]
+[gd_scene load_steps=7 format=3 uid="uid://2iyygmrr3bgu"]
 
 [ext_resource type="Script" uid="uid://brdvvugt8538w" path="res://addons/midi/MidiPlayer.gd" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://lg2q6vomebbm" path="res://scripts/KeyboardController.gd" id="3_keyboard"]
 [ext_resource type="Script" uid="uid://ufaxmhjmxqel" path="res://scripts/MIDISpawner.gd" id="4_midi_spawner"]
 [ext_resource type="Script" uid="uid://bw63y8ipai8gu" path="res://scripts/JudgementSystem.gd" id="5_judgement_system"]
 [ext_resource type="Script" uid="uid://c054lcwk4d6s7" path="res://scripts/SongProgressManager.gd" id="6_song_progress"]
+[ext_resource type="Script" uid="uid://coldk6btvm4lq" path="res://scripts/FPSDisplay.gd" id="7_fps_display"]
 
-[node name="Main" type="Control"]
+[node name="Gameplay" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3608,10 +3609,10 @@ theme_override_font_sizes/font_size = 40
 text = "0:00 /
 0:00"
 
-[node name="ProgressLabel" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/SongProgress"]
+[node name="FPSLabel" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/SongProgress"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Progress"
+text = "60 FPS"
 
 [node name="AudioManager" type="Node" parent="."]
 
@@ -3621,8 +3622,6 @@ volume_db = 0.0
 load_all_voices_from_soundfont = false
 soundfont = "res://soundfonts/Aspirin_160_GMGS_2015.sf2"
 metadata/_custom_type_script = "uid://brdvvugt8538w"
-
-[node name="FreePlayController" type="Node" parent="AudioManager"]
 
 [node name="KeyboardController" type="Control" parent="."]
 layout_mode = 3
@@ -3638,3 +3637,6 @@ script = ExtResource("5_judgement_system")
 
 [node name="SongProgressManager" type="Node" parent="."]
 script = ExtResource("6_song_progress")
+
+[node name="FPSDisplay" type="Node" parent="."]
+script = ExtResource("7_fps_display")
