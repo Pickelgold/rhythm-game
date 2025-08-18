@@ -5,6 +5,9 @@ class_name JudgementSystem
 var keyboard_controller: Node
 var midi_spawner: Node
 
+# Signal for note removal
+signal note_should_be_removed(lane_number: int, start_time: float, end_time: float)
+
 # Track active notes that can be judged (within timing window)
 var active_notes_by_lane: Dictionary = {}  # lane_number -> Array of note data
 
@@ -37,6 +40,10 @@ var combo_counter_label: Label
 # References to judgement labels for each lane
 var press_labels: Dictionary = {}
 var release_labels: Dictionary = {}
+
+# Timer tracking to prevent multiple timers per lane
+var press_timers: Dictionary = {}  # lane_number -> Timer
+var release_timers: Dictionary = {}  # lane_number -> Timer
 
 
 func _ready():
@@ -155,6 +162,21 @@ func _update_active_notes():
 	var search_start = current_song_time - judgement_window_seconds - 0.1  # Extra buffer
 	var search_end = current_song_time + judgement_window_seconds + 0.1    # Extra buffer
 	
+	# FIRST: Check existing active hold notes for auto-assessment
+	# This needs to happen before we update the nearby_notes to catch notes that have passed completely
+	for lane in active_hold_notes.keys():
+		var note_data = active_hold_notes[lane]
+		var end_time = note_data["end_time"]
+		var end_diff = end_time - current_song_time
+		var end_note_id = str(end_time) + "_" + str(lane) + "_end"
+		
+		# If the note's end time has passed by more than the judgement window, auto-assess it
+		if end_diff < -judgement_window_seconds and not judged_notes.has(end_note_id):
+			_show_release_miss(lane, end_note_id)
+			
+			# Remove from active hold notes
+			active_hold_notes.erase(lane)
+	
 	# Use the optimized time range query instead of processing all notes
 	var nearby_notes = midi_spawner.midi_loader.get_notes_in_timerange(search_start, search_end)
 	
@@ -200,20 +222,12 @@ func _update_active_notes():
 			# Mark as previously active so we can detect misses later
 			previously_active_notes[end_note_id] = true
 		elif end_diff < -judgement_window_seconds and previously_active_notes.has(end_note_id) and not judged_notes.has(end_note_id):
-			# Check if this note end should show a miss
-			var should_show_miss = true
+			# Note end was previously in judgement window but has now passed without being released - it's a miss
+			_show_release_miss(lane, end_note_id)
 			
-			# Only skip the miss if the key is currently held AND there's an active hold note 
-			# AND that hold note matches this note end
-			if held_keys.has(lane) and active_hold_notes.has(lane):
-				var active_note = active_hold_notes[lane]
-				if active_note.has("start_time") and active_note.has("end_time"):
-					if active_note["start_time"] == note_data["start_time"] and active_note["end_time"] == note_data["end_time"]:
-						# This is the end of the currently held note - don't show miss
-						should_show_miss = false
-			
-			if should_show_miss:
-				_show_release_miss(lane, end_note_id)
+			# Clean up active_hold_notes since this keyup has been auto-assessed
+			if active_hold_notes.has(lane):
+				active_hold_notes.erase(lane)
 
 func _on_key_pressed(lane_number: int):
 	# Check if key is already being held down (ignore key repeat)
@@ -225,18 +239,14 @@ func _on_key_pressed(lane_number: int):
 	
 	# Find the closest note START timing in this lane
 	if not active_notes_by_lane.has(lane_number):
-		# Wrong lane pressed - show miss and mark as missed press
+		# Wrong lane pressed - show miss (both keydown and keyup assessed immediately)
 		_show_miss(lane_number, "wrong_lane_" + str(current_song_time))
-		# Track this as a missed press so we can show release miss later
-		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	var lane_notes = active_notes_by_lane[lane_number]
 	if lane_notes.is_empty():
-		# No notes in this lane - show miss and mark as missed press
+		# No notes in this lane - show miss (both keydown and keyup assessed immediately)
 		_show_miss(lane_number, "no_notes_" + str(current_song_time))
-		# Track this as a missed press so we can show release miss later
-		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	# Find the closest note START timing point
@@ -252,10 +262,8 @@ func _on_key_pressed(lane_number: int):
 				closest_start_note = note_timing
 	
 	if closest_start_note == null:
-		# No valid start note found - show miss and mark as missed press
+		# No valid start note found - show miss (both keydown and keyup assessed immediately)
 		_show_miss(lane_number, "no_start_note_" + str(current_song_time))
-		# Track this as a missed press so we can show release miss later
-		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	# Mark this note start as judged to prevent duplicate judgements
@@ -271,10 +279,8 @@ func _on_key_pressed(lane_number: int):
 	
 	# Check if this is outside the judgement window (miss)
 	if abs(timing_diff_ms) >= judgement_window_ms:
-		# This is a miss - reset combo and show miss
+		# This is a miss - both keydown and keyup assessed immediately
 		_show_miss(lane_number, closest_start_note["note_id"])
-		# Track this as a missed press so we can show release miss later
-		active_hold_notes[lane_number] = {"missed_press": true}
 		return
 	
 	# Calculate and add score for this hit
@@ -301,18 +307,10 @@ func _on_key_released(lane_number: int):
 	
 	# Check if there was an active hold note in this lane
 	if not active_hold_notes.has(lane_number):
-		# No active hold note - this might be a miss or just a tap
+		# No active hold note - don't assess any keyup
 		return
 	
 	var hold_note_data = active_hold_notes[lane_number]
-	
-	# Check if this was a missed press (wrong lane or no notes)
-	if hold_note_data.has("missed_press") and hold_note_data["missed_press"]:
-		# This was a missed press, show release miss
-		_show_release_miss(lane_number, "missed_press_release_" + str(current_song_time))
-		# Remove from active hold notes
-		active_hold_notes.erase(lane_number)
-		return
 	
 	# This was a valid note press, handle normal release logic
 	var end_time = hold_note_data["end_time"]
@@ -329,18 +327,15 @@ func _on_key_released(lane_number: int):
 	var note_end_time_ms = end_time * 1000.0
 	var timing_diff_ms = round(precise_input_time_ms - note_end_time_ms)
 	
-	# Check if this is outside the judgement window (miss)
-	if abs(timing_diff_ms) >= judgement_window_ms:
-		# This is a miss - reset combo and show miss
-		_show_release_miss(lane_number, end_note_id)
-		return
-	
 	# Calculate and add score for this release
 	var points = _calculate_points(int(timing_diff_ms))
 	_add_score(points)
 	
-	# Increment combo for successful release
-	_increment_combo()
+	# Increment combo for successful release (or reset if it's a miss)
+	if abs(timing_diff_ms) < judgement_window_ms:
+		_increment_combo()
+	else:
+		_reset_combo()
 	
 	# Generate judgement text for the release
 	var judgement_text = _format_judgement(timing_diff_ms, "↑")
@@ -352,6 +347,9 @@ func _on_key_released(lane_number: int):
 		
 		# Add a timer to clear the text after a short delay
 		_clear_release_judgement_after_delay(lane_number, 1.0)
+	
+	# Remove the note visually for decluttering after successful completion
+	note_should_be_removed.emit(lane_number, hold_note_data["start_time"], hold_note_data["end_time"])
 
 func _format_judgement(timing_diff_ms: float, type: String = "") -> String:
 	var abs_diff = abs(timing_diff_ms)
@@ -403,6 +401,26 @@ func _show_miss(lane_number: int, note_id: String):
 	# Reset combo on miss
 	_reset_combo()
 	
+	# Check if this is a keydown miss (note_id contains "_start" or is a special case)
+	if note_id.contains("_start") or note_id.contains("wrong_lane") or note_id.contains("no_notes") or note_id.contains("no_start_note"):
+		# This is a keydown miss - immediately assess a keyup miss as well
+		
+		# If we have note data, handle it properly
+		var note_data = _find_note_data_for_miss(lane_number, note_id)
+		if note_data:
+			# Emit signal to remove the note visually
+			note_should_be_removed.emit(lane_number, note_data["start_time"], note_data["end_time"])
+			
+			# Also mark the corresponding keyup judgement as judged to prevent it from appearing
+			var end_note_id = str(note_data["end_time"]) + "_" + str(lane_number) + "_end"
+			judged_notes[end_note_id] = true
+			
+			# Immediately assess a keyup miss as well since the entire note is missed
+			_show_release_miss(lane_number, end_note_id)
+		else:
+			# No specific note data (wrong lane, no notes, etc.) - still show keyup miss
+			_show_release_miss(lane_number, "keydown_miss_keyup_" + str(current_song_time))
+	
 	# Update the press judgement label to show "Miss ↓"
 	if press_labels.has(lane_number):
 		press_labels[lane_number].text = "Miss ↓"
@@ -430,32 +448,56 @@ func _show_release_miss(lane_number: int, note_id: String):
 		_clear_release_judgement_after_delay(lane_number, 1.0)
 
 func _clear_press_judgement_after_delay(lane_number: int, delay: float):
-	# Create a timer to clear the press judgement text
+	# Check if there's already a timer for this lane and clean it up
+	if press_timers.has(lane_number):
+		var old_timer = press_timers[lane_number]
+		old_timer.stop()
+		old_timer.queue_free()
+		press_timers.erase(lane_number)
+	
+	# Create a new timer to clear the press judgement text
 	var timer = Timer.new()
 	timer.wait_time = delay
 	timer.one_shot = true
 	add_child(timer)
 	
+	# Store reference to this timer
+	press_timers[lane_number] = timer
+	
 	timer.timeout.connect(func():
 		if press_labels.has(lane_number):
 			press_labels[lane_number].text = ""
 			press_labels[lane_number].modulate = Color.WHITE  # Reset color
+		# Remove timer reference when it completes
+		press_timers.erase(lane_number)
 		timer.queue_free()
 	)
 	
 	timer.start()
 
 func _clear_release_judgement_after_delay(lane_number: int, delay: float):
-	# Create a timer to clear the release judgement text
+	# Check if there's already a timer for this lane and clean it up
+	if release_timers.has(lane_number):
+		var old_timer = release_timers[lane_number]
+		old_timer.stop()
+		old_timer.queue_free()
+		release_timers.erase(lane_number)
+	
+	# Create a new timer to clear the release judgement text
 	var timer = Timer.new()
 	timer.wait_time = delay
 	timer.one_shot = true
 	add_child(timer)
 	
+	# Store reference to this timer
+	release_timers[lane_number] = timer
+	
 	timer.timeout.connect(func():
 		if release_labels.has(lane_number):
 			release_labels[lane_number].text = ""
 			release_labels[lane_number].modulate = Color.WHITE  # Reset color
+		# Remove timer reference when it completes
+		release_timers.erase(lane_number)
 		timer.queue_free()
 	)
 	
@@ -495,3 +537,38 @@ func _reset_combo():
 func _update_combo_display():
 	if combo_counter_label:
 		combo_counter_label.text = str(current_combo) + "x"
+
+# Helper function to find note data for a miss
+func _find_note_data_for_miss(lane_number: int, note_id: String) -> Dictionary:
+	# Check if we have active notes for this lane
+	if not active_notes_by_lane.has(lane_number):
+		return {}
+	
+	# Look through active notes to find the one with matching note_id
+	for note_timing in active_notes_by_lane[lane_number]:
+		if note_timing["note_id"] == note_id:
+			return note_timing["note_data"]
+	
+	# If not found in active notes, try to extract timing from note_id
+	# Format: "start_time_lane_start" or "end_time_lane_end"
+	var parts = note_id.split("_")
+	if parts.size() >= 3:
+		var time_str = parts[0]
+		var lane_str = parts[1]
+		var type_str = parts[2]
+		
+		if time_str.is_valid_float() and lane_str.is_valid_int():
+			var time = float(time_str)
+			var lane = int(lane_str)
+			
+			# Try to find this note in the MIDI data
+			if midi_spawner and midi_spawner.midi_loader:
+				var search_start = time - 0.1
+				var search_end = time + 0.1
+				var nearby_notes = midi_spawner.midi_loader.get_notes_in_timerange(search_start, search_end)
+				
+				for note_data in nearby_notes:
+					if note_data["lane"] == lane and abs(note_data["start_time"] - time) < 0.01:
+						return note_data
+	
+	return {}

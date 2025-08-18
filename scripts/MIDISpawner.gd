@@ -46,6 +46,11 @@ func _ready():
 	midi_loader.base_midi_note = base_midi_note
 	midi_loader.enabled_channels = enabled_channels
 	
+	# Connect to judgement system for note removal
+	var judgement_system = get_node("../JudgementSystem")
+	if judgement_system:
+		judgement_system.note_should_be_removed.connect(_on_note_should_be_removed)
+	
 	# Load the MIDI file
 	if midi_loader.load_midi_file(midi_file_path):
 		_debug_print_notes()
@@ -346,3 +351,24 @@ func stop_song():
 			note.queue_free()
 	active_notes.clear()
 	spawned_notes.clear()
+
+# Handle note removal signal from judgement system
+func _on_note_should_be_removed(lane_number: int, start_time: float, end_time: float):
+	# Find and remove the note that matches the given parameters
+	for i in range(active_notes.size() - 1, -1, -1):  # Iterate backwards to safely remove items
+		var note = active_notes[i]
+		if not is_instance_valid(note):
+			active_notes.remove_at(i)
+			continue
+		
+		# Check if this note matches the one that should be removed
+		if note.lane_number == lane_number and abs(note.start_time - start_time) < 0.001 and abs(note.end_time - end_time) < 0.001:
+			# Remove from active notes and free the node
+			active_notes.remove_at(i)
+			note.queue_free()
+			
+			# Also remove from spawned_notes to prevent respawning
+			var note_id = str(start_time) + "_" + str(lane_number)
+			spawned_notes.erase(note_id)
+			
+			break  # Only remove the first matching note
