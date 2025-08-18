@@ -88,8 +88,6 @@ func start_song():
 	is_song_playing = true
 	current_song_time = song_offset_seconds
 	
-	print("Song started at: ", song_start_time_msec, " msec")
-	print("Initial song time: ", current_song_time, " seconds")
 
 # Pause the song
 func pause_song():
@@ -121,10 +119,8 @@ func _calculate_lane_dimensions():
 		# Old system: 0.5 percentage per second = 50% of lane per second
 		# New system: equivalent pixels per second
 		note_speed_pixels_per_second = lane_height_pixels * 0.5
-		print("Lane height: ", lane_height_pixels, " pixels")
-		print("Note speed: ", note_speed_pixels_per_second, " pixels/second")
 	else:
-		print("Warning: Could not find any lane to measure dimensions")
+		pass
 
 # Legacy function - no longer used, replaced by spawn_notes_at_exact_time()
 # Kept for reference but not called
@@ -183,8 +179,6 @@ func _calculate_lookahead_time():
 	# Add a small buffer (0.1 seconds) to ensure notes spawn slightly above the visible area
 	lookahead_time = travel_time + 0.1
 	
-	print("Travel time: ", travel_time, " seconds")
-	print("Lookahead time: ", lookahead_time, " seconds")
 
 # Spawn notes at their exact calculated spawn times
 func spawn_notes_at_exact_time():

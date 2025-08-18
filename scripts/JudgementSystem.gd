@@ -157,17 +157,20 @@ func _update_active_notes():
 	if not midi_spawner or not midi_spawner.midi_loader:
 		return
 	
+	# Use precise timing for all judgement calculations
+	var precise_song_time = get_precise_song_time()
+	
 	# Get notes in a wider time range to avoid missing notes due to timing precision
 	var judgement_window_seconds = judgement_window_ms / 1000.0
-	var search_start = current_song_time - judgement_window_seconds - 0.1  # Extra buffer
-	var search_end = current_song_time + judgement_window_seconds + 0.1    # Extra buffer
+	var search_start = precise_song_time - judgement_window_seconds - 0.1  # Extra buffer
+	var search_end = precise_song_time + judgement_window_seconds + 0.1    # Extra buffer
 	
 	# FIRST: Check existing active hold notes for auto-assessment
 	# This needs to happen before we update the nearby_notes to catch notes that have passed completely
 	for lane in active_hold_notes.keys():
 		var note_data = active_hold_notes[lane]
 		var end_time = note_data["end_time"]
-		var end_diff = end_time - current_song_time
+		var end_diff = end_time - precise_song_time
 		var end_note_id = str(end_time) + "_" + str(lane) + "_end"
 		
 		# If the note's end time has passed by more than the judgement window, auto-assess it
@@ -194,7 +197,7 @@ func _update_active_notes():
 		var end_note_id = str(end_time) + "_" + str(lane) + "_end"
 		
 		# Check if note start time is within judgement window
-		var start_diff = start_time - current_song_time
+		var start_diff = start_time - precise_song_time
 		if abs(start_diff) <= judgement_window_seconds:
 			# Add start timing point
 			active_notes_by_lane[lane].append({
@@ -210,7 +213,7 @@ func _update_active_notes():
 			_show_miss(lane, start_note_id)
 		
 		# Check if note end time is within judgement window
-		var end_diff = end_time - current_song_time
+		var end_diff = end_time - precise_song_time
 		if abs(end_diff) <= judgement_window_seconds:
 			# Add end timing point
 			active_notes_by_lane[lane].append({
@@ -249,14 +252,15 @@ func _on_key_pressed(lane_number: int):
 		_show_miss(lane_number, "no_notes_" + str(current_song_time))
 		return
 	
-	# Find the closest note START timing point
+	# Find the closest note START timing point using precise timing
+	var precise_input_time = get_precise_song_time()
 	var closest_start_note = null
 	var closest_time_diff = INF
 	
 	for note_timing in lane_notes:
 		# Only consider note starts for key press events
 		if note_timing["type"] == "start":
-			var time_diff = abs(note_timing["time"] - current_song_time)
+			var time_diff = abs(note_timing["time"] - precise_input_time)
 			if time_diff < closest_time_diff:
 				closest_time_diff = time_diff
 				closest_start_note = note_timing
@@ -273,9 +277,9 @@ func _on_key_pressed(lane_number: int):
 	active_hold_notes[lane_number] = closest_start_note["note_data"]
 	
 	# Calculate timing difference using PRECISE time in milliseconds
-	var precise_input_time_ms = get_precise_song_time() * 1000.0
+	var precise_input_time_ms = precise_input_time * 1000.0
 	var note_time_ms = closest_start_note["time"] * 1000.0
-	var timing_diff_ms = round(precise_input_time_ms - note_time_ms)
+	var timing_diff_ms = precise_input_time_ms - note_time_ms
 	
 	# Check if this is outside the judgement window (miss)
 	if abs(timing_diff_ms) >= judgement_window_ms:
@@ -325,7 +329,7 @@ func _on_key_released(lane_number: int):
 	# Calculate timing difference for the note end using PRECISE time in milliseconds
 	var precise_input_time_ms = get_precise_song_time() * 1000.0
 	var note_end_time_ms = end_time * 1000.0
-	var timing_diff_ms = round(precise_input_time_ms - note_end_time_ms)
+	var timing_diff_ms = precise_input_time_ms - note_end_time_ms
 	
 	# Calculate and add score for this release
 	var points = _calculate_points(int(timing_diff_ms))

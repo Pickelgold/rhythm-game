@@ -16,7 +16,6 @@ func load_midi_file(path: String) -> bool:
 	var result = smf.read_file(path)
 	
 	if result.error != OK:
-		print("Error loading MIDI file: ", result.error)
 		return false
 	
 	smf_data = result.data
@@ -25,12 +24,6 @@ func load_midi_file(path: String) -> bool:
 	# Process all notes from the MIDI file
 	_process_midi_notes()
 	
-	print("Loaded MIDI file: ", path)
-	print("Tracks: ", smf_data.tracks.size())
-	print("Timebase: ", timebase)
-	print("Enabled channels: ", enabled_channels)
-	print("Base MIDI note: ", base_midi_note)
-	print("Processed notes: ", processed_notes.size())
 	
 	return true
 
@@ -97,10 +90,6 @@ func _process_midi_notes():
 					processed_notes.append(note_data)
 					active_notes.erase(note_key)
 	
-	# Debug output
-	print("Debug: Found ", total_note_events, " total note events")
-	print("Debug: Found channels: ", found_channels.keys())
-	print("Debug: MIDI note range: ", found_notes.keys().min() if found_notes.size() > 0 else "none", " to ", found_notes.keys().max() if found_notes.size() > 0 else "none")
 	
 	# Handle any remaining active notes (notes without explicit note_off)
 	for note_key in active_notes.keys():
