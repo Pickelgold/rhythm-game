@@ -13,7 +13,7 @@ func _ready():
 	midi_spawner = get_node("../MIDISpawner")
 	
 	# Get reference to the time label
-	time_label = get_node("../UI/MarginContainer/HBoxContainer/RightUI/VBoxContainer/SongProgress/Time")
+	time_label = get_node("../UI/HBoxContainer/RightUI/VBoxContainer/SongProgress/Time")
 
 func _process(delta):
 	if not midi_spawner or not midi_spawner.midi_loader or not time_label:

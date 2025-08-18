@@ -22,7 +22,7 @@ func _ready():
 
 func setup_key_mapping():
 	# Row 1 keys (Lane 37-49)
-	var row1 = $"../UI/MarginContainer/HBoxContainer/GameplayArea/Row 1"
+	var row1 = $"../UI/HBoxContainer/GameplayArea/Row 1"
 	key_map[KEY_QUOTELEFT] = row1.get_node("Lane 37/Receptor")  # `
 	key_to_lane_map[KEY_QUOTELEFT] = 37
 	key_map[KEY_1] = row1.get_node("Lane 38/Receptor")
@@ -51,7 +51,7 @@ func setup_key_mapping():
 	key_to_lane_map[KEY_EQUAL] = 49
 	
 	# Row 2 keys (Lane 25-36)
-	var row2 = $"../UI/MarginContainer/HBoxContainer/GameplayArea/Row 2"
+	var row2 = $"../UI/HBoxContainer/GameplayArea/Row 2"
 	key_map[KEY_TAB] = row2.get_node("Lane 25/Receptor")
 	key_to_lane_map[KEY_TAB] = 25
 	key_map[KEY_Q] = row2.get_node("Lane 26/Receptor")
@@ -78,7 +78,7 @@ func setup_key_mapping():
 	key_to_lane_map[KEY_BRACKETLEFT] = 36
 	
 	# Row 3 keys (Lane 13-24)
-	var row3 = $"../UI/MarginContainer/HBoxContainer/GameplayArea/Row 3"
+	var row3 = $"../UI/HBoxContainer/GameplayArea/Row 3"
 	key_map[KEY_CAPSLOCK] = row3.get_node("Lane 13/Receptor")
 	key_to_lane_map[KEY_CAPSLOCK] = 13
 	key_map[KEY_A] = row3.get_node("Lane 14/Receptor")
@@ -105,7 +105,7 @@ func setup_key_mapping():
 	key_to_lane_map[KEY_APOSTROPHE] = 24
 	
 	# Row 4 keys (Lane 1-12)
-	var row4 = $"../UI/MarginContainer/HBoxContainer/GameplayArea/Row 4"
+	var row4 = $"../UI/HBoxContainer/GameplayArea/Row 4"
 	# Store both shift keys with location info
 	key_map["LSHIFT"] = row4.get_node("Lane 1/Receptor")  # Left Shift
 	key_to_lane_map["LSHIFT"] = 1

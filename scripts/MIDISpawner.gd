@@ -137,7 +137,7 @@ func get_lane_container(lane_number: int) -> Node:
 	if row_info == null:
 		return null
 	
-	var row_node = get_node("../UI/MarginContainer/HBoxContainer/GameplayArea/" + row_info["row_name"])
+	var row_node = get_node("../UI/HBoxContainer/GameplayArea/" + row_info["row_name"])
 	if not row_node:
 		return null
 	
@@ -153,7 +153,7 @@ func get_lane_judgement(lane_number: int) -> Node:
 	if row_info == null:
 		return null
 	
-	var row_node = get_node("../UI/MarginContainer/HBoxContainer/GameplayArea/" + row_info["row_name"])
+	var row_node = get_node("../UI/HBoxContainer/GameplayArea/" + row_info["row_name"])
 	if not row_node:
 		return null
 	

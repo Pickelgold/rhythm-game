@@ -85,13 +85,13 @@ func get_precise_song_time() -> float:
 
 func _setup_judgement_labels():
 	# Get reference to accuracy label
-	accuracy_label = get_node("../UI/MarginContainer/HBoxContainer/LeftUI/VBoxContainer/Accuracy/AccuracyPercentage")
+	accuracy_label = get_node("../UI/HBoxContainer/LeftUI/VBoxContainer/Accuracy/AccuracyPercentage")
 	
 	# Get reference to combo counter label
-	combo_counter_label = get_node("../UI/MarginContainer/HBoxContainer/LeftUI/VBoxContainer/Combo/ComboCounter")
+	combo_counter_label = get_node("../UI/HBoxContainer/LeftUI/VBoxContainer/Combo/ComboCounter")
 	
 	# Get references to all judgement labels
-	var ui_root = get_node("../UI/MarginContainer/HBoxContainer/GameplayArea")
+	var ui_root = get_node("../UI/HBoxContainer/GameplayArea")
 	
 	# Row 1: Lanes 37-49
 	var row1 = ui_root.get_node("Row 1")
