@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+Rhythm\ Game.x86_64
