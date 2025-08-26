@@ -1006,7 +1006,6 @@ vertical_alignment = 1
 [node name="Spacer 1" type="Control" parent="UI/HBoxContainer/GameplayArea/Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
 
 [node name="Row 2" type="HBoxContainer" parent="UI/HBoxContainer/GameplayArea"]
 layout_mode = 2
@@ -1856,7 +1855,7 @@ vertical_alignment = 1
 [node name="Spacer 2" type="Control" parent="UI/HBoxContainer/GameplayArea/Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 1.5
 
 [node name="Row 3" type="HBoxContainer" parent="UI/HBoxContainer/GameplayArea"]
 layout_mode = 2
@@ -2706,7 +2705,7 @@ vertical_alignment = 1
 [node name="Spacer 3" type="Control" parent="UI/HBoxContainer/GameplayArea/Row 3"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.75
+size_flags_stretch_ratio = 1.25
 
 [node name="Row 4" type="HBoxContainer" parent="UI/HBoxContainer/GameplayArea"]
 layout_mode = 2
@@ -3486,7 +3485,7 @@ vertical_alignment = 1
 [node name="Lane 12" type="VBoxContainer" parent="UI/HBoxContainer/GameplayArea/Row 4"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.25
+size_flags_stretch_ratio = 1.75
 theme_override_constants/separation = 0
 
 [node name="Background" type="ColorRect" parent="UI/HBoxContainer/GameplayArea/Row 4/Lane 12"]
