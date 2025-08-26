@@ -9,6 +9,11 @@ var MIDIBeatmapLoaderScript = preload("res://scripts/MIDIBeatmapLoader.gd")
 # MIDI loader
 var midi_loader
 
+# Background music player
+var background_music_player: AudioStreamPlayer
+var background_music_start_time: float = 0.0  # When background music should start
+var background_music_started: bool = false  # Track if background music has started
+
 # Timing variables - New absolute time system
 var song_start_time_msec: int = 0  # Millisecond timestamp when song started
 var song_offset_seconds: float = 0.0  # Offset for lookahead (negative value)
@@ -31,6 +36,11 @@ var active_notes: Array[Node] = []  # Currently active note instances
 @export var base_midi_note: int = 36  # C2
 @export var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
 
+# Background music configuration
+@export_file("*.ogg", "*.mp3", "*.wav") var background_music_path: String = ""
+@export var background_music_offset: float = 0.0  # Start time offset for background music
+@export var midi_offset: float = 0.0  # Start time offset for MIDI
+
 func _ready():
 	# Wait a frame to ensure the scene is fully loaded
 	await get_tree().process_frame
@@ -40,6 +50,9 @@ func _ready():
 	
 	# Calculate dynamic lookahead time based on note travel time
 	_calculate_lookahead_time()
+	
+	# Initialize background music player
+	_setup_background_music()
 	
 	# Initialize MIDI loader
 	midi_loader = MIDIBeatmapLoaderScript.new()
@@ -66,6 +79,9 @@ func _process(delta):
 	# Update song time using absolute time calculation
 	current_song_time = get_absolute_song_time()
 	
+	# Check if background music should start with precise timing
+	_check_background_music_timing()
+	
 	# Update positions of all active notes
 	update_note_positions()
 	
@@ -84,10 +100,12 @@ func get_absolute_song_time() -> float:
 # Start the song with precise timing
 func start_song():
 	song_start_time_msec = Time.get_ticks_msec()
-	song_offset_seconds = -lookahead_time  # Start with negative time for lookahead
+	song_offset_seconds = -lookahead_time + midi_offset  # Start with negative time for lookahead plus MIDI offset
 	is_song_playing = true
 	current_song_time = song_offset_seconds
 	
+	# Start background music if available
+	_start_background_music()
 
 # Pause the song
 func pause_song():
@@ -95,12 +113,20 @@ func pause_song():
 		current_song_time = get_absolute_song_time()
 		song_offset_seconds = current_song_time
 		is_song_playing = false
+		
+		# Pause background music
+		if background_music_player and background_music_player.playing:
+			background_music_player.stream_paused = true
 
 # Resume the song
 func resume_song():
 	if not is_song_playing:
 		song_start_time_msec = Time.get_ticks_msec()
 		is_song_playing = true
+		
+		# Resume background music
+		if background_music_player and background_music_player.stream_paused:
+			background_music_player.stream_paused = false
 
 # Calculate actual lane dimensions from the UI
 func _calculate_lane_dimensions():
@@ -303,6 +329,69 @@ func update_note_positions():
 func _debug_print_notes():
 	pass
 
+# Setup background music player
+func _setup_background_music():
+	# Create AudioStreamPlayer for background music
+	background_music_player = AudioStreamPlayer.new()
+	add_child(background_music_player)
+	
+	# Load background music if path is provided
+	if background_music_path != "":
+		print("Attempting to load background music: ", background_music_path)
+		
+		# Check if file exists
+		if not FileAccess.file_exists(background_music_path):
+			print("Background music file not found: ", background_music_path)
+			return
+		
+		# Try to load the audio stream
+		var audio_stream = load(background_music_path)
+		if audio_stream == null:
+			print("Failed to load background music (null stream): ", background_music_path)
+			print("Make sure the audio file is imported properly in Godot")
+			return
+		
+		if not audio_stream is AudioStream:
+			print("Loaded resource is not an AudioStream: ", background_music_path)
+			return
+		
+		background_music_player.stream = audio_stream
+		print("Background music loaded successfully: ", background_music_path)
+		print("Audio stream type: ", audio_stream.get_class())
+	else:
+		print("No background music path specified")
+
+# Start background music with proper timing
+func _start_background_music():
+	if not background_music_player or not background_music_player.stream:
+		return
+	
+	# Calculate when background music should start based on its offset
+	background_music_start_time = background_music_offset - midi_offset
+	background_music_started = false
+	
+	if background_music_start_time <= current_song_time:
+		# Background music should start now or has already started
+		var seek_position = current_song_time - background_music_start_time
+		if seek_position >= 0:
+			background_music_player.play(seek_position)
+			background_music_started = true
+			print("Background music started at position: ", seek_position)
+	else:
+		# Background music will start later - will be checked in _process()
+		print("Background music will start in: ", background_music_start_time - current_song_time, " seconds")
+
+# Check if background music should start with precise timing
+func _check_background_music_timing():
+	if not background_music_player or not background_music_player.stream or background_music_started:
+		return
+	
+	# Check if it's time to start background music
+	if current_song_time >= background_music_start_time:
+		background_music_player.play()
+		background_music_started = true
+		print("Background music started at precise time: ", current_song_time)
+
 # Configuration functions
 func set_midi_file(path: String):
 	midi_file_path = path
@@ -339,6 +428,12 @@ func reset_song_time():
 # Stop the song completely
 func stop_song():
 	is_song_playing = false
+	
+	# Stop background music and reset state
+	if background_music_player and background_music_player.playing:
+		background_music_player.stop()
+	background_music_started = false
+	
 	# Clear all active notes
 	for note in active_notes:
 		if is_instance_valid(note):

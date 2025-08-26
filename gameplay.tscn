@@ -3629,7 +3629,8 @@ script = ExtResource("3_keyboard")
 
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
-midi_file_path = "res://beatmaps/Twinkle/Twinkle Twinkle Little Star.mid"
+midi_file_path = "res://beatmaps/I/I.mid"
+background_music_path = "uid://6ppeaqalgb7x"
 
 [node name="JudgementSystem" type="Node" parent="."]
 script = ExtResource("5_judgement_system")
