@@ -40,6 +40,7 @@ var active_notes: Array[Node] = []  # Currently active note instances
 @export_file("*.ogg", "*.mp3", "*.wav") var background_music_path: String = ""
 @export var background_music_offset: float = 0.0  # Start time offset for background music
 @export var midi_offset: float = 0.0  # Start time offset for MIDI
+@export_range(0.0, 1.0) var background_music_volume: float = 1.0  # Background music volume
 
 func _ready():
 	# Wait a frame to ensure the scene is fully loaded
@@ -356,8 +357,11 @@ func _setup_background_music():
 			return
 		
 		background_music_player.stream = audio_stream
+		# Set the volume
+		background_music_player.volume_db = linear_to_db(background_music_volume)
 		print("Background music loaded successfully: ", background_music_path)
 		print("Audio stream type: ", audio_stream.get_class())
+		print("Background music volume set to: ", background_music_volume, " (", background_music_player.volume_db, " dB)")
 	else:
 		print("No background music path specified")
 

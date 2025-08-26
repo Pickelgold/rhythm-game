@@ -50,6 +50,7 @@ var release_timers: Dictionary = {}  # lane_number -> Timer
 var base_midi_note: int = 36  # C2 - base note for lane mapping
 var audio_channel: int = 0  # MIDI channel to use for audio playback
 var audio_velocity: int = 100  # Default velocity for note playback
+@export_range(0.0, 1.0) var midi_volume: float = 1.0  # MIDI audio volume
 
 
 func _ready():
@@ -72,6 +73,9 @@ func _ready():
 	# Initialize active notes tracking
 	for i in range(1, 50):  # Lanes 1-49
 		active_notes_by_lane[i] = []
+	
+	# Apply MIDI volume setting
+	_apply_midi_volume()
 
 func _process(delta):
 	# Update current song time to match midi_spawner
@@ -607,3 +611,14 @@ func _stop_note_audio(lane_number: int):
 	if midi_player:
 		var midi_note = lane_to_midi_note(lane_number)
 		midi_player.stop_note_direct(midi_note, audio_channel)
+
+# Apply MIDI volume setting to the MidiPlayer
+func _apply_midi_volume():
+	if midi_player:
+		# Convert linear volume (0.0-1.0) to decibels
+		# MidiPlayer uses volume_db which ranges from -80.0 to 0.0
+		var volume_db = linear_to_db(midi_volume)
+		# Clamp to MidiPlayer's expected range
+		volume_db = clamp(volume_db, -80.0, 0.0)
+		midi_player.volume_db = volume_db
+		print("MIDI volume set to: ", midi_volume, " (", volume_db, " dB)")

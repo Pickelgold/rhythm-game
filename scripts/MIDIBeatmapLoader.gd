@@ -9,6 +9,7 @@ var enabled_channels: Array[int] = [0]  # Default to channel 0 only
 var smf_data: SMF.SMFData
 var timebase: int
 var processed_notes: Array[Dictionary] = []
+var tempo_map: Array[Dictionary] = []  # Track tempo changes over time
 
 # Load and parse a MIDI file
 func load_midi_file(path: String) -> bool:
@@ -27,20 +28,61 @@ func load_midi_file(path: String) -> bool:
 	
 	return true
 
-# Convert MIDI ticks to seconds with improved precision
+# Convert MIDI ticks to seconds using tempo map for accurate timing
 func convert_midi_time_to_seconds(midi_ticks: int) -> float:
-	# Default tempo: 120 BPM = 500000 microseconds per beat
-	# Use higher precision calculation to minimize floating-point errors
-	var microseconds_per_beat = 500000.0
-	var ticks_per_beat = float(timebase)
+	if tempo_map.is_empty():
+		# Fallback to default tempo if no tempo map available
+		var microseconds_per_beat = 500000.0  # 120 BPM
+		var ticks_per_beat = float(timebase)
+		var total_microseconds = (midi_ticks * microseconds_per_beat) / ticks_per_beat
+		return total_microseconds / 1000000.0
 	
-	# Calculate microseconds first, then convert to seconds to maintain precision
-	var total_microseconds = (midi_ticks * microseconds_per_beat) / ticks_per_beat
-	return total_microseconds / 1000000.0
+	var total_seconds = 0.0
+	var current_ticks = 0
+	var target_ticks = midi_ticks
+	
+	# Process each tempo segment
+	for i in range(tempo_map.size()):
+		var tempo_entry = tempo_map[i]
+		var segment_start_ticks = tempo_entry["ticks"]
+		var microseconds_per_beat = tempo_entry["microseconds_per_beat"]
+		
+		# Determine the end of this tempo segment
+		var segment_end_ticks = target_ticks
+		if i < tempo_map.size() - 1:
+			segment_end_ticks = min(target_ticks, tempo_map[i + 1]["ticks"])
+		
+		# Skip if we haven't reached this segment yet
+		if segment_end_ticks <= current_ticks:
+			continue
+		
+		# Calculate the actual start and end for this segment
+		var actual_start = max(current_ticks, segment_start_ticks)
+		var actual_end = segment_end_ticks
+		
+		if actual_end > actual_start:
+			# Calculate time for this segment
+			var segment_ticks = actual_end - actual_start
+			var ticks_per_beat = float(timebase)
+			var segment_microseconds = (segment_ticks * microseconds_per_beat) / ticks_per_beat
+			total_seconds += segment_microseconds / 1000000.0
+			
+			current_ticks = actual_end
+		
+		# Stop if we've reached our target
+		if current_ticks >= target_ticks:
+			break
+	
+	return total_seconds
 
 # Process all MIDI notes and convert them to game format
 func _process_midi_notes():
 	processed_notes.clear()
+	tempo_map.clear()
+	
+	# First pass: Build tempo map
+	_build_tempo_map()
+	
 	var active_notes = {}  # Track note_on events waiting for note_off
 	var found_channels = {}  # Track what channels we find
 	var found_notes = {}  # Track what MIDI notes we find
@@ -197,6 +239,51 @@ func set_enabled_channels(channels: Array[int]):
 	enabled_channels = channels
 	if smf_data != null:
 		_process_midi_notes()  # Reprocess with new channels
+
+# Build tempo map from MIDI file tempo events
+func _build_tempo_map():
+	tempo_map.clear()
+	
+	# Start with default tempo (120 BPM = 500000 microseconds per beat)
+	tempo_map.append({
+		"ticks": 0,
+		"microseconds_per_beat": 500000.0
+	})
+	
+	# Collect all tempo events from all tracks
+	var tempo_events: Array[Dictionary] = []
+	
+	for track in smf_data.tracks:
+		for event_chunk in track.events:
+			var event = event_chunk.event
+			
+			# Check for tempo change events
+			if event is SMF.MIDIEventSystemEvent:
+				var args = event.args
+				if args.has("type") and args["type"] == SMF.MIDISystemEventType.set_tempo:
+					tempo_events.append({
+						"ticks": event_chunk.time,
+						"microseconds_per_beat": float(args["bpm"])
+					})
+	
+	# Sort tempo events by time
+	tempo_events.sort_custom(func(a, b): return a["ticks"] < b["ticks"])
+	
+	# Add tempo events to tempo map, replacing default if there's a tempo at tick 0
+	for tempo_event in tempo_events:
+		if tempo_event["ticks"] == 0:
+			# Replace the default tempo
+			tempo_map[0] = tempo_event
+		else:
+			# Add new tempo change
+			tempo_map.append(tempo_event)
+	
+	# Debug output
+	print("Built tempo map with ", tempo_map.size(), " entries:")
+	for i in range(tempo_map.size()):
+		var entry = tempo_map[i]
+		var bpm = 60000000.0 / entry["microseconds_per_beat"]  # Convert to BPM for readability
+		print("  Tick ", entry["ticks"], ": ", entry["microseconds_per_beat"], " μs/beat (", "%.1f" % bpm, " BPM)")
 
 # Get the total duration of the song (latest end time of all notes)
 func get_total_duration() -> float:
