@@ -3619,7 +3619,6 @@ text = "60 FPS"
 [node name="MidiPlayer" type="Node" parent="AudioManager"]
 script = ExtResource("1_fyqef")
 volume_db = 0.0
-load_all_voices_from_soundfont = false
 soundfont = "res://soundfonts/Aspirin_160_GMGS_2015.sf2"
 metadata/_custom_type_script = "uid://brdvvugt8538w"
 

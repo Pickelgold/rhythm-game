@@ -4,6 +4,7 @@ class_name JudgementSystem
 # Reference to other systems
 var keyboard_controller: Node
 var midi_spawner: Node
+var midi_player: MidiPlayer
 
 # Signal for note removal
 signal note_should_be_removed(lane_number: int, start_time: float, end_time: float)
@@ -45,6 +46,11 @@ var release_labels: Dictionary = {}
 var press_timers: Dictionary = {}  # lane_number -> Timer
 var release_timers: Dictionary = {}  # lane_number -> Timer
 
+# Audio configuration
+var base_midi_note: int = 36  # C2 - base note for lane mapping
+var audio_channel: int = 0  # MIDI channel to use for audio playback
+var audio_velocity: int = 100  # Default velocity for note playback
+
 
 func _ready():
 	# Wait for scene to be fully loaded
@@ -53,6 +59,7 @@ func _ready():
 	# Get references to other systems
 	keyboard_controller = get_node("../KeyboardController")
 	midi_spawner = get_node("../MIDISpawner")
+	midi_player = get_node("../AudioManager/MidiPlayer")
 	
 	# Connect to keyboard controller signals
 	if keyboard_controller:
@@ -240,6 +247,9 @@ func _on_key_pressed(lane_number: int):
 	# Mark key as held down
 	held_keys[lane_number] = true
 	
+	# ALWAYS play audio when any key is pressed, regardless of timing
+	_play_note_audio(lane_number)
+	
 	# Find the closest note START timing in this lane
 	if not active_notes_by_lane.has(lane_number):
 		# Wrong lane pressed - show miss (both keydown and keyup assessed immediately)
@@ -308,6 +318,9 @@ func _on_key_pressed(lane_number: int):
 func _on_key_released(lane_number: int):
 	# Mark key as no longer held down
 	held_keys.erase(lane_number)
+	
+	# ALWAYS stop audio when any key is released, regardless of timing
+	_stop_note_audio(lane_number)
 	
 	# Check if there was an active hold note in this lane
 	if not active_hold_notes.has(lane_number):
@@ -576,3 +589,21 @@ func _find_note_data_for_miss(lane_number: int, note_id: String) -> Dictionary:
 						return note_data
 	
 	return {}
+
+# Convert lane number to MIDI note number
+func lane_to_midi_note(lane_number: int) -> int:
+	# Map lanes 1-49 to MIDI notes starting from base_midi_note
+	# This creates a chromatic scale across the keyboard layout
+	return base_midi_note + (lane_number - 1)
+
+# Play audio for successful key press
+func _play_note_audio(lane_number: int):
+	if midi_player:
+		var midi_note = lane_to_midi_note(lane_number)
+		midi_player.play_note_direct(midi_note, audio_velocity, audio_channel)
+
+# Stop audio for key release
+func _stop_note_audio(lane_number: int):
+	if midi_player:
+		var midi_note = lane_to_midi_note(lane_number)
+		midi_player.stop_note_direct(midi_note, audio_channel)
