@@ -3,7 +3,6 @@ extends RefCounted
 
 # Configuration variables
 var base_midi_note: int = 36  # C2 by default
-var enabled_channels: Array[int] = [0]  # Default to channel 0 only
 
 # MIDI data
 var smf_data: SMF.SMFData
@@ -12,7 +11,7 @@ var processed_notes: Array[Dictionary] = []
 var tempo_map: Array[Dictionary] = []  # Track tempo changes over time
 
 # Load and parse a MIDI file
-func load_midi_file(path: String) -> bool:
+func load_midi_file(path: String, enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) -> bool:
 	var smf = SMF.new()
 	var result = smf.read_file(path)
 	
@@ -23,7 +22,7 @@ func load_midi_file(path: String) -> bool:
 	timebase = smf_data.timebase
 	
 	# Process all notes from the MIDI file
-	_process_midi_notes()
+	_process_midi_notes(enabled_channels)
 	
 	
 	return true
@@ -76,7 +75,7 @@ func convert_midi_time_to_seconds(midi_ticks: int) -> float:
 	return total_seconds
 
 # Process all MIDI notes and convert them to game format
-func _process_midi_notes():
+func _process_midi_notes(enabled_channels: Array[int] = []):
 	processed_notes.clear()
 	tempo_map.clear()
 	
@@ -144,6 +143,7 @@ func _process_midi_notes():
 	
 	# Merge overlapping notes in the same lane
 	_merge_overlapping_notes()
+	
 
 # Convert MIDI note number to lane number
 func _midi_note_to_lane(midi_note: int) -> int:
@@ -229,16 +229,15 @@ func get_all_notes() -> Array[Dictionary]:
 	return processed_notes
 
 # Set the base MIDI note (configurable starting point)
-func set_base_midi_note(note: int):
+func set_base_midi_note(note: int, enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]):
 	base_midi_note = note
 	if smf_data != null:
-		_process_midi_notes()  # Reprocess with new base note
+		_process_midi_notes(enabled_channels)  # Reprocess with new base note
 
-# Set enabled channels
-func set_enabled_channels(channels: Array[int]):
-	enabled_channels = channels
+# Reprocess MIDI notes with new channel configuration
+func reprocess_with_channels(channels: Array[int]):
 	if smf_data != null:
-		_process_midi_notes()  # Reprocess with new channels
+		_process_midi_notes(channels)  # Reprocess with new channels
 
 # Build tempo map from MIDI file tempo events
 func _build_tempo_map():

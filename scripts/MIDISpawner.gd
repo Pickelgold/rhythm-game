@@ -58,15 +58,14 @@ func _ready():
 	# Initialize MIDI loader
 	midi_loader = MIDIBeatmapLoaderScript.new()
 	midi_loader.base_midi_note = base_midi_note
-	midi_loader.enabled_channels = enabled_channels
 	
 	# Connect to judgement system for note removal
 	var judgement_system = get_node("../JudgementSystem")
 	if judgement_system:
 		judgement_system.note_should_be_removed.connect(_on_note_should_be_removed)
 	
-	# Load the MIDI file
-	if midi_loader.load_midi_file(midi_file_path):
+	# Load the MIDI file with enabled channels
+	if midi_loader.load_midi_file(midi_file_path, enabled_channels):
 		_debug_print_notes()
 		# Start the song with precise timing
 		start_song()
@@ -404,19 +403,19 @@ func set_midi_file(path: String):
 	active_notes.clear()
 	is_song_playing = false
 	if midi_loader:
-		midi_loader.load_midi_file(path)
+		midi_loader.load_midi_file(path, enabled_channels)
 		# Restart the song with new timing
 		start_song()
 
 func set_base_midi_note(note: int):
 	base_midi_note = note
 	if midi_loader:
-		midi_loader.set_base_midi_note(note)
+		midi_loader.set_base_midi_note(note, enabled_channels)
 
 func set_enabled_channels(channels: Array[int]):
 	enabled_channels = channels
 	if midi_loader:
-		midi_loader.set_enabled_channels(channels)
+		midi_loader.reprocess_with_channels(channels)
 
 func reset_song_time():
 	# Clear all active notes
