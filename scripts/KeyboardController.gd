@@ -25,6 +25,8 @@ func setup_key_mapping():
 	var row1 = $"../UI/HBoxContainer/GameplayArea/Row 1"
 	key_map[KEY_QUOTELEFT] = row1.get_node("Lane 37/Receptor")  # `
 	key_to_lane_map[KEY_QUOTELEFT] = 37
+	key_map[KEY_ESCAPE] = row1.get_node("Lane 37/Receptor")  # ESC (alternative for keyboards without backtick)
+	key_to_lane_map[KEY_ESCAPE] = 37
 	key_map[KEY_1] = row1.get_node("Lane 38/Receptor")
 	key_to_lane_map[KEY_1] = 38
 	key_map[KEY_2] = row1.get_node("Lane 39/Receptor")
