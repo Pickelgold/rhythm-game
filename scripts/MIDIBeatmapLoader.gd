@@ -86,6 +86,7 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	var found_channels = {}  # Track what channels we find
 	var found_notes = {}  # Track what MIDI notes we find
 	var total_note_events = 0
+	var notes_per_channel = {}  # Track notes per channel for summary
 	
 	# Process each track
 	for track in smf_data.tracks:
@@ -144,6 +145,28 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	# Merge overlapping notes in the same lane
 	_merge_overlapping_notes()
 	
+	# Count notes per channel for summary
+	for note in processed_notes:
+		var channel = note["channel"]
+		if not notes_per_channel.has(channel):
+			notes_per_channel[channel] = 0
+		notes_per_channel[channel] += 1
+	
+	# Print processing summary with per-channel breakdown
+	var total_notes = processed_notes.size()
+	
+	print("MIDI processed: ", total_notes, " total notes")
+	
+	if notes_per_channel.size() > 0:
+		# Sort channels for consistent output
+		var sorted_channels = notes_per_channel.keys()
+		sorted_channels.sort()
+		
+		for channel in sorted_channels:
+			var count = notes_per_channel[channel]
+			print("  Channel ", channel, ": ", count, " notes")
+	else:
+		print("  No valid notes found in enabled channels")
 
 # Convert MIDI note number to lane number
 func _midi_note_to_lane(midi_note: int) -> int:
@@ -163,6 +186,7 @@ func _compare_notes_by_time(a: Dictionary, b: Dictionary) -> bool:
 func _merge_overlapping_notes():
 	var merged_notes: Array[Dictionary] = []
 	var i = 0
+	var overlapping_notes_count = 0
 	
 	while i < processed_notes.size():
 		var current_note = processed_notes[i]
@@ -183,6 +207,7 @@ func _merge_overlapping_notes():
 		
 		# Merge the group if it has multiple notes
 		if merge_group.size() > 1:
+			overlapping_notes_count += merge_group.size()
 			var merged_note = _merge_note_group(merge_group)
 			merged_notes.append(merged_note)
 		else:
@@ -191,6 +216,10 @@ func _merge_overlapping_notes():
 		i += 1
 	
 	processed_notes = merged_notes
+	
+	# Print warning if overlapping notes were merged
+	if overlapping_notes_count > 0:
+		print("Warning: ", overlapping_notes_count, " overlapping notes were merged")
 
 # Check if two notes overlap in time
 func _notes_overlap(note1: Dictionary, note2: Dictionary) -> bool:

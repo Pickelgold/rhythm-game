@@ -3629,7 +3629,6 @@ script = ExtResource("3_keyboard")
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
 midi_file_path = "res://beatmaps/I/I.mid"
-enabled_channels = Array[int]([8, 10])
 background_music_path = "uid://6ppeaqalgb7x"
 background_music_offset = 1.0
 background_music_volume = 0.5

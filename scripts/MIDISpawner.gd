@@ -43,6 +43,10 @@ var active_notes: Array[Node] = []  # Currently active note instances
 @export_range(0.0, 1.0) var background_music_volume: float = 1.0  # Background music volume
 
 func _ready():
+	# Start timing the setup process
+	var setup_start_time = Time.get_ticks_msec()
+	print("Setup started at: ", setup_start_time, " ms")
+	
 	# Wait a frame to ensure the scene is fully loaded
 	await get_tree().process_frame
 	
@@ -69,8 +73,12 @@ func _ready():
 		_debug_print_notes()
 		# Start the song with precise timing
 		start_song()
+		
+		var total_setup_time = Time.get_ticks_msec() - setup_start_time
+		print("Total setup time: ", total_setup_time, " ms")
 	else:
-		pass
+		var total_setup_time = Time.get_ticks_msec() - setup_start_time
+		print("Total setup time: ", total_setup_time, " ms")
 
 func _process(delta):
 	if midi_loader == null or not is_song_playing:
@@ -99,8 +107,11 @@ func get_absolute_song_time() -> float:
 
 # Start the song with precise timing
 func start_song():
+	# Ensure MIDI offset is never negative to prevent skipping notes
+	var safe_midi_offset = max(0.0, midi_offset)
+	
 	song_start_time_msec = Time.get_ticks_msec()
-	song_offset_seconds = -lookahead_time + midi_offset  # Start with negative time for lookahead plus MIDI offset
+	song_offset_seconds = -lookahead_time - safe_midi_offset  # Start with negative time for lookahead minus MIDI offset (delay)
 	is_song_playing = true
 	current_song_time = song_offset_seconds
 	
@@ -202,8 +213,8 @@ func _calculate_lookahead_time():
 	# Calculate how long it takes for a note to travel the full lane height
 	var travel_time = lane_height_pixels / note_speed_pixels_per_second
 	
-	# Add a small buffer (0.1 seconds) to ensure notes spawn slightly above the visible area
-	lookahead_time = travel_time + 0.1
+	# Use exact travel time without buffer
+	lookahead_time = travel_time
 	
 
 # Spawn notes at their exact calculated spawn times
