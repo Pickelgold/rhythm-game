@@ -159,7 +159,7 @@ offset_right = 4.0
 offset_bottom = 1.15
 grow_horizontal = 2
 grow_vertical = 2
-text = "`"
+text = "Esc `"
 horizontal_alignment = 1
 vertical_alignment = 1
 
