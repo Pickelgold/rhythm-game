@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://2iyygmrr3bgu"]
+[gd_scene load_steps=8 format=3 uid="uid://2iyygmrr3bgu"]
 
+[ext_resource type="Texture2D" uid="uid://datqweuo32827" path="res://beatmaps/I/I.png" id="1_fbudy"]
 [ext_resource type="Script" uid="uid://brdvvugt8538w" path="res://addons/midi/MidiPlayer.gd" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://lg2q6vomebbm" path="res://scripts/KeyboardController.gd" id="3_keyboard"]
 [ext_resource type="Script" uid="uid://ufaxmhjmxqel" path="res://scripts/MIDISpawner.gd" id="4_midi_spawner"]
@@ -27,7 +28,12 @@ size_flags_vertical = 3
 
 [node name="Background" type="ColorRect" parent="UI"]
 layout_mode = 2
-color = Color(0.0383972, 0.0383972, 0.0383971, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="Image" type="TextureRect" parent="UI"]
+layout_mode = 2
+texture = ExtResource("1_fbudy")
+stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 layout_mode = 2
@@ -51,12 +57,20 @@ theme_override_constants/separation = 0
 
 [node name="AccuracyPercentage" type="Label" parent="UI/HBoxContainer/LeftUI/VBoxContainer/Accuracy"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
 text = "100.00%"
 horizontal_alignment = 2
 
 [node name="AccuracyLabel" type="Label" parent="UI/HBoxContainer/LeftUI/VBoxContainer/Accuracy"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 20
 text = "Accuracy"
 horizontal_alignment = 2
@@ -74,12 +88,20 @@ alignment = 2
 
 [node name="ComboCounter" type="Label" parent="UI/HBoxContainer/LeftUI/VBoxContainer/Combo"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
 text = "0x"
 horizontal_alignment = 2
 
 [node name="ComboLabel" type="Label" parent="UI/HBoxContainer/LeftUI/VBoxContainer/Combo"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 20
 text = "Combo"
 horizontal_alignment = 2
@@ -3571,6 +3593,10 @@ theme_override_constants/separation = 0
 
 [node name="UsernameLabel" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/Username"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
 text = "Username"
 autowrap_mode = 1
@@ -3582,12 +3608,20 @@ theme_override_constants/separation = 0
 [node name="OnlineSymbol" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/Username/OnlineStatus"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 18
 text = "⬤"
 
 [node name="OnlineLabel" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/Username/OnlineStatus"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 20
 text = " Online"
 
@@ -3604,12 +3638,20 @@ alignment = 2
 
 [node name="Time" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/SongProgress"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
 text = "0:00 /
 0:00"
 
 [node name="FPSLabel" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/SongProgress"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 20
 text = "60 FPS"
 
