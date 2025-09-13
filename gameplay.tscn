@@ -33,6 +33,7 @@ color = Color(0, 0, 0, 1)
 [node name="Image" type="TextureRect" parent="UI"]
 layout_mode = 2
 texture = ExtResource("1_fbudy")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
@@ -3672,7 +3673,7 @@ script = ExtResource("3_keyboard")
 script = ExtResource("4_midi_spawner")
 midi_file_path = "res://beatmaps/I/I.mid"
 background_music_path = "uid://6ppeaqalgb7x"
-background_music_offset = 1.0
+audio_offset = 1.2
 background_music_volume = 0.5
 
 [node name="JudgementSystem" type="Node" parent="."]

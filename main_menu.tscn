@@ -18,7 +18,7 @@ grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="UI"]
 layout_mode = 2
-color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 layout_mode = 2

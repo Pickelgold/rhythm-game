@@ -38,8 +38,7 @@ var active_notes: Array[Node] = []  # Currently active note instances
 
 # Background music configuration
 @export_file("*.ogg", "*.mp3", "*.wav") var background_music_path: String = ""
-@export var background_music_offset: float = 0.0  # Start time offset for background music
-@export var midi_offset: float = 0.0  # Start time offset for MIDI
+@export var audio_offset: float = 0.0  # Negative: audio first, Positive: MIDI first
 @export_range(0.0, 1.0) var background_music_volume: float = 1.0  # Background music volume
 
 func _ready():
@@ -107,11 +106,18 @@ func get_absolute_song_time() -> float:
 
 # Start the song with precise timing
 func start_song():
-	# Ensure MIDI offset is never negative to prevent skipping notes
-	var safe_midi_offset = max(0.0, midi_offset)
-	
 	song_start_time_msec = Time.get_ticks_msec()
-	song_offset_seconds = -lookahead_time - safe_midi_offset  # Start with negative time for lookahead minus MIDI offset (delay)
+	
+	if audio_offset < 0:
+		# Case 1: Audio starts first, MIDI delayed by abs(audio_offset)
+		var midi_delay = abs(audio_offset)
+		song_offset_seconds = -lookahead_time - midi_delay
+		background_music_start_time = 0.0  # Audio starts immediately
+	else:
+		# Case 2: MIDI starts first, audio delayed by audio_offset
+		song_offset_seconds = -lookahead_time  # MIDI starts immediately
+		background_music_start_time = audio_offset  # Audio delayed
+	
 	is_song_playing = true
 	current_song_time = song_offset_seconds
 	
@@ -380,8 +386,7 @@ func _start_background_music():
 	if not background_music_player or not background_music_player.stream:
 		return
 	
-	# Calculate when background music should start based on its offset
-	background_music_start_time = background_music_offset - midi_offset
+	# background_music_start_time is already calculated in start_song()
 	background_music_started = false
 	
 	if background_music_start_time <= current_song_time:
