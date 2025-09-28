@@ -49,7 +49,7 @@ var release_timers: Dictionary = {}  # lane_number -> Timer
 # Audio configuration
 var base_midi_note: int = 36  # C2 - base note for lane mapping
 var audio_channel: int = 0  # MIDI channel to use for audio playback
-var audio_velocity: int = 100  # Default velocity for note playback
+var audio_velocity: int = 64  # Default velocity for note playback (will be updated from MIDI data)
 @export_range(0.0, 1.0) var midi_volume: float = 1.0  # MIDI audio volume
 
 
@@ -76,6 +76,9 @@ func _ready():
 	
 	# Apply MIDI volume setting
 	_apply_midi_volume()
+	
+	# Update audio velocity from MIDI data
+	_update_audio_velocity()
 
 func _process(delta):
 	# Update current song time to match midi_spawner
@@ -602,15 +605,118 @@ func lane_to_midi_note(lane_number: int) -> int:
 
 # Play audio for successful key press
 func _play_note_audio(lane_number: int):
-	if midi_player:
+	if not midi_player or not midi_spawner or not midi_spawner.midi_loader:
+		return
+	
+	# Find all notes for this lane at current time
+	var current_time = get_precise_song_time()
+	var notes_for_lane = _get_notes_for_lane_at_time(lane_number, current_time)
+	
+	if notes_for_lane.size() > 0:
+		# Play each channel's instrument for actual notes
+		for note_data in notes_for_lane:
+			var channel = note_data["channel"]
+			var program = note_data["program"]
+			var velocity = note_data["velocity"]
+			var midi_note = note_data["midi_note"]
+			
+			# Set the channel's instrument
+			midi_player.set_free_play_instrument(program, channel)
+			
+			# Play the note with original velocity
+			midi_player.play_note_direct(midi_note, velocity, channel)
+	else:
+		# No notes in this lane - play default audio feedback using main melody channel
 		var midi_note = lane_to_midi_note(lane_number)
-		midi_player.play_note_direct(midi_note, audio_velocity, audio_channel)
+		var default_channel = _get_main_melody_channel()
+		var default_program = _get_program_for_channel(default_channel)
+		
+		# Set the default channel's instrument
+		midi_player.set_free_play_instrument(default_program, default_channel)
+		
+		# Play with default velocity
+		midi_player.play_note_direct(midi_note, audio_velocity, default_channel)
+
+# Get all notes for a specific lane at a specific time
+func _get_notes_for_lane_at_time(lane_number: int, time: float) -> Array:
+	var notes = []
+	if not active_notes_by_lane.has(lane_number):
+		return notes
+	
+	for note_timing in active_notes_by_lane[lane_number]:
+		if note_timing["type"] == "start":
+			notes.append(note_timing["note_data"])
+	
+	return notes
 
 # Stop audio for key release
 func _stop_note_audio(lane_number: int):
-	if midi_player:
+	if not midi_player:
+		return
+	
+	# Find all notes for this lane at current time
+	var current_time = get_precise_song_time()
+	var notes_for_lane = _get_notes_for_lane_at_time(lane_number, current_time)
+	
+	if notes_for_lane.size() > 0:
+		# Stop each channel's note for actual notes
+		for note_data in notes_for_lane:
+			var channel = note_data["channel"]
+			var midi_note = note_data["midi_note"]
+			midi_player.stop_note_direct(midi_note, channel)
+	else:
+		# No notes in this lane - stop default audio feedback using main melody channel
 		var midi_note = lane_to_midi_note(lane_number)
-		midi_player.stop_note_direct(midi_note, audio_channel)
+		var default_channel = _get_main_melody_channel()
+		midi_player.stop_note_direct(midi_note, default_channel)
+
+# Get the channel with the most notes (main melody channel) for default audio feedback
+func _get_main_melody_channel() -> int:
+	# Default to channel 0 if no MIDI loader available
+	if not midi_spawner or not midi_spawner.midi_loader:
+		return 0
+	
+	# Count notes per channel to find the main melody channel
+	var all_notes = midi_spawner.midi_loader.get_all_notes()
+	if all_notes.size() == 0:
+		return 0
+	
+	var notes_per_channel = {}
+	for note in all_notes:
+		var channel = note["channel"]
+		if not notes_per_channel.has(channel):
+			notes_per_channel[channel] = 0
+		notes_per_channel[channel] += 1
+	
+	# Find the channel with the most notes
+	var main_channel = 0
+	var max_notes = 0
+	for channel in notes_per_channel.keys():
+		if notes_per_channel[channel] > max_notes:
+			max_notes = notes_per_channel[channel]
+			main_channel = channel
+	
+	return main_channel
+
+# Get the program for a specific channel
+func _get_program_for_channel(channel: int) -> int:
+	if not midi_spawner or not midi_spawner.midi_loader:
+		return 0  # Default to Grand Piano
+	
+	# Get the program from the MIDI loader's channel programs
+	if midi_spawner.midi_loader.channel_programs.has(channel):
+		return midi_spawner.midi_loader.channel_programs[channel]
+	
+	# Fallback to Grand Piano for most channels, Drum Kit for channel 9
+	return 0 if channel != 9 else 0
+
+# Update audio velocity from MIDI data
+func _update_audio_velocity():
+	if midi_spawner and midi_spawner.midi_loader:
+		audio_velocity = midi_spawner.midi_loader.average_velocity
+		print("Audio velocity updated to: ", audio_velocity, " (from MIDI average)")
+	else:
+		print("Audio velocity remains default: ", audio_velocity)
 
 # Apply MIDI volume setting to the MidiPlayer
 func _apply_midi_volume():

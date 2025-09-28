@@ -9,6 +9,8 @@ var smf_data: SMF.SMFData
 var timebase: int
 var processed_notes: Array[Dictionary] = []
 var tempo_map: Array[Dictionary] = []  # Track tempo changes over time
+var channel_programs: Dictionary = {}  # Track initial program per channel
+var average_velocity: int = 64  # Average velocity of all notes for consistent audio feedback
 
 # Load and parse a MIDI file
 func load_midi_file(path: String, enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) -> bool:
@@ -74,6 +76,61 @@ func convert_midi_time_to_seconds(midi_ticks: int) -> float:
 	
 	return total_seconds
 
+# Capture initial program changes for each channel
+func _capture_initial_program_changes(enabled_channels: Array[int]):
+	channel_programs.clear()
+	
+	# Set defaults first
+	for i in range(16):
+		if i == 9:  # Drum channel (channel 10 in 1-based numbering)
+			channel_programs[i] = 0  # Standard drum kit
+		else:
+			channel_programs[i] = 0  # Grand piano default
+	
+	# Find first note time for each channel
+	var first_note_time_per_channel = {}
+	
+	# First pass: find when each channel first plays a note
+	for track in smf_data.tracks:
+		for event_chunk in track.events:
+			if event_chunk.event is SMF.MIDIEventNoteOn:
+				var channel = event_chunk.channel_number
+				if enabled_channels.has(channel):
+					var time = convert_midi_time_to_seconds(event_chunk.time)
+					if not first_note_time_per_channel.has(channel):
+						first_note_time_per_channel[channel] = time
+					else:
+						first_note_time_per_channel[channel] = min(first_note_time_per_channel[channel], time)
+	
+	# Second pass: capture program changes that occur before first notes
+	for track in smf_data.tracks:
+		for event_chunk in track.events:
+			if event_chunk.event is SMF.MIDIEventProgramChange:
+				var channel = event_chunk.channel_number
+				if enabled_channels.has(channel):
+					var program = event_chunk.event.number
+					var time = convert_midi_time_to_seconds(event_chunk.time)
+					
+					# Only use program changes before first note (or if no notes exist for this channel)
+					if not first_note_time_per_channel.has(channel) or time <= first_note_time_per_channel[channel]:
+						channel_programs[channel] = program
+	
+	# Debug output
+	print("Channel programs captured:")
+	for channel in range(16):
+		if enabled_channels.has(channel) and channel_programs.has(channel):
+			var program = channel_programs[channel]
+			var instrument_name = "Unknown"
+			if channel == 9:
+				instrument_name = "Drum Kit"
+			elif program == 0:
+				instrument_name = "Grand Piano"
+			elif program == 40:
+				instrument_name = "Violin"
+			elif program == 56:
+				instrument_name = "Trumpet"
+			print("  Channel ", channel, ": Program ", program, " (", instrument_name, ")")
+
 # Process all MIDI notes and convert them to game format
 func _process_midi_notes(enabled_channels: Array[int] = []):
 	processed_notes.clear()
@@ -81,6 +138,9 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	
 	# First pass: Build tempo map
 	_build_tempo_map()
+	
+	# Second pass: Capture initial program changes
+	_capture_initial_program_changes(enabled_channels)
 	
 	var active_notes = {}  # Track note_on events waiting for note_off
 	var found_channels = {}  # Track what channels we find
@@ -109,6 +169,7 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 			# Handle note events
 			if event is SMF.MIDIEventNoteOn:
 				var midi_note = event.note
+				var velocity = event.velocity
 				var lane = _midi_note_to_lane(midi_note)
 				
 				if lane > 0:  # Valid lane
@@ -117,7 +178,9 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 						"start_time": time_seconds,
 						"lane": lane,
 						"midi_note": midi_note,
-						"channel": channel
+						"channel": channel,
+						"velocity": velocity,
+						"program": channel_programs.get(channel, 0)
 					}
 			
 			elif event is SMF.MIDIEventNoteOff:
@@ -152,10 +215,20 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 			notes_per_channel[channel] = 0
 		notes_per_channel[channel] += 1
 	
+	# Calculate average velocity for consistent audio feedback
+	if processed_notes.size() > 0:
+		var total_velocity = 0
+		for note in processed_notes:
+			total_velocity += note["velocity"]
+		average_velocity = total_velocity / processed_notes.size()
+	else:
+		average_velocity = 64  # Default fallback
+	
 	# Print processing summary with per-channel breakdown
 	var total_notes = processed_notes.size()
 	
 	print("MIDI processed: ", total_notes, " total notes")
+	print("Average velocity: ", average_velocity)
 	
 	if notes_per_channel.size() > 0:
 		# Sort channels for consistent output
