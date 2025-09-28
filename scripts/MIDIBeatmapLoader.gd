@@ -10,6 +10,7 @@ var timebase: int
 var processed_notes: Array[Dictionary] = []
 var tempo_map: Array[Dictionary] = []  # Track tempo changes over time
 var channel_programs: Dictionary = {}  # Track initial program per channel
+var program_timeline: Dictionary = {}  # Track all program changes over time per channel
 var average_velocity: int = 64  # Average velocity of all notes for consistent audio feedback
 
 # Load and parse a MIDI file
@@ -142,6 +143,9 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	# Second pass: Capture initial program changes
 	_capture_initial_program_changes(enabled_channels)
 	
+	# Third pass: Build program timeline for mid-song changes
+	_build_program_timeline(enabled_channels)
+	
 	var active_notes = {}  # Track note_on events waiting for note_off
 	var found_channels = {}  # Track what channels we find
 	var found_notes = {}  # Track what MIDI notes we find
@@ -180,7 +184,7 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 						"midi_note": midi_note,
 						"channel": channel,
 						"velocity": velocity,
-						"program": channel_programs.get(channel, 0)
+						"program": get_program_at_time(channel, time_seconds)
 					}
 			
 			elif event is SMF.MIDIEventNoteOff:
@@ -385,6 +389,104 @@ func _build_tempo_map():
 		var entry = tempo_map[i]
 		var bpm = 60000000.0 / entry["microseconds_per_beat"]  # Convert to BPM for readability
 		print("  Tick ", entry["ticks"], ": ", entry["microseconds_per_beat"], " μs/beat (", "%.1f" % bpm, " BPM)")
+
+# Build program timeline for mid-song program changes
+func _build_program_timeline(enabled_channels: Array[int]):
+	program_timeline.clear()
+	
+	# Initialize timeline for each enabled channel
+	for channel in enabled_channels:
+		program_timeline[channel] = []
+		
+		# Add initial program as first entry
+		program_timeline[channel].append({
+			"time": 0.0,
+			"program": channel_programs.get(channel, 0)
+		})
+	
+	# Collect all program change events
+	var program_changes = []
+	for track in smf_data.tracks:
+		for event_chunk in track.events:
+			if event_chunk.event is SMF.MIDIEventProgramChange:
+				var channel = event_chunk.channel_number
+				if enabled_channels.has(channel):
+					var program = event_chunk.event.number
+					var time = convert_midi_time_to_seconds(event_chunk.time)
+					
+					program_changes.append({
+						"time": time,
+						"channel": channel,
+						"program": program
+					})
+	
+	# Sort program changes by time
+	program_changes.sort_custom(func(a, b): return a["time"] < b["time"])
+	
+	# Add program changes to timeline
+	var program_change_count = 0
+	for change in program_changes:
+		var channel = change["channel"]
+		var time = change["time"]
+		var program = change["program"]
+		
+		# Only add if it's different from the current program
+		var current_program = _get_current_program_in_timeline(channel, time)
+		if program != current_program:
+			program_timeline[channel].append({
+				"time": time,
+				"program": program
+			})
+			program_change_count += 1
+	
+	# Debug output
+	if program_change_count > 0:
+		print("Program timeline built with ", program_change_count, " mid-song changes:")
+		for channel in enabled_channels:
+			if program_timeline[channel].size() > 1:  # More than just initial program
+				print("  Channel ", channel, ":")
+				for i in range(1, program_timeline[channel].size()):  # Skip initial program
+					var entry = program_timeline[channel][i]
+					var instrument_name = _get_instrument_name(entry["program"], channel)
+					print("    Time ", "%.2f" % entry["time"], "s: Program ", entry["program"], " (", instrument_name, ")")
+	else:
+		print("No mid-song program changes found")
+
+# Get the current program for a channel at a specific time from timeline
+func _get_current_program_in_timeline(channel: int, time: float) -> int:
+	if not program_timeline.has(channel) or program_timeline[channel].is_empty():
+		return channel_programs.get(channel, 0)
+	
+	var timeline = program_timeline[channel]
+	var current_program = timeline[0]["program"]  # Start with initial program
+	
+	# Find the most recent program change before or at the given time
+	for entry in timeline:
+		if entry["time"] <= time:
+			current_program = entry["program"]
+		else:
+			break  # Timeline is sorted, so we can stop here
+	
+	return current_program
+
+# Get the active program for a channel at a specific time (public interface)
+func get_program_at_time(channel: int, time: float) -> int:
+	return _get_current_program_in_timeline(channel, time)
+
+# Helper function to get instrument name for debugging
+func _get_instrument_name(program: int, channel: int) -> String:
+	if channel == 9:
+		return "Drum Kit"
+	elif program == 0:
+		return "Grand Piano"
+	elif program == 40:
+		return "Violin"
+	elif program == 56:
+		return "Trumpet"
+	elif program == 73:
+		return "Flute"
+	else:
+		return "Program " + str(program)
 
 # Get the total duration of the song (latest end time of all notes)
 func get_total_duration() -> float:
