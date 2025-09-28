@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://2iyygmrr3bgu"]
+[gd_scene load_steps=7 format=3 uid="uid://2iyygmrr3bgu"]
 
-[ext_resource type="Texture2D" uid="uid://datqweuo32827" path="res://beatmaps/I/I.png" id="1_fbudy"]
 [ext_resource type="Script" uid="uid://brdvvugt8538w" path="res://addons/midi/MidiPlayer.gd" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://lg2q6vomebbm" path="res://scripts/KeyboardController.gd" id="3_keyboard"]
 [ext_resource type="Script" uid="uid://ufaxmhjmxqel" path="res://scripts/MIDISpawner.gd" id="4_midi_spawner"]
@@ -32,7 +31,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="Image" type="TextureRect" parent="UI"]
 layout_mode = 2
-texture = ExtResource("1_fbudy")
 expand_mode = 1
 stretch_mode = 1
 
@@ -3665,14 +3663,12 @@ soundfont = "res://soundfonts/Aspirin_160_GMGS_2015.sf2"
 metadata/_custom_type_script = "uid://brdvvugt8538w"
 
 [node name="KeyboardController" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 0
 script = ExtResource("3_keyboard")
 
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
-midi_file_path = "res://beatmaps/I/I.mid"
-background_music_path = "uid://6ppeaqalgb7x"
+midi_file_path = "res://beatmaps/Twinkle/Twinkle Twinkle Little Star.mid"
 audio_offset = 1.2
 background_music_volume = 0.5
 
