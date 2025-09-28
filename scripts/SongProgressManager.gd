@@ -35,4 +35,4 @@ func format_time(seconds: float) -> String:
 	var minutes = total_seconds / 60
 	var remaining_seconds = total_seconds % 60
 	
-	return "%d:%02d" % [minutes, remaining_seconds]
+	return "%02d:%02d" % [minutes, remaining_seconds]

@@ -36,7 +36,6 @@ stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 layout_mode = 2
-theme_override_constants/separation = 0
 
 [node name="LeftUI" type="MarginContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
@@ -3642,8 +3641,8 @@ theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
-text = "0:00 /
-0:00"
+text = "00:00 /
+00:00"
 
 [node name="FPSLabel" type="Label" parent="UI/HBoxContainer/RightUI/VBoxContainer/SongProgress"]
 layout_mode = 2
