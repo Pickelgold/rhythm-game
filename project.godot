@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rhythm Game"
-run/main_scene="uid://2iyygmrr3bgu"
+run/main_scene="uid://nnhpfhx4whdn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -22,6 +22,10 @@ config/icon="res://icon.svg"
 
 driver/driver="ALSA"
 driver/output_latency=10
+
+[autoload]
+
+GameGlobals="*res://scripts/GameGlobals.gd"
 
 [display]
 

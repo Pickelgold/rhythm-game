@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvn4k8j2h5p8c"]
+
+[ext_resource type="Script" path="res://scripts/BeatmapCard.gd" id="1_x8v9j"]
+
+[node name="BeatmapCard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_minimum_size = Vector2(200, 280)
+script = ExtResource("1_x8v9j")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="CardMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardMargin"]
+layout_mode = 2
+
+[node name="JacketContainer" type="AspectRatioContainer" parent="CardMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+ratio = 1.0
+
+[node name="Jacket" type="TextureRect" parent="CardMargin/VBoxContainer/JacketContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="CardMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="CardMargin/VBoxContainer/InfoContainer"]
+layout_mode = 2
+text = "Song Title"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Artist" type="Label" parent="CardMargin/VBoxContainer/InfoContainer"]
+layout_mode = 2
+text = "Artist Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
