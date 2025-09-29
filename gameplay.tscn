@@ -3667,9 +3667,11 @@ script = ExtResource("3_keyboard")
 
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
-midi_file_path = "res://beatmaps/Twinkle/Twinkle Twinkle Little Star.mid"
-audio_offset = 1.2
-background_music_volume = 0.5
+midi_file_path = "res://beatmaps/Chrono Diver -PENDULUMs-/Chrono Diver -PENDULUMs-.mid"
+channel_base_notes = Array[int]([60, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48])
+background_music_path = "uid://dkm1fs6gvd7xg"
+audio_offset = -1.2
+background_music_volume = 0.3
 
 [node name="JudgementSystem" type="Node" parent="."]
 script = ExtResource("5_judgement_system")

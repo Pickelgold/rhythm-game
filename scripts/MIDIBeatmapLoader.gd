@@ -2,7 +2,7 @@ class_name MIDIBeatmapLoader
 extends RefCounted
 
 # Configuration variables
-var base_midi_note: int = 36  # C2 by default
+var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
 
 # MIDI data
 var smf_data: SMF.SMFData
@@ -12,6 +12,8 @@ var tempo_map: Array[Dictionary] = []  # Track tempo changes over time
 var channel_programs: Dictionary = {}  # Track initial program per channel
 var program_timeline: Dictionary = {}  # Track all program changes over time per channel
 var average_velocity: int = 64  # Average velocity of all notes for consistent audio feedback
+var dominant_channel_base_note: int = 48  # Base note from the channel with most notes (for audio feedback)
+var dominant_channel_average_velocity: int = 64  # Average velocity from dominant channel only (for audio feedback)
 
 # Load and parse a MIDI file
 func load_midi_file(path: String, enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) -> bool:
@@ -137,6 +139,14 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	processed_notes.clear()
 	tempo_map.clear()
 	
+	# Debug: Print channel base note configuration
+	print("Channel base note configuration:")
+	for channel in range(16):
+		if enabled_channels.has(channel):
+			var base_note = channel_base_notes[channel]
+			var note_name = _midi_note_to_name(base_note)
+			print("  Channel ", channel, ": ", note_name, " (", base_note, ")")
+	
 	# First pass: Build tempo map
 	_build_tempo_map()
 	
@@ -174,7 +184,7 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 			if event is SMF.MIDIEventNoteOn:
 				var midi_note = event.note
 				var velocity = event.velocity
-				var lane = _midi_note_to_lane(midi_note)
+				var lane = _midi_note_to_lane(midi_note, channel)
 				
 				if lane > 0:  # Valid lane
 					var note_key = str(channel) + "_" + str(midi_note)
@@ -228,6 +238,38 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	else:
 		average_velocity = 64  # Default fallback
 	
+	# Find dominant channel (channel with most notes) for audio feedback base note and velocity
+	if notes_per_channel.size() > 0:
+		var dominant_channel = 0
+		var max_notes = 0
+		for channel in notes_per_channel:
+			if notes_per_channel[channel] > max_notes:
+				max_notes = notes_per_channel[channel]
+				dominant_channel = channel
+		
+		# Set the dominant channel's base note for audio feedback
+		dominant_channel_base_note = channel_base_notes[dominant_channel]
+		
+		# Calculate average velocity from dominant channel only
+		var dominant_channel_total_velocity = 0
+		var dominant_channel_note_count = 0
+		for note in processed_notes:
+			if note["channel"] == dominant_channel:
+				dominant_channel_total_velocity += note["velocity"]
+				dominant_channel_note_count += 1
+		
+		if dominant_channel_note_count > 0:
+			dominant_channel_average_velocity = dominant_channel_total_velocity / dominant_channel_note_count
+		else:
+			dominant_channel_average_velocity = 64  # Fallback
+		
+		var dominant_note_name = _midi_note_to_name(dominant_channel_base_note)
+		print("Dominant channel: ", dominant_channel, " (", max_notes, " notes) - using base note ", dominant_note_name, " (", dominant_channel_base_note, ") and velocity ", dominant_channel_average_velocity, " for audio feedback")
+	else:
+		# Fallback if no notes found
+		dominant_channel_base_note = 48  # Default C4
+		dominant_channel_average_velocity = 64  # Default velocity
+	
 	# Print processing summary with per-channel breakdown
 	var total_notes = processed_notes.size()
 	
@@ -245,9 +287,13 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 	else:
 		print("  No valid notes found in enabled channels")
 
-# Convert MIDI note number to lane number
-func _midi_note_to_lane(midi_note: int) -> int:
-	var lane = (midi_note - base_midi_note) + 1
+# Convert MIDI note number to lane number using channel-specific base note
+func _midi_note_to_lane(midi_note: int, channel: int) -> int:
+	var base_note = 48  # Default C4
+	if channel >= 0 and channel < 16:
+		base_note = channel_base_notes[channel]
+	
+	var lane = (midi_note - base_note) + 1
 	
 	# Clamp to valid lane range (1-49)
 	if lane < 1 or lane > 49:
@@ -334,11 +380,25 @@ func get_notes_in_timerange(start_time: float, end_time: float) -> Array[Diction
 func get_all_notes() -> Array[Dictionary]:
 	return processed_notes
 
-# Set the base MIDI note (configurable starting point)
-func set_base_midi_note(note: int, enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]):
-	base_midi_note = note
-	if smf_data != null:
-		_process_midi_notes(enabled_channels)  # Reprocess with new base note
+# Set the per-channel base notes configuration
+func set_channel_base_notes(base_notes: Array[int]):
+	channel_base_notes = base_notes.duplicate()
+
+# Set base MIDI note for a specific channel
+func set_channel_base_note(channel: int, base_note: int):
+	if channel >= 0 and channel < 16:
+		channel_base_notes[channel] = base_note
+
+# Get base MIDI note for a specific channel
+func get_channel_base_note(channel: int) -> int:
+	if channel >= 0 and channel < 16:
+		return channel_base_notes[channel]
+	return 48  # Default C4 for invalid channels
+
+# Reset a channel base note to default (C4/48)
+func reset_channel_base_note(channel: int):
+	if channel >= 0 and channel < 16:
+		channel_base_notes[channel] = 48  # Set to C4/48 default
 
 # Reprocess MIDI notes with new channel configuration
 func reprocess_with_channels(channels: Array[int]):
@@ -487,6 +547,13 @@ func _get_instrument_name(program: int, channel: int) -> String:
 		return "Flute"
 	else:
 		return "Program " + str(program)
+
+# Helper function to convert MIDI note number to note name
+func _midi_note_to_name(midi_note: int) -> String:
+	var note_names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+	var octave = (midi_note / 12) - 1
+	var note_index = midi_note % 12
+	return note_names[note_index] + str(octave)
 
 # Get the total duration of the song (latest end time of all notes)
 func get_total_duration() -> float:

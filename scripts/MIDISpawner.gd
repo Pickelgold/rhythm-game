@@ -21,8 +21,8 @@ var current_song_time: float = 0.0  # Current song time in seconds
 var is_song_playing: bool = false  # Track if song is actively playing
 
 # Note movement configuration
-var note_speed_pixels_per_second: float = 200.0  # pixels per second instead of percentage
-var lane_height_pixels: float = 400.0  # will be calculated from actual lane height
+var note_speed_pixels_per_second: float  # pixels per second calculated from visibility time
+var lane_height_pixels: float  # will be calculated from actual lane height
 
 # Dynamic lookahead time based on note travel time
 var lookahead_time: float = 0.0  # Will be calculated based on travel time
@@ -33,13 +33,16 @@ var active_notes: Array[Node] = []  # Currently active note instances
 
 # Configuration - Exported variables for Inspector
 @export_file("*.mid") var midi_file_path: String = "res://beatmaps/I.mid"
-@export var base_midi_note: int = 36  # C2
+@export var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
 @export var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
 
 # Background music configuration
 @export_file("*.ogg", "*.mp3", "*.wav") var background_music_path: String = ""
 @export var audio_offset: float = 0.0  # Negative: audio first, Positive: MIDI first
 @export_range(0.0, 1.0) var background_music_volume: float = 1.0  # Background music volume
+
+# Note timing configuration
+@export var note_visibility_seconds: float = 1.0  # How long notes are visible before hitting judgment line
 
 func _ready():
 	# Start timing the setup process
@@ -60,7 +63,7 @@ func _ready():
 	
 	# Initialize MIDI loader
 	midi_loader = MIDIBeatmapLoaderScript.new()
-	midi_loader.base_midi_note = base_midi_note
+	midi_loader.set_channel_base_notes(channel_base_notes)
 	
 	# Connect to judgement system for note removal
 	var judgement_system = get_node("../JudgementSystem")
@@ -112,7 +115,7 @@ func start_song():
 		# Case 1: Audio starts first, MIDI delayed by abs(audio_offset)
 		var midi_delay = abs(audio_offset)
 		song_offset_seconds = -lookahead_time - midi_delay
-		background_music_start_time = 0.0  # Audio starts immediately
+		background_music_start_time = -midi_delay  # Audio starts earlier
 	else:
 		# Case 2: MIDI starts first, audio delayed by audio_offset
 		song_offset_seconds = -lookahead_time  # MIDI starts immediately
@@ -158,17 +161,14 @@ func _calculate_lane_dimensions():
 	
 	if test_container:
 		lane_height_pixels = test_container.size.y
-		# Calculate note speed to maintain the same visual speed as before
-		# Old system: 0.5 percentage per second = 50% of lane per second
-		# New system: equivalent pixels per second
-		note_speed_pixels_per_second = lane_height_pixels * 0.5
+		# Calculate note speed based on desired visibility time
+		# Speed = distance / time, so pixels per second = lane height / visibility seconds
+		note_speed_pixels_per_second = lane_height_pixels / note_visibility_seconds
 	else:
-		pass
+		# Fallback: assume standard lane height and calculate speed from visibility time
+		lane_height_pixels = 400.0  # Standard fallback lane height
+		note_speed_pixels_per_second = lane_height_pixels / note_visibility_seconds
 
-# Legacy function - no longer used, replaced by spawn_notes_at_exact_time()
-# Kept for reference but not called
-func spawn_midi_notes():
-	pass
 
 func get_lane_container(lane_number: int) -> Node:
 	# Map lane number to row and position
@@ -216,11 +216,9 @@ func get_row_info_for_lane(lane_number: int) -> Dictionary:
 		return {}
 
 func _calculate_lookahead_time():
-	# Calculate how long it takes for a note to travel the full lane height
-	var travel_time = lane_height_pixels / note_speed_pixels_per_second
-	
-	# Use exact travel time without buffer
-	lookahead_time = travel_time
+	# Lookahead time is now directly controlled by the export variable
+	# This ensures notes are visible for exactly the specified duration
+	lookahead_time = note_visibility_seconds
 	
 
 # Spawn notes at their exact calculated spawn times
@@ -310,9 +308,6 @@ func spawn_note_precise(note_data: Dictionary):
 	# Add the note to the container and active notes list
 	lane_container.add_child(note)
 	active_notes.append(note)
-	
-	# Disable the old movement system since we handle positioning manually
-	note.stop_falling()
 
 # Update positions of all active notes using absolute time
 func update_note_positions():
@@ -419,14 +414,32 @@ func set_midi_file(path: String):
 	active_notes.clear()
 	is_song_playing = false
 	if midi_loader:
+		midi_loader.set_channel_base_notes(channel_base_notes)
 		midi_loader.load_midi_file(path, enabled_channels)
 		# Restart the song with new timing
 		start_song()
 
-func set_base_midi_note(note: int):
-	base_midi_note = note
-	if midi_loader:
-		midi_loader.set_base_midi_note(note, enabled_channels)
+# Set base MIDI note for a specific channel
+func set_channel_base_note(channel: int, base_note: int):
+	if channel >= 0 and channel < 16:
+		channel_base_notes[channel] = base_note
+		if midi_loader:
+			midi_loader.set_channel_base_notes(channel_base_notes)
+			midi_loader.reprocess_with_channels(enabled_channels)
+
+# Get base MIDI note for a specific channel
+func get_channel_base_note(channel: int) -> int:
+	if channel >= 0 and channel < 16:
+		return channel_base_notes[channel]
+	return 48  # Default C4 for invalid channels
+
+# Reset a channel base note to default (C4/48)
+func reset_channel_base_note(channel: int):
+	if channel >= 0 and channel < 16:
+		channel_base_notes[channel] = 48  # Set to C4/48 default
+		if midi_loader:
+			midi_loader.set_channel_base_notes(channel_base_notes)
+			midi_loader.reprocess_with_channels(enabled_channels)
 
 func set_enabled_channels(channels: Array[int]):
 	enabled_channels = channels

@@ -597,11 +597,17 @@ func _find_note_data_for_miss(lane_number: int, note_id: String) -> Dictionary:
 	
 	return {}
 
-# Convert lane number to MIDI note number
+# Convert lane number to MIDI note number using dominant channel's base note
 func lane_to_midi_note(lane_number: int) -> int:
-	# Map lanes 1-49 to MIDI notes starting from base_midi_note
+	# Use the dominant channel's base note for audio feedback
+	var dominant_base_note = base_midi_note  # Fallback to default
+	
+	if midi_spawner and midi_spawner.midi_loader:
+		dominant_base_note = midi_spawner.midi_loader.dominant_channel_base_note
+	
+	# Map lanes 1-49 to MIDI notes starting from dominant_base_note
 	# This creates a chromatic scale across the keyboard layout
-	return base_midi_note + (lane_number - 1)
+	return dominant_base_note + (lane_number - 1)
 
 # Play audio for successful key press
 func _play_note_audio(lane_number: int):
@@ -698,23 +704,20 @@ func _get_main_melody_channel() -> int:
 	
 	return main_channel
 
-# Get the program for a specific channel
+# Get the program for a specific channel at current song time (supports mid-song program changes)
 func _get_program_for_channel(channel: int) -> int:
 	if not midi_spawner or not midi_spawner.midi_loader:
 		return 0  # Default to Grand Piano
 	
-	# Get the program from the MIDI loader's channel programs
-	if midi_spawner.midi_loader.channel_programs.has(channel):
-		return midi_spawner.midi_loader.channel_programs[channel]
-	
-	# Fallback to Grand Piano for most channels, Drum Kit for channel 9
-	return 0 if channel != 9 else 0
+	# Use the time-aware program lookup that supports mid-song program changes
+	var current_time = get_precise_song_time()
+	return midi_spawner.midi_loader.get_program_at_time(channel, current_time)
 
-# Update audio velocity from MIDI data
+# Update audio velocity from MIDI data (use dominant channel's average)
 func _update_audio_velocity():
 	if midi_spawner and midi_spawner.midi_loader:
-		audio_velocity = midi_spawner.midi_loader.average_velocity
-		print("Audio velocity updated to: ", audio_velocity, " (from MIDI average)")
+		audio_velocity = midi_spawner.midi_loader.dominant_channel_average_velocity
+		print("Audio velocity updated to: ", audio_velocity, " (from dominant channel average)")
 	else:
 		print("Audio velocity remains default: ", audio_velocity)
 
