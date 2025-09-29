@@ -672,29 +672,17 @@ func _play_note_audio(lane_number: int):
 		# Play each channel's instrument for actual notes
 		for note_data in notes_for_lane:
 			var channel = note_data["channel"]
-			var program = note_data["program"]
 			var velocity = note_data["velocity"]
 			var midi_note = note_data["midi_note"]
 			
-			# Only set instrument if it changed (reduces latency)
-			if not cached_instruments.has(channel) or cached_instruments[channel] != program:
-				midi_player.set_free_play_instrument(program, channel)
-				cached_instruments[channel] = program
-			
-			# Play the note with original velocity
+			# Instruments are pre-loaded, just play directly
 			midi_player.play_note_direct(midi_note, velocity, channel)
 	else:
 		# No notes in this lane - play default audio feedback using main melody channel
 		var midi_note = lane_to_midi_note(lane_number)
 		var default_channel = _get_main_melody_channel()
-		var default_program = _get_program_for_channel(default_channel)
 		
-		# Only set instrument if it changed (reduces latency)
-		if not cached_instruments.has(default_channel) or cached_instruments[default_channel] != default_program:
-			midi_player.set_free_play_instrument(default_program, default_channel)
-			cached_instruments[default_channel] = default_program
-		
-		# Play with default velocity
+		# Instruments are pre-loaded, just play directly
 		midi_player.play_note_direct(midi_note, audio_velocity, default_channel)
 
 # Get all notes for a specific lane at a specific time

@@ -189,8 +189,7 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 						"lane": lane,
 						"midi_note": midi_note,
 						"channel": channel,
-						"velocity": velocity,
-						"program": channel_programs.get(channel, 0)
+						"velocity": velocity
 					}
 			
 			elif event is SMF.MIDIEventNoteOff:
