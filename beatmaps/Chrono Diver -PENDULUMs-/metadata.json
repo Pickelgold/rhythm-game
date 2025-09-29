@@ -1,0 +1,11 @@
+{
+    "title": "Chrono Diver -PENDULUMs-",
+    "artist": "猫叉L.E.D.Master+",
+    "mapper": "Pickelgold",
+    "bpm": 196,
+    "jacket": "jacket.webp",
+    "background": "background.jpg",
+    "difficulties": [
+        {"name": "Advanced", "starRating": 1.0, "chart": "Advanced.mid", "audioOffset": -1.3}
+    ]
+}

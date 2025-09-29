@@ -33,7 +33,9 @@ size_flags_stretch_ratio = 4.0
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
-columns = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
 
 [node name="SelectedSong" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
