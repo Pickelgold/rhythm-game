@@ -52,6 +52,9 @@ var audio_channel: int = 0  # MIDI channel to use for audio playback
 var audio_velocity: int = 64  # Default velocity for note playback (will be updated from MIDI data)
 @export_range(0.0, 1.0) var midi_volume: float = 1.0  # MIDI audio volume
 
+# Instrument caching to reduce latency
+var cached_instruments: Dictionary = {}  # channel -> program
+
 
 func _ready():
 	# Wait for scene to be fully loaded
@@ -79,6 +82,53 @@ func _ready():
 	
 	# Update audio velocity from MIDI data
 	_update_audio_velocity()
+	
+	# Pre-load all used channel instruments to reduce latency
+	_preload_all_channel_instruments()
+
+# Pre-load all used channel instruments to reduce audio latency
+func _preload_all_channel_instruments():
+	if not midi_player or not midi_spawner or not midi_spawner.midi_loader:
+		return
+	
+	# Get all notes to determine which channels are actually used
+	var all_notes = midi_spawner.midi_loader.get_all_notes()
+	var used_channels = {}
+	
+	# Find all channels that have notes
+	for note in all_notes:
+		used_channels[note["channel"]] = true
+	
+	# Pre-load instruments for all used channels
+	var preloaded_count = 0
+	for channel in used_channels.keys():
+		var program = _get_program_for_channel(channel)
+		midi_player.set_free_play_instrument(program, channel)
+		cached_instruments[channel] = program
+		preloaded_count += 1
+	
+	print("Pre-loaded ", preloaded_count, " channel instruments to reduce latency:")
+	var sorted_channels = used_channels.keys()
+	sorted_channels.sort()
+	for channel in sorted_channels:
+		var program = cached_instruments[channel]
+		var instrument_name = _get_instrument_name(program, channel)
+		print("  Channel ", channel, ": Program ", program, " (", instrument_name, ")")
+
+# Helper function to get instrument name for debugging
+func _get_instrument_name(program: int, channel: int) -> String:
+	if channel == 9:
+		return "Drum Kit"
+	elif program == 0:
+		return "Grand Piano"
+	elif program == 40:
+		return "Violin"
+	elif program == 56:
+		return "Trumpet"
+	elif program == 73:
+		return "Flute"
+	else:
+		return "Program " + str(program)
 
 func _process(delta):
 	# Update current song time to match midi_spawner
@@ -609,7 +659,7 @@ func lane_to_midi_note(lane_number: int) -> int:
 	# This creates a chromatic scale across the keyboard layout
 	return dominant_base_note + (lane_number - 1)
 
-# Play audio for successful key press
+# Play audio for successful key press (optimized to reduce latency)
 func _play_note_audio(lane_number: int):
 	if not midi_player or not midi_spawner or not midi_spawner.midi_loader:
 		return
@@ -626,8 +676,10 @@ func _play_note_audio(lane_number: int):
 			var velocity = note_data["velocity"]
 			var midi_note = note_data["midi_note"]
 			
-			# Set the channel's instrument
-			midi_player.set_free_play_instrument(program, channel)
+			# Only set instrument if it changed (reduces latency)
+			if not cached_instruments.has(channel) or cached_instruments[channel] != program:
+				midi_player.set_free_play_instrument(program, channel)
+				cached_instruments[channel] = program
 			
 			# Play the note with original velocity
 			midi_player.play_note_direct(midi_note, velocity, channel)
@@ -637,8 +689,10 @@ func _play_note_audio(lane_number: int):
 		var default_channel = _get_main_melody_channel()
 		var default_program = _get_program_for_channel(default_channel)
 		
-		# Set the default channel's instrument
-		midi_player.set_free_play_instrument(default_program, default_channel)
+		# Only set instrument if it changed (reduces latency)
+		if not cached_instruments.has(default_channel) or cached_instruments[default_channel] != default_program:
+			midi_player.set_free_play_instrument(default_program, default_channel)
+			cached_instruments[default_channel] = default_program
 		
 		# Play with default velocity
 		midi_player.play_note_direct(midi_note, audio_velocity, default_channel)
@@ -704,14 +758,13 @@ func _get_main_melody_channel() -> int:
 	
 	return main_channel
 
-# Get the program for a specific channel at current song time (supports mid-song program changes)
+# Get the program for a specific channel (simplified - no mid-song changes)
 func _get_program_for_channel(channel: int) -> int:
 	if not midi_spawner or not midi_spawner.midi_loader:
 		return 0  # Default to Grand Piano
 	
-	# Use the time-aware program lookup that supports mid-song program changes
-	var current_time = get_precise_song_time()
-	return midi_spawner.midi_loader.get_program_at_time(channel, current_time)
+	# Use the simplified program lookup
+	return midi_spawner.midi_loader.get_program_for_channel(channel)
 
 # Update audio velocity from MIDI data (use dominant channel's average)
 func _update_audio_velocity():
