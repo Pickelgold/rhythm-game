@@ -11,7 +11,7 @@ var selected_beatmap: Dictionary = {}
 var beatmap_cards: Array[BeatmapCard] = []
 
 # Preload the BeatmapCard scene
-var beatmap_card_scene = preload("res://BeatmapCard.tscn")
+var beatmap_card_scene = preload("res://scenes/BeatmapCard.tscn")
 
 func _ready():
 	# Load all beatmaps
@@ -269,7 +269,7 @@ func _on_play_button_pressed():
 	GameGlobals.current_beatmap_config = gameplay_config
 	
 	# Transition to gameplay scene
-	get_tree().change_scene_to_file("res://gameplay.tscn")
+	get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
 
 # Find the audio file in the beatmap directory
 func _find_audio_file(beatmap_path: String) -> String:

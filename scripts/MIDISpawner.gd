@@ -1,7 +1,7 @@
 extends Node
 
 # Reference to the note scene
-var note_scene = preload("res://Note.tscn")
+var note_scene = preload("res://scenes/Note.tscn")
 
 # Preload the MIDI loader script
 var MIDIBeatmapLoaderScript = preload("res://scripts/MIDIBeatmapLoader.gd")

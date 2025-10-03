@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rhythm Game"
-run/main_scene="uid://nnhpfhx4whdn"
+run/main_scene="res://scenes/song_select.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/show_image=false
 boot_splash/fullsize=false
