@@ -6,6 +6,6 @@
     "jacket": "jacket.webp",
     "background": "background.jpg",
     "difficulties": [
-        {"name": "Advanced", "starRating": 1.0, "chart": "Advanced.mid", "audioOffset": -1.3}
+        {"name": "Advanced", "starRating": 1.0, "beatmap": "Advanced.mid", "audioOffset": -1.3}
     ]
 }

@@ -91,8 +91,8 @@ func _load_beatmap_metadata(beatmap_path: String) -> Dictionary:
 	# Process difficulties to add full paths
 	if result.has("difficulties") and result["difficulties"] is Array:
 		for difficulty in result["difficulties"]:
-			if difficulty.has("chart"):
-				difficulty["chart_path"] = beatmap_path + difficulty["chart"]
+			if difficulty.has("beatmap"):
+				difficulty["chart_path"] = beatmap_path + difficulty["beatmap"]
 	
 	return result
 
