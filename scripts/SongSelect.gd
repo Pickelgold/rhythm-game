@@ -23,7 +23,7 @@ func _ready():
 # Scan the beatmaps directory for all available beatmaps
 func _scan_beatmaps():
 	beatmaps.clear()
-	var beatmaps_dir = "res://beatmaps/"
+	var beatmaps_dir = UserDataManager.get_beatmaps_path()
 	
 	var dir = DirAccess.open(beatmaps_dir)
 	if dir == null:

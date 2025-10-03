@@ -26,6 +26,7 @@ driver/output_latency=10
 [autoload]
 
 GameGlobals="*res://scripts/GameGlobals.gd"
+UserDataManager="*res://scripts/UserDataManager.gd"
 
 [display]
 
