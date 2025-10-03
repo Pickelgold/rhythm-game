@@ -39,7 +39,7 @@ var active_notes: Array[Node] = []  # Currently active note instances
 # Background music configuration
 @export_file("*.ogg", "*.mp3", "*.wav") var background_music_path: String = ""
 @export var audio_offset: float = 0.0  # Negative: audio first, Positive: MIDI first
-@export_range(0.0, 1.0) var background_music_volume: float = 1.0  # Background music volume
+# Background music volume is now managed by AudioManager singleton
 
 # Note timing configuration
 @export var note_visibility_seconds: float = 1.0  # How long notes are visible before hitting judgment line
@@ -368,11 +368,11 @@ func _setup_background_music():
 			return
 		
 		background_music_player.stream = audio_stream
-		# Set the volume
-		background_music_player.volume_db = linear_to_db(background_music_volume)
+		# Set volume using AudioManager
+		AudioManager.set_audio_stream_player_volume(background_music_player, "music")
 		print("Background music loaded successfully: ", background_music_path)
 		print("Audio stream type: ", audio_stream.get_class())
-		print("Background music volume set to: ", background_music_volume, " (", background_music_player.volume_db, " dB)")
+		print("Background music volume set via AudioManager")
 	else:
 		print("No background music path specified")
 

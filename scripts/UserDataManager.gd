@@ -128,7 +128,8 @@ func _get_default_config() -> Dictionary:
 		"audio": {
 			"master_volume": 1.0,
 			"music_volume": 1.0,
-			"sfx_volume": 1.0
+			"sfx_volume": 1.0,
+			"midi_volume": 1.0
 		},
 		"gameplay": {
 			"scroll_speed": 1.0,

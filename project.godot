@@ -27,6 +27,7 @@ driver/output_latency=10
 
 GameGlobals="*res://scripts/GameGlobals.gd"
 UserDataManager="*res://scripts/UserDataManager.gd"
+AudioManager="*res://scripts/AudioManager.gd"
 
 [display]
 

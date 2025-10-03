@@ -50,7 +50,7 @@ var release_timers: Dictionary = {}  # lane_number -> Timer
 var base_midi_note: int = 36  # C2 - base note for lane mapping
 var audio_channel: int = 0  # MIDI channel to use for audio playback
 var audio_velocity: int = 64  # Default velocity for note playback (will be updated from MIDI data)
-@export_range(0.0, 1.0) var midi_volume: float = 1.0  # MIDI audio volume
+# MIDI volume is now managed by AudioManager singleton
 
 # Instrument caching to reduce latency
 var cached_instruments: Dictionary = {}  # channel -> program
@@ -77,8 +77,7 @@ func _ready():
 	for i in range(1, 50):  # Lanes 1-49
 		active_notes_by_lane[i] = []
 	
-	# Apply MIDI volume setting
-	_apply_midi_volume()
+	# MIDI volume is now managed by AudioManager
 	
 	# Update audio velocity from MIDI data
 	_update_audio_velocity()
@@ -761,14 +760,3 @@ func _update_audio_velocity():
 		print("Audio velocity updated to: ", audio_velocity, " (from dominant channel average)")
 	else:
 		print("Audio velocity remains default: ", audio_velocity)
-
-# Apply MIDI volume setting to the MidiPlayer
-func _apply_midi_volume():
-	if midi_player:
-		# Convert linear volume (0.0-1.0) to decibels
-		# MidiPlayer uses volume_db which ranges from -80.0 to 0.0
-		var volume_db = linear_to_db(midi_volume)
-		# Clamp to MidiPlayer's expected range
-		volume_db = clamp(volume_db, -80.0, 0.0)
-		midi_player.volume_db = volume_db
-		print("MIDI volume set to: ", midi_volume, " (", volume_db, " dB)")

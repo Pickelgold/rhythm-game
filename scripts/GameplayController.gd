@@ -20,6 +20,9 @@ func _ready():
 		midi_player.set_soundfont(soundfont_path)
 	else:
 		print("Warning: No soundfont found in user data directory")
+	
+	# Register MidiPlayer with AudioManager for volume control
+	AudioManager.register_midi_player(midi_player)
 
 # Helper function to find a node recursively
 func find_child(node_name: String) -> Node:
