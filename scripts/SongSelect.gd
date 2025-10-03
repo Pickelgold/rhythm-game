@@ -92,7 +92,7 @@ func _load_beatmap_metadata(beatmap_path: String) -> Dictionary:
 	if result.has("difficulties") and result["difficulties"] is Array:
 		for difficulty in result["difficulties"]:
 			if difficulty.has("beatmap"):
-				difficulty["chart_path"] = beatmap_path + difficulty["beatmap"]
+				difficulty["beatmap_path"] = beatmap_path + difficulty["beatmap"]
 	
 	return result
 
@@ -252,7 +252,7 @@ func _on_play_button_pressed():
 		"title": selected_beatmap.get("title", "Unknown"),
 		"artist": selected_beatmap.get("artist", "Unknown"),
 		"bpm": selected_beatmap.get("bpm", 120),
-		"chart_path": difficulty.get("chart_path", ""),
+		"beatmap_path": difficulty.get("beatmap_path", ""),
 		"audio_path": "", # Will be set below
 		"background_path": selected_beatmap.get("background_path", ""),
 		"audio_offset": difficulty.get("audioOffset", 0.0)
