@@ -4,13 +4,13 @@ extends Node
 var BASE_DIR: String
 var BEATMAPS_DIR: String
 var SOUNDFONTS_DIR: String
-var SCORES_DIR: String
+var REPLAYS_DIR: String
 var CONFIG_FILE: String
 
 # Built-in resource paths for copying essential files
 const BUILTIN_BEATMAPS_DIR = "res://beatmaps/"
 const BUILTIN_SOUNDFONTS_DIR = "res://soundfonts/"
-const BUILTIN_SCORES_DIR = "res://scores/"
+const BUILTIN_REPLAYS_DIR = "res://replays/"
 
 var is_initialized = false
 
@@ -21,7 +21,7 @@ func _ready():
 		BASE_DIR = "user://"
 		BEATMAPS_DIR = BASE_DIR + "beatmaps/"
 		SOUNDFONTS_DIR = BASE_DIR + "soundfonts/"
-		SCORES_DIR = BASE_DIR + "scores/"
+		REPLAYS_DIR = BASE_DIR + "replays/"
 		CONFIG_FILE = BASE_DIR + "config.json"
 	else:
 		# Use clean OS-specific paths for desktop platforms
@@ -36,7 +36,7 @@ func _ready():
 		BASE_DIR = user_data_dir + "/rhythm-game/"
 		BEATMAPS_DIR = BASE_DIR + "beatmaps/"
 		SOUNDFONTS_DIR = BASE_DIR + "soundfonts/"
-		SCORES_DIR = BASE_DIR + "scores/"
+		REPLAYS_DIR = BASE_DIR + "replays/"
 		CONFIG_FILE = BASE_DIR + "config.json"
 	
 	ensure_user_data_structure()
@@ -61,9 +61,9 @@ func ensure_user_data_structure():
 		DirAccess.make_dir_recursive_absolute(SOUNDFONTS_DIR)
 		print("Created soundfonts directory: ", SOUNDFONTS_DIR)
 	
-	if not DirAccess.dir_exists_absolute(SCORES_DIR):
-		DirAccess.make_dir_recursive_absolute(SCORES_DIR)
-		print("Created scores directory: ", SCORES_DIR)
+	if not DirAccess.dir_exists_absolute(REPLAYS_DIR):
+		DirAccess.make_dir_recursive_absolute(REPLAYS_DIR)
+		print("Created replays directory: ", REPLAYS_DIR)
 	
 	# Copy built-in beatmaps to user directory
 	_copy_beatmaps_to_user_directory()
@@ -71,8 +71,8 @@ func ensure_user_data_structure():
 	# Copy built-in soundfonts to user directory
 	_copy_soundfonts_to_user_directory()
 	
-	# Copy built-in scores to user directory
-	_copy_scores_to_user_directory()
+	# Copy built-in replays to user directory
+	_copy_replays_to_user_directory()
 	
 	# Create default config if it doesn't exist
 	_create_default_config()
@@ -132,27 +132,27 @@ func _copy_soundfonts_to_user_directory():
 	
 	source_dir.list_dir_end()
 
-# Copy all built-in scores to user directory
-func _copy_scores_to_user_directory():
-	var source_dir = DirAccess.open(BUILTIN_SCORES_DIR)
+# Copy all built-in replays to user directory
+func _copy_replays_to_user_directory():
+	var source_dir = DirAccess.open(BUILTIN_REPLAYS_DIR)
 	if source_dir == null:
-		print("Warning: No built-in scores directory found")
+		print("Warning: No built-in replays directory found")
 		return
 	
-	print("Copying built-in scores to user directory...")
+	print("Copying built-in replays to user directory...")
 	
 	source_dir.list_dir_begin()
 	var file_name = source_dir.get_next()
 	
 	while file_name != "":
 		if not source_dir.current_is_dir() and not file_name.begins_with("."):
-			var source_file_path = BUILTIN_SCORES_DIR + file_name
-			var dest_file_path = SCORES_DIR + file_name
+			var source_file_path = BUILTIN_REPLAYS_DIR + file_name
+			var dest_file_path = REPLAYS_DIR + file_name
 			
 			# Only copy if destination doesn't exist
 			if not FileAccess.file_exists(dest_file_path):
 				_copy_file(source_file_path, dest_file_path)
-				print("Copied score: ", file_name)
+				print("Copied replay: ", file_name)
 		
 		file_name = source_dir.get_next()
 	
@@ -263,8 +263,8 @@ func get_beatmaps_path() -> String:
 func get_soundfonts_path() -> String:
 	return SOUNDFONTS_DIR
 
-func get_scores_path() -> String:
-	return SCORES_DIR
+func get_replays_path() -> String:
+	return REPLAYS_DIR
 
 func get_config_file_path() -> String:
 	return CONFIG_FILE
