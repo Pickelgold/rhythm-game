@@ -32,7 +32,7 @@ var spawned_notes: Dictionary = {}  # note_id -> spawn_time
 var active_notes: Array[Node] = []  # Currently active note instances
 
 # Configuration - Exported variables for Inspector
-@export_file("*.mid") var midi_file_path: String = "res://beatmaps/I.mid"
+@export_file("*.mid") var midi_file_path: String = "res://mapsets/I.mid"
 @export var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
 @export var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
 

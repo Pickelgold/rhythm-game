@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjkk3qmhdye5t"
-path="res://.godot/imported/jacket.webp-a2442e64d36bf7497ae056992f293492.ctex"
+uid="uid://c0jvsepbj8k3e"
+path="res://.godot/imported/background.jpg-311987fc1caa62d868c1f5dfde866866.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://beatmaps/Chrono Diver -PENDULUMs-/jacket.webp"
-dest_files=["res://.godot/imported/jacket.webp-a2442e64d36bf7497ae056992f293492.ctex"]
+source_file="res://mapsets/Chrono Diver -PENDULUMs-/background.jpg"
+dest_files=["res://.godot/imported/background.jpg-311987fc1caa62d868c1f5dfde866866.ctex"]
 
 [params]
 

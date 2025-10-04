@@ -1,8 +1,8 @@
 extends Control
-class_name BeatmapCard
+class_name MapsetCard
 
 # Signal emitted when this card is selected
-signal card_selected(beatmap_data: Dictionary)
+signal card_selected(mapset_data: Dictionary)
 
 # References to UI elements
 @onready var jacket_texture: TextureRect = $CardMargin/VBoxContainer/JacketContainer/Jacket
@@ -11,8 +11,8 @@ signal card_selected(beatmap_data: Dictionary)
 @onready var background: ColorRect = $Background
 @onready var button: Button = $Button
 
-# Beatmap data
-var beatmap_data: Dictionary = {}
+# Mapset data
+var mapset_data: Dictionary = {}
 var is_selected: bool = false
 
 # Colors for different states
@@ -29,9 +29,9 @@ func _ready():
 	# Set initial appearance
 	_update_appearance()
 
-# Set the beatmap data for this card
-func setup_beatmap(data: Dictionary):
-	beatmap_data = data
+# Set the mapset data for this card
+func setup_mapset(data: Dictionary):
+	mapset_data = data
 	
 	# Update labels using get_node to avoid @onready timing issues
 	if data.has("title"):
@@ -60,7 +60,7 @@ func _load_jacket_image(image_path: String):
 
 # Handle button press
 func _on_button_pressed():
-	card_selected.emit(beatmap_data)
+	card_selected.emit(mapset_data)
 
 # Handle mouse hover
 func _on_mouse_entered():

@@ -2,13 +2,13 @@ extends Node
 
 # Directory structure paths (initialized at runtime)
 var BASE_DIR: String
-var BEATMAPS_DIR: String
+var MAPSETS_DIR: String
 var SOUNDFONTS_DIR: String
 var REPLAYS_DIR: String
 var CONFIG_FILE: String
 
 # Built-in resource paths for copying essential files
-const BUILTIN_BEATMAPS_DIR = "res://beatmaps/"
+const BUILTIN_MAPSETS_DIR = "res://mapsets/"
 const BUILTIN_SOUNDFONTS_DIR = "res://soundfonts/"
 const BUILTIN_REPLAYS_DIR = "res://replays/"
 
@@ -19,7 +19,7 @@ func _ready():
 	if OS.get_name() == "Web":
 		# Use Godot's user:// for web (maps to browser IndexedDB storage)
 		BASE_DIR = "user://"
-		BEATMAPS_DIR = BASE_DIR + "beatmaps/"
+		MAPSETS_DIR = BASE_DIR + "mapsets/"
 		SOUNDFONTS_DIR = BASE_DIR + "soundfonts/"
 		REPLAYS_DIR = BASE_DIR + "replays/"
 		CONFIG_FILE = BASE_DIR + "config.json"
@@ -34,7 +34,7 @@ func _ready():
 			user_data_dir = OS.get_environment("HOME") + "/Library/Application Support"
 		
 		BASE_DIR = user_data_dir + "/rhythm-game/"
-		BEATMAPS_DIR = BASE_DIR + "beatmaps/"
+		MAPSETS_DIR = BASE_DIR + "mapsets/"
 		SOUNDFONTS_DIR = BASE_DIR + "soundfonts/"
 		REPLAYS_DIR = BASE_DIR + "replays/"
 		CONFIG_FILE = BASE_DIR + "config.json"
@@ -53,9 +53,9 @@ func ensure_user_data_structure():
 		DirAccess.make_dir_recursive_absolute(BASE_DIR)
 		print("Created base directory: ", BASE_DIR)
 	
-	if not DirAccess.dir_exists_absolute(BEATMAPS_DIR):
-		DirAccess.make_dir_recursive_absolute(BEATMAPS_DIR)
-		print("Created beatmaps directory: ", BEATMAPS_DIR)
+	if not DirAccess.dir_exists_absolute(MAPSETS_DIR):
+		DirAccess.make_dir_recursive_absolute(MAPSETS_DIR)
+		print("Created mapsets directory: ", MAPSETS_DIR)
 	
 	if not DirAccess.dir_exists_absolute(SOUNDFONTS_DIR):
 		DirAccess.make_dir_recursive_absolute(SOUNDFONTS_DIR)
@@ -65,8 +65,8 @@ func ensure_user_data_structure():
 		DirAccess.make_dir_recursive_absolute(REPLAYS_DIR)
 		print("Created replays directory: ", REPLAYS_DIR)
 	
-	# Copy built-in beatmaps to user directory
-	_copy_beatmaps_to_user_directory()
+	# Copy built-in mapsets to user directory
+	_copy_mapsets_to_user_directory()
 	
 	# Copy built-in soundfonts to user directory
 	_copy_soundfonts_to_user_directory()
@@ -80,27 +80,27 @@ func ensure_user_data_structure():
 	is_initialized = true
 	print("User data structure initialized successfully")
 
-# Copy all built-in beatmaps to user directory
-func _copy_beatmaps_to_user_directory():
-	var source_dir = DirAccess.open(BUILTIN_BEATMAPS_DIR)
+# Copy all built-in mapsets to user directory
+func _copy_mapsets_to_user_directory():
+	var source_dir = DirAccess.open(BUILTIN_MAPSETS_DIR)
 	if source_dir == null:
-		print("Warning: No built-in beatmaps directory found")
+		print("Warning: No built-in mapsets directory found")
 		return
 	
-	print("Copying built-in beatmaps to user directory...")
+	print("Copying built-in mapsets to user directory...")
 	
 	source_dir.list_dir_begin()
 	var folder_name = source_dir.get_next()
 	
 	while folder_name != "":
 		if source_dir.current_is_dir() and not folder_name.begins_with("."):
-			var source_beatmap_path = BUILTIN_BEATMAPS_DIR + folder_name + "/"
-			var dest_beatmap_path = BEATMAPS_DIR + folder_name + "/"
+			var source_mapset_path = BUILTIN_MAPSETS_DIR + folder_name + "/"
+			var dest_mapset_path = MAPSETS_DIR + folder_name + "/"
 			
 			# Only copy if destination doesn't exist
-			if not DirAccess.dir_exists_absolute(dest_beatmap_path):
-				_copy_directory_recursive(source_beatmap_path, dest_beatmap_path)
-				print("Copied beatmap: ", folder_name)
+			if not DirAccess.dir_exists_absolute(dest_mapset_path):
+				_copy_directory_recursive(source_mapset_path, dest_mapset_path)
+				print("Copied mapset: ", folder_name)
 		
 		folder_name = source_dir.get_next()
 	
@@ -257,8 +257,8 @@ func _copy_directory_recursive(source_dir: String, dest_dir: String):
 	dir.list_dir_end()
 
 # Public API functions for getting paths
-func get_beatmaps_path() -> String:
-	return BEATMAPS_DIR
+func get_mapsets_path() -> String:
+	return MAPSETS_DIR
 
 func get_soundfonts_path() -> String:
 	return SOUNDFONTS_DIR

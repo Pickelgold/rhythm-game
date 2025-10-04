@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvn4k8j2h5p8c"]
 
-[ext_resource type="Script" path="res://scripts/BeatmapCard.gd" id="1_x8v9j"]
+[ext_resource type="Script" path="res://scripts/MapsetCard.gd" id="1_x8v9j"]
 
-[node name="BeatmapCard" type="Control"]
+[node name="MapsetCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3

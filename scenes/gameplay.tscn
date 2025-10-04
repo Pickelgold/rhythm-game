@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://2iyygmrr3bgu"]
 
-[ext_resource type="Texture2D" uid="uid://c0jvsepbj8k3e" path="res://beatmaps/Chrono Diver -PENDULUMs-/background.jpg" id="1_fbudy"]
+[ext_resource type="Texture2D" uid="uid://c0jvsepbj8k3e" path="res://mapsets/Chrono Diver -PENDULUMs-/background.jpg" id="1_fbudy"]
 [ext_resource type="Script" uid="uid://brdvvugt8538w" path="res://addons/midi/MidiPlayer.gd" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://lg2q6vomebbm" path="res://scripts/KeyboardController.gd" id="3_keyboard"]
 [ext_resource type="Script" uid="uid://ufaxmhjmxqel" path="res://scripts/MIDISpawner.gd" id="4_midi_spawner"]
@@ -3669,7 +3669,7 @@ script = ExtResource("3_keyboard")
 
 [node name="MIDISpawner" type="Node" parent="."]
 script = ExtResource("4_midi_spawner")
-midi_file_path = "res://beatmaps/Chrono Diver -PENDULUMs-/Advanced.mid"
+midi_file_path = "res://mapsets/Chrono Diver -PENDULUMs-/Advanced.mid"
 channel_base_notes = Array[int]([60, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48])
 background_music_path = "uid://dkm1fs6gvd7xg"
 audio_offset = -1.2

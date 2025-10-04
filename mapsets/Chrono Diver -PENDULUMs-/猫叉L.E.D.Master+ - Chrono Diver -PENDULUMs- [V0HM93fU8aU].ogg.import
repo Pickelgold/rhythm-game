@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkm1fs6gvd7xg"
+path="res://.godot/imported/猫叉L.E.D.Master+ - Chrono Diver -PENDULUMs- [V0HM93fU8aU].ogg-49aed61be39fa2e78f219e8a300b02fe.oggvorbisstr"
+
+[deps]
+
+source_file="res://mapsets/Chrono Diver -PENDULUMs-/猫叉L.E.D.Master+ - Chrono Diver -PENDULUMs- [V0HM93fU8aU].ogg"
+dest_files=["res://.godot/imported/猫叉L.E.D.Master+ - Chrono Diver -PENDULUMs- [V0HM93fU8aU].ogg-49aed61be39fa2e78f219e8a300b02fe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
