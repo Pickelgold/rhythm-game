@@ -48,39 +48,30 @@ func ensure_user_data_structure():
 	
 	print("Initializing user data structure...")
 	
-	# Create base directories
-	if not DirAccess.dir_exists_absolute(BASE_DIR):
-		DirAccess.make_dir_recursive_absolute(BASE_DIR)
-		print("Created base directory: ", BASE_DIR)
+	# Check if this is the first run
+	var is_first_run = not DirAccess.dir_exists_absolute(BASE_DIR)
 	
-	if not DirAccess.dir_exists_absolute(MAPSETS_DIR):
-		DirAccess.make_dir_recursive_absolute(MAPSETS_DIR)
-		print("Created mapsets directory: ", MAPSETS_DIR)
+	# Always ensure directories exist (safe to call even if they exist)
+	DirAccess.make_dir_recursive_absolute(BASE_DIR)
+	DirAccess.make_dir_recursive_absolute(MAPSETS_DIR)
+	DirAccess.make_dir_recursive_absolute(SOUNDFONTS_DIR)
+	DirAccess.make_dir_recursive_absolute(REPLAYS_DIR)
 	
-	if not DirAccess.dir_exists_absolute(SOUNDFONTS_DIR):
-		DirAccess.make_dir_recursive_absolute(SOUNDFONTS_DIR)
-		print("Created soundfonts directory: ", SOUNDFONTS_DIR)
+	if is_first_run:
+		print("First run detected - setting up user data directory...")
+		
+		# Copy built-in files on first run only
+		_copy_mapsets_to_user_directory()
+		_copy_soundfonts_to_user_directory()
+		_copy_replays_to_user_directory()
 	
-	if not DirAccess.dir_exists_absolute(REPLAYS_DIR):
-		DirAccess.make_dir_recursive_absolute(REPLAYS_DIR)
-		print("Created replays directory: ", REPLAYS_DIR)
-	
-	# Copy built-in mapsets to user directory
-	_copy_mapsets_to_user_directory()
-	
-	# Copy built-in soundfonts to user directory
-	_copy_soundfonts_to_user_directory()
-	
-	# Copy built-in replays to user directory
-	_copy_replays_to_user_directory()
-	
-	# Create default config if it doesn't exist
-	_create_default_config()
+	# Always check/create config (can be missing or corrupted on any run)
+	_ensure_valid_config()
 	
 	is_initialized = true
 	print("User data structure initialized successfully")
 
-# Copy all built-in mapsets to user directory
+# Copy all built-in mapsets to user directory (first run only)
 func _copy_mapsets_to_user_directory():
 	var source_dir = DirAccess.open(BUILTIN_MAPSETS_DIR)
 	if source_dir == null:
@@ -97,16 +88,14 @@ func _copy_mapsets_to_user_directory():
 			var source_mapset_path = BUILTIN_MAPSETS_DIR + folder_name + "/"
 			var dest_mapset_path = MAPSETS_DIR + folder_name + "/"
 			
-			# Only copy if destination doesn't exist
-			if not DirAccess.dir_exists_absolute(dest_mapset_path):
-				_copy_directory_recursive(source_mapset_path, dest_mapset_path)
-				print("Copied mapset: ", folder_name)
+			_copy_directory_recursive(source_mapset_path, dest_mapset_path)
+			print("Copied mapset: ", folder_name)
 		
 		folder_name = source_dir.get_next()
 	
 	source_dir.list_dir_end()
 
-# Copy all built-in soundfonts to user directory
+# Copy all built-in soundfonts to user directory (first run only)
 func _copy_soundfonts_to_user_directory():
 	var source_dir = DirAccess.open(BUILTIN_SOUNDFONTS_DIR)
 	if source_dir == null:
@@ -116,45 +105,59 @@ func _copy_soundfonts_to_user_directory():
 	print("Copying built-in soundfonts to user directory...")
 	
 	source_dir.list_dir_begin()
-	var file_name = source_dir.get_next()
+	var item_name = source_dir.get_next()
 	
-	while file_name != "":
-		if not source_dir.current_is_dir() and not file_name.begins_with("."):
-			var source_file_path = BUILTIN_SOUNDFONTS_DIR + file_name
-			var dest_file_path = SOUNDFONTS_DIR + file_name
-			
-			# Only copy if destination doesn't exist
-			if not FileAccess.file_exists(dest_file_path):
+	while item_name != "":
+		if not item_name.begins_with("."):
+			if source_dir.current_is_dir():
+				# Copy soundfont subdirectories recursively
+				var source_soundfont_path = BUILTIN_SOUNDFONTS_DIR + item_name + "/"
+				var dest_soundfont_path = SOUNDFONTS_DIR + item_name + "/"
+				
+				_copy_directory_recursive(source_soundfont_path, dest_soundfont_path)
+				print("Copied soundfont directory: ", item_name)
+			else:
+				# Copy individual soundfont files
+				var source_file_path = BUILTIN_SOUNDFONTS_DIR + item_name
+				var dest_file_path = SOUNDFONTS_DIR + item_name
+				
 				_copy_file(source_file_path, dest_file_path)
-				print("Copied soundfont: ", file_name)
+				print("Copied soundfont: ", item_name)
 		
-		file_name = source_dir.get_next()
+		item_name = source_dir.get_next()
 	
 	source_dir.list_dir_end()
 
-# Copy all built-in replays to user directory
+# Copy all built-in replays to user directory (first run only)
 func _copy_replays_to_user_directory():
 	var source_dir = DirAccess.open(BUILTIN_REPLAYS_DIR)
 	if source_dir == null:
-		print("Warning: No built-in replays directory found")
+		# No built-in replays is normal
 		return
 	
 	print("Copying built-in replays to user directory...")
 	
 	source_dir.list_dir_begin()
-	var file_name = source_dir.get_next()
+	var item_name = source_dir.get_next()
 	
-	while file_name != "":
-		if not source_dir.current_is_dir() and not file_name.begins_with("."):
-			var source_file_path = BUILTIN_REPLAYS_DIR + file_name
-			var dest_file_path = REPLAYS_DIR + file_name
-			
-			# Only copy if destination doesn't exist
-			if not FileAccess.file_exists(dest_file_path):
+	while item_name != "":
+		if not item_name.begins_with("."):
+			if source_dir.current_is_dir():
+				# Copy replay directories recursively
+				var source_replay_path = BUILTIN_REPLAYS_DIR + item_name + "/"
+				var dest_replay_path = REPLAYS_DIR + item_name + "/"
+				
+				_copy_directory_recursive(source_replay_path, dest_replay_path)
+				print("Copied replay directory: ", item_name)
+			else:
+				# Copy individual files
+				var source_file_path = BUILTIN_REPLAYS_DIR + item_name
+				var dest_file_path = REPLAYS_DIR + item_name
+				
 				_copy_file(source_file_path, dest_file_path)
-				print("Copied replay: ", file_name)
+				print("Copied replay file: ", item_name)
 		
-		file_name = source_dir.get_next()
+		item_name = source_dir.get_next()
 	
 	source_dir.list_dir_end()
 
@@ -197,6 +200,18 @@ func _try_parse_config() -> Dictionary:
 		return {}
 	
 	return json.data
+
+# Ensure valid config file exists
+func _ensure_valid_config():
+	if not FileAccess.file_exists(CONFIG_FILE):
+		_create_default_config()
+		return
+	
+	# Check if config is valid/parseable
+	var config = _try_parse_config()
+	if config.is_empty():
+		print("Config file corrupted, recreating with defaults")
+		_create_default_config()
 
 # Create default configuration file
 func _create_default_config():
@@ -314,3 +329,200 @@ func save_config(config: Dictionary):
 		print("Config saved successfully")
 	else:
 		print("Error: Could not save config file")
+
+# === MAPSET USER DATA FUNCTIONS ===
+
+# Get the path to a mapset's user data file
+func get_mapset_user_data_path(mapset_id: String) -> String:
+	# Extract numeric ID from format like "/m/0"
+	var id_parts = mapset_id.split("/")
+	if id_parts.size() != 3 or id_parts[1] != "m":
+		print("Invalid mapset ID format: ", mapset_id)
+		return ""
+	
+	# Get mapset folder name (we need to find it by reading metadata)
+	var dir = DirAccess.open(MAPSETS_DIR)
+	if dir == null:
+		return ""
+	
+	dir.list_dir_begin()
+	var folder_name = dir.get_next()
+	
+	while folder_name != "":
+		if dir.current_is_dir() and not folder_name.begins_with("."):
+			var metadata_path = MAPSETS_DIR + folder_name + "/metadata.json"
+			if FileAccess.file_exists(metadata_path):
+				var file = FileAccess.open(metadata_path, FileAccess.READ)
+				if file:
+					var json_string = file.get_as_text()
+					file.close()
+					var json = JSON.new()
+					if json.parse(json_string) == OK and json.data is Dictionary:
+						if json.data.get("id", "") == mapset_id:
+							# Found the mapset, construct replay folder name
+							var mapset_name = json.data.get("title", "Unknown")
+							var replay_folder = "[m" + id_parts[2] + " replays] " + mapset_name
+							return REPLAYS_DIR + replay_folder + "/mapset.json"
+		
+		folder_name = dir.get_next()
+	
+	dir.list_dir_end()
+	return ""
+
+# Get default mapset user data structure
+func get_default_mapset_user_data(mapset_id: String) -> Dictionary:
+	# Try to get author recommendations from metadata.json
+	var author_settings = _get_author_recommendations(mapset_id)
+	
+	return {
+		"mapset_id": mapset_id,
+		"settings": {
+			"audio_offset": author_settings.get("audio_offset", 0.0),
+			"background_dim": author_settings.get("background_dim", null),
+			"background_audio_volume": author_settings.get("background_audio_volume", 1.0),
+			"midi_volume": author_settings.get("midi_volume", 1.0)
+		},
+		"difficulties": {}
+	}
+
+# Get author recommendations from metadata.json
+func _get_author_recommendations(mapset_id: String) -> Dictionary:
+	# Find the mapset directory and read its metadata
+	var dir = DirAccess.open(MAPSETS_DIR)
+	if dir == null:
+		return {}
+	
+	dir.list_dir_begin()
+	var folder_name = dir.get_next()
+	
+	while folder_name != "":
+		if dir.current_is_dir() and not folder_name.begins_with("."):
+			var metadata_path = MAPSETS_DIR + folder_name + "/metadata.json"
+			if FileAccess.file_exists(metadata_path):
+				var file = FileAccess.open(metadata_path, FileAccess.READ)
+				if file:
+					var json_string = file.get_as_text()
+					file.close()
+					var json = JSON.new()
+					if json.parse(json_string) == OK and json.data is Dictionary:
+						if json.data.get("id", "") == mapset_id:
+							# Found the mapset, return author settings
+							return {
+								"audio_offset": json.data.get("audio_offset", 0.0),
+								"background_dim": json.data.get("background_dim", null),
+								"background_audio_volume": json.data.get("background_audio_volume", 1.0),
+								"midi_volume": json.data.get("midi_volume", 1.0)
+							}
+		
+		folder_name = dir.get_next()
+	
+	dir.list_dir_end()
+	return {}
+
+# Get default difficulty data structure
+func get_default_difficulty_data() -> Dictionary:
+	return {
+		"last_played": null,
+		"play_count": 0,
+		"highest_accuracy": 0.0,
+		"scroll_speed": null
+	}
+
+# Load mapset user data
+func load_mapset_user_data(mapset_id: String) -> Dictionary:
+	var path = get_mapset_user_data_path(mapset_id)
+	if path == "":
+		return get_default_mapset_user_data(mapset_id)
+	
+	# Create replay directory if it doesn't exist
+	var replay_dir = path.get_base_dir()
+	if not DirAccess.dir_exists_absolute(replay_dir):
+		DirAccess.make_dir_recursive_absolute(replay_dir)
+	
+	if not FileAccess.file_exists(path):
+		# Create default file if it doesn't exist
+		var default_data = get_default_mapset_user_data(mapset_id)
+		save_mapset_user_data(mapset_id, default_data)
+		return default_data
+	
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		print("Failed to open mapset user data: ", path)
+		return get_default_mapset_user_data(mapset_id)
+	
+	var json_string = file.get_as_text()
+	file.close()
+	
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	
+	if parse_result != OK:
+		print("Failed to parse mapset user data JSON: ", path)
+		return get_default_mapset_user_data(mapset_id)
+	
+	if not json.data is Dictionary:
+		print("Invalid mapset user data format: ", path)
+		return get_default_mapset_user_data(mapset_id)
+	
+	return json.data
+
+# Save mapset user data
+func save_mapset_user_data(mapset_id: String, data: Dictionary) -> bool:
+	var path = get_mapset_user_data_path(mapset_id)
+	if path == "":
+		print("Failed to get path for mapset: ", mapset_id)
+		return false
+	
+	# Create replay directory if it doesn't exist
+	var replay_dir = path.get_base_dir()
+	if not DirAccess.dir_exists_absolute(replay_dir):
+		DirAccess.make_dir_recursive_absolute(replay_dir)
+	
+	var json_string = JSON.stringify(data, "\t")
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+		return true
+	else:
+		print("Failed to save mapset user data: ", path)
+		return false
+
+# Update play statistics after completing a song
+func update_mapset_play_stats(mapset_id: String, difficulty_id: String, accuracy: float) -> void:
+	var data = load_mapset_user_data(mapset_id)
+	
+	# Ensure difficulties dictionary exists
+	if not data.has("difficulties"):
+		data["difficulties"] = {}
+	
+	# Get or create difficulty data
+	if not data["difficulties"].has(difficulty_id):
+		data["difficulties"][difficulty_id] = get_default_difficulty_data()
+	
+	var diff_data = data["difficulties"][difficulty_id]
+	
+	# Update statistics
+	diff_data["last_played"] = Time.get_datetime_string_from_system()
+	diff_data["play_count"] = diff_data.get("play_count", 0) + 1
+	diff_data["highest_accuracy"] = max(diff_data.get("highest_accuracy", 0.0), accuracy)
+	
+	# Save updated data
+	save_mapset_user_data(mapset_id, data)
+
+# Get mapset settings (for use during gameplay)
+func get_mapset_settings(mapset_id: String) -> Dictionary:
+	var data = load_mapset_user_data(mapset_id)
+	return data.get("settings", {
+		"audio_offset": 0.0,
+		"background_dim": null,
+		"background_audio_volume": 1.0,
+		"midi_volume": 1.0
+	})
+
+# Get difficulty settings (for use during gameplay)
+func get_difficulty_settings(mapset_id: String, difficulty_id: String) -> Dictionary:
+	var data = load_mapset_user_data(mapset_id)
+	if data.has("difficulties") and data["difficulties"].has(difficulty_id):
+		return data["difficulties"][difficulty_id]
+	return get_default_difficulty_data()

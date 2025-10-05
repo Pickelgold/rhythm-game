@@ -596,6 +596,12 @@ func _update_accuracy_display():
 	var accuracy_percentage = (float(total_hit_points) / float(total_notes_attempted * max_points_per_note)) * 100.0
 	accuracy_label.text = "%.2f%%" % accuracy_percentage
 
+# Get current accuracy percentage
+func get_accuracy() -> float:
+	if total_notes_attempted == 0:
+		return 100.0
+	return (float(total_hit_points) / float(total_notes_attempted * max_points_per_note)) * 100.0
+
 # Increment combo by 1 and update display
 func _increment_combo():
 	current_combo += 1

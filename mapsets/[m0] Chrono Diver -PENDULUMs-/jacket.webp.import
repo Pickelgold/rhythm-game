@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjkk3qmhdye5t"
-path="res://.godot/imported/jacket.webp-28aeca9493f3f23738801a6a83fc4fda.ctex"
+path="res://.godot/imported/jacket.webp-9a230d1f9ee74e908ac77cb42dc54960.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mapsets/Chrono Diver -PENDULUMs-/jacket.webp"
-dest_files=["res://.godot/imported/jacket.webp-28aeca9493f3f23738801a6a83fc4fda.ctex"]
+source_file="res://mapsets/[m0] Chrono Diver -PENDULUMs-/jacket.webp"
+dest_files=["res://.godot/imported/jacket.webp-9a230d1f9ee74e908ac77cb42dc54960.ctex"]
 
 [params]
 

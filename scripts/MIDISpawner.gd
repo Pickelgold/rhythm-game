@@ -31,20 +31,63 @@ var lookahead_time: float = 0.0  # Will be calculated based on travel time
 var spawned_notes: Dictionary = {}  # note_id -> spawn_time
 var active_notes: Array[Node] = []  # Currently active note instances
 
-# Configuration - Exported variables for Inspector
-@export_file("*.mid") var midi_file_path: String = "res://mapsets/I.mid"
-@export var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
-@export var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
+# Configuration - Will be loaded from GameGlobals
+var midi_file_path: String = ""
+var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
+var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
 
 # Background music configuration
-@export_file("*.ogg", "*.mp3", "*.wav") var background_music_path: String = ""
-@export var audio_offset: float = 0.0  # Negative: audio first, Positive: MIDI first
+var background_music_path: String = ""
+var audio_offset: float = 0.0  # Negative: audio first, Positive: MIDI first
 # Background music volume is now managed by AudioManager singleton
 
 # Note timing configuration
-@export var note_visibility_seconds: float = 1.0  # How long notes are visible before hitting judgment line
+@export var note_visibility_seconds: float = 1.0  # How long notes are visible before hitting judgment line (this stays exported for gameplay tuning)
 
 func _ready():
+	# Load configuration from GameGlobals
+	if not GameGlobals.current_beatmap_config.is_empty():
+		midi_file_path = GameGlobals.current_beatmap_config.get("beatmap_path", "")
+		background_music_path = GameGlobals.current_beatmap_config.get("audio_path", "")
+		
+		# Apply global offset first
+		var global_offset = GameGlobals.current_beatmap_config.get("global_audio_offset", 0.0)
+		
+		# Apply mapset user settings
+		var mapset_settings = GameGlobals.current_beatmap_config.get("mapset_settings", {})
+		var difficulty_settings = GameGlobals.current_beatmap_config.get("difficulty_settings", {})
+		
+		# Apply mapset audio offset (already contains author's recommendation as initial value)
+		var mapset_offset = mapset_settings.get("audio_offset", 0.0)
+		
+		# Total offset = global + mapset (NOT global + author + mapset)
+		audio_offset = global_offset + mapset_offset
+		
+		# Apply difficulty scroll speed if set
+		var diff_scroll_speed = difficulty_settings.get("scroll_speed", null)
+		if diff_scroll_speed != null and diff_scroll_speed > 0:
+			# Scroll speed affects note visibility time (inverse relationship)
+			# Higher scroll speed = notes travel faster = less visibility time
+			note_visibility_seconds = 1.0 / diff_scroll_speed
+		
+		# Load and set background image if available
+		var background_path = GameGlobals.current_beatmap_config.get("background_path", "")
+		if background_path != "" and FileAccess.file_exists(background_path):
+			var background_texture_rect = get_node("../UI/Image")
+			if background_texture_rect:
+				var texture = ImageTexture.new()
+				var image = Image.new()
+				var error = image.load(background_path)
+				if error == OK:
+					texture.set_image(image)
+					background_texture_rect.texture = texture
+					
+					# Apply background dim if set
+					var bg_dim = mapset_settings.get("background_dim", null)
+					if bg_dim != null:
+						# Dim by reducing opacity (0 = fully dim/black, 1 = no dim)
+						background_texture_rect.modulate.a = 1.0 - bg_dim
+	
 	# Start timing the setup process
 	var setup_start_time = Time.get_ticks_msec()
 	print("Setup started at: ", setup_start_time, " ms")
@@ -70,8 +113,8 @@ func _ready():
 	if judgement_system:
 		judgement_system.note_should_be_removed.connect(_on_note_should_be_removed)
 	
-	# Load the MIDI file with enabled channels
-	if midi_loader.load_midi_file(midi_file_path, enabled_channels):
+	# Load the MIDI file with enabled channels if we have a path
+	if midi_file_path != "" and midi_loader.load_midi_file(midi_file_path, enabled_channels):
 		_debug_print_notes()
 		# Start the song with precise timing
 		start_song()
@@ -81,6 +124,8 @@ func _ready():
 	else:
 		var total_setup_time = Time.get_ticks_msec() - setup_start_time
 		print("Total setup time: ", total_setup_time, " ms")
+		if midi_file_path == "":
+			print("No beatmap path provided from GameGlobals")
 
 func _process(delta):
 	if midi_loader == null or not is_song_playing:
@@ -370,9 +415,18 @@ func _setup_background_music():
 		background_music_player.stream = audio_stream
 		# Set volume using AudioManager
 		AudioManager.set_audio_stream_player_volume(background_music_player, "music")
+		
+		# Apply mapset background audio volume multiplier
+		var mapset_settings = GameGlobals.current_beatmap_config.get("mapset_settings", {})
+		var bg_volume_mult = mapset_settings.get("background_audio_volume", 1.0)
+		var current_db = background_music_player.volume_db
+		# Convert to linear, apply multiplier, convert back to dB
+		var linear_volume = db_to_linear(current_db) * bg_volume_mult
+		background_music_player.volume_db = linear_to_db(linear_volume)
+		
 		print("Background music loaded successfully: ", background_music_path)
 		print("Audio stream type: ", audio_stream.get_class())
-		print("Background music volume set via AudioManager")
+		print("Background music volume set with mapset multiplier: ", bg_volume_mult)
 	else:
 		print("No background music path specified")
 

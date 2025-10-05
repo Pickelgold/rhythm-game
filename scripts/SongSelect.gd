@@ -88,6 +88,10 @@ func _load_mapset_metadata(mapset_path: String) -> Dictionary:
 	if result.has("background"):
 		result["background_path"] = mapset_path + result["background"]
 	
+	# Build full path for audio if specified
+	if result.has("audio"):
+		result["audio_path"] = mapset_path + result["audio"]
+	
 	# Process difficulties to add full paths
 	if result.has("difficulties") and result["difficulties"] is Array:
 		for difficulty in result["difficulties"]:
@@ -202,7 +206,8 @@ func _update_selected_song_panel():
 		
 		for diff in selected_mapset["difficulties"]:
 			var diff_info = Label.new()
-			var star_rating = diff.get("starRating", 0)
+			# Support both old and new field names for compatibility
+			var star_rating = diff.get("star_rating", diff.get("starRating", 0))
 			diff_info.text = "• " + diff.get("name", "Unknown") + " (★" + str(star_rating) + ")"
 			diff_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			info_container.add_child(diff_info)
@@ -247,6 +252,20 @@ func _on_play_button_pressed():
 	# For now, use the first difficulty (can be extended to allow difficulty selection)
 	var difficulty = selected_mapset["difficulties"][0]
 	
+	# Get mapset and difficulty IDs
+	var mapset_id = selected_mapset.get("id", "/m/0")
+	var difficulty_id = difficulty.get("id", "/d/0")
+	
+	# Load mapset user data
+	var mapset_settings = UserDataManager.get_mapset_settings(mapset_id)
+	var difficulty_settings = UserDataManager.get_difficulty_settings(mapset_id, difficulty_id)
+	
+	# Load global config for global offset
+	var global_config = UserDataManager.load_config()
+	var global_offset = 0.0
+	if global_config.has("gameplay") and global_config["gameplay"].has("hit_timing_offset"):
+		global_offset = global_config["gameplay"]["hit_timing_offset"]
+	
 	# Prepare gameplay configuration
 	var gameplay_config = {
 		"title": selected_mapset.get("title", "Unknown"),
@@ -255,15 +274,23 @@ func _on_play_button_pressed():
 		"beatmap_path": difficulty.get("beatmap_path", ""),
 		"audio_path": "", # Will be set below
 		"background_path": selected_mapset.get("background_path", ""),
-		"audio_offset": difficulty.get("audioOffset", 0.0)
+		"global_audio_offset": global_offset,  # Pass global offset
+		"mapset_id": mapset_id,
+		"difficulty_id": difficulty_id,
+		"mapset_settings": mapset_settings,
+		"difficulty_settings": difficulty_settings
 	}
 	
-	# Find the audio file in the mapset directory
-	var audio_file_path = _find_audio_file(selected_mapset.get("mapset_path", ""))
-	if audio_file_path != "":
-		gameplay_config["audio_path"] = audio_file_path
+	# Use audio path from metadata if available, otherwise find it
+	if selected_mapset.has("audio_path"):
+		gameplay_config["audio_path"] = selected_mapset["audio_path"]
 	else:
-		print("Warning: No audio file found for mapset")
+		# Find the audio file in the mapset directory (backward compatibility)
+		var audio_file_path = _find_audio_file(selected_mapset.get("mapset_path", ""))
+		if audio_file_path != "":
+			gameplay_config["audio_path"] = audio_file_path
+		else:
+			print("Warning: No audio file found for mapset")
 	
 	# Store the configuration globally for the gameplay scene to access
 	GameGlobals.current_beatmap_config = gameplay_config
