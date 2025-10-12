@@ -21,8 +21,8 @@ grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
 mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
