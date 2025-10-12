@@ -377,7 +377,7 @@ func get_default_mapset_user_data(mapset_id: String) -> Dictionary:
 	return {
 		"mapset_id": mapset_id,
 		"settings": {
-			"audio_offset": author_settings.get("audio_offset", 0.0),
+			"audio_offset": 0.0,  # User offset starts at 0, not author's value
 			"background_dim": author_settings.get("background_dim", null),
 			"background_audio_volume": author_settings.get("background_audio_volume", 1.0),
 			"midi_volume": author_settings.get("midi_volume", 1.0)

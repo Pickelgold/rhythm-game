@@ -266,6 +266,9 @@ func _on_play_button_pressed():
 	if global_config.has("gameplay") and global_config["gameplay"].has("hit_timing_offset"):
 		global_offset = global_config["gameplay"]["hit_timing_offset"]
 	
+	# Get author's audio offset from metadata
+	var author_audio_offset = selected_mapset.get("audio_offset", 0.0)
+	
 	# Prepare gameplay configuration
 	var gameplay_config = {
 		"title": selected_mapset.get("title", "Unknown"),
@@ -275,6 +278,7 @@ func _on_play_button_pressed():
 		"audio_path": "", # Will be set below
 		"background_path": selected_mapset.get("background_path", ""),
 		"global_audio_offset": global_offset,  # Pass global offset
+		"author_audio_offset": author_audio_offset,  # Pass author offset separately
 		"mapset_id": mapset_id,
 		"difficulty_id": difficulty_id,
 		"mapset_settings": mapset_settings,

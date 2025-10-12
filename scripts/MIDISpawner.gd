@@ -50,18 +50,19 @@ func _ready():
 		midi_file_path = GameGlobals.current_beatmap_config.get("beatmap_path", "")
 		background_music_path = GameGlobals.current_beatmap_config.get("audio_path", "")
 		
-		# Apply global offset first
+		# Get all three offset values
 		var global_offset = GameGlobals.current_beatmap_config.get("global_audio_offset", 0.0)
+		var author_offset = GameGlobals.current_beatmap_config.get("author_audio_offset", 0.0)
 		
 		# Apply mapset user settings
 		var mapset_settings = GameGlobals.current_beatmap_config.get("mapset_settings", {})
 		var difficulty_settings = GameGlobals.current_beatmap_config.get("difficulty_settings", {})
 		
-		# Apply mapset audio offset (already contains author's recommendation as initial value)
-		var mapset_offset = mapset_settings.get("audio_offset", 0.0)
+		# Get user's personal offset for this mapset (now starts at 0, not author's value)
+		var user_offset = mapset_settings.get("audio_offset", 0.0)
 		
-		# Total offset = global + mapset (NOT global + author + mapset)
-		audio_offset = global_offset + mapset_offset
+		# Total offset = global + author + user (all additive)
+		audio_offset = global_offset + author_offset + user_offset
 		
 		# Apply difficulty scroll speed if set
 		var diff_scroll_speed = difficulty_settings.get("scroll_speed", null)
