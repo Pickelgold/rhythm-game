@@ -16,13 +16,16 @@ To develop or test-play this game:
 At this time, I am not looking for active developers. However, if you would like to contribute in other ways or have found a bug/performance improvement, you may submit an issue or pull request.
 
 ## TODO
-* Implement accuracy, combo, and performance points
-* Implement average note density as a proxy for difficulty
-* Create a beatmap picker
-* Implement freeplay transcription
-* Implement ranked and unranked mods
-* Create a server to share scores, profiles, and beatmaps
-* Reduce stutters, increase framerate
-* Custom keyboard profiles
-* Custom colors and a better-looking skin
-* Beta testing
+- [x] Implement accuracy, combo, and performance points
+- [x] Parse and play MIDI notes
+- [ ] Implement average note density as a proxy for difficulty
+- [x] Create a beatmap picker
+- [ ] Export replay files
+- [x] Implement beatmap settings
+- [x] Reduce audio latency
+- [ ] Implement freeplay transcription
+- [ ] Implement ranked and unranked mods
+- [ ] Create a server to share scores, profiles, and beatmaps
+- [ ] Reduce stutters, increase framerate
+- [ ] Custom colors and a better-looking skin
+- [ ] Beta testing
