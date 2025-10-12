@@ -25,6 +25,9 @@ If you have a feature request or have found a bug/performance improvement, you m
 - [ ] Export replay files
 - [x] Implement beatmap settings
 - [x] Reduce audio latency
+- [ ] Add a license
+- [ ] Remove grades from results screen
+- [ ] Distribute assets bundled in a zip instead of in the executable
 - [ ] Implement freeplay transcription
 - [ ] Implement ranked and unranked mods
 - [ ] Create a server to share scores, profiles, and beatmaps
