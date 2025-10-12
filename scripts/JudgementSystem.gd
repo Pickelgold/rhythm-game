@@ -36,7 +36,16 @@ var accuracy_label: Label
 
 # Combo tracking
 var current_combo: int = 0
+var max_combo: int = 0  # Track the highest combo achieved
 var combo_counter_label: Label
+
+# Judgement count tracking
+var judgement_counts: Dictionary = {
+	"perfect": 0,   # Within ±50ms
+	"great": 0,     # Within ±100ms
+	"good": 0,      # Within ±200ms
+	"miss": 0       # Outside timing window
+}
 
 # References to judgement labels for each lane
 var press_labels: Dictionary = {}
@@ -357,6 +366,9 @@ func _on_key_pressed(lane_number: int):
 	var points = _calculate_points(int(timing_diff_ms))
 	_add_score(points)
 	
+	# Track judgement type
+	_track_judgement(timing_diff_ms)
+	
 	# Increment combo for successful hit
 	_increment_combo()
 	
@@ -403,6 +415,9 @@ func _on_key_released(lane_number: int):
 	# Calculate and add score for this release
 	var points = _calculate_points(int(timing_diff_ms))
 	_add_score(points)
+	
+	# Track judgement type
+	_track_judgement(timing_diff_ms)
 	
 	# Increment combo for successful release (or reset if it's a miss)
 	if abs(timing_diff_ms) < judgement_window_ms:
@@ -471,6 +486,9 @@ func _show_miss(lane_number: int, note_id: String):
 	# Add miss to accuracy tracking (0 points)
 	_add_score(0)
 	
+	# Track as a miss
+	judgement_counts["miss"] += 1
+	
 	# Reset combo on miss
 	_reset_combo()
 	
@@ -508,6 +526,9 @@ func _show_release_miss(lane_number: int, note_id: String):
 	
 	# Add miss to accuracy tracking (0 points)
 	_add_score(0)
+	
+	# Track as a miss
+	judgement_counts["miss"] += 1
 	
 	# Reset combo on miss
 	_reset_combo()
@@ -605,6 +626,9 @@ func get_accuracy() -> float:
 # Increment combo by 1 and update display
 func _increment_combo():
 	current_combo += 1
+	# Update max combo if current exceeds it
+	if current_combo > max_combo:
+		max_combo = current_combo
 	_update_combo_display()
 
 # Reset combo to 0 and update display
@@ -766,3 +790,19 @@ func _update_audio_velocity():
 		print("Audio velocity updated to: ", audio_velocity, " (from dominant channel average)")
 	else:
 		print("Audio velocity remains default: ", audio_velocity)
+
+# Track judgement type based on timing accuracy
+func _track_judgement(timing_diff_ms: float):
+	var abs_diff = abs(timing_diff_ms)
+	
+	if abs_diff >= judgement_window_ms:
+		judgement_counts["miss"] += 1
+	elif abs_diff <= 50:
+		judgement_counts["perfect"] += 1
+	elif abs_diff <= 100:
+		judgement_counts["great"] += 1
+	elif abs_diff <= 200:
+		judgement_counts["good"] += 1
+	else:
+		# Between 200-300ms (still a hit but lowest tier)
+		judgement_counts["good"] += 1

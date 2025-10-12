@@ -12,11 +12,21 @@ const MASTER_BUS = "Master"
 # Reference to MidiPlayer for MIDI volume control
 var midi_player: MidiPlayer
 
+# Background music player
+var background_music_player: AudioStreamPlayer = null
+
 signal volume_changed(volume_type: String, new_volume: float)
+signal background_music_finished()
 
 func _ready():
 	print("AudioManager initialized")
 	_load_audio_settings()
+	
+	# Create background music player
+	background_music_player = AudioStreamPlayer.new()
+	background_music_player.name = "BackgroundMusicPlayer"
+	add_child(background_music_player)
+	background_music_player.finished.connect(_on_background_music_finished)
 
 # Load audio settings from UserDataManager config
 func _load_audio_settings():
@@ -88,9 +98,10 @@ func _apply_master_volume():
 	if master_bus_idx >= 0:
 		AudioServer.set_bus_volume_db(master_bus_idx, linear_to_db(master_volume))
 
-# Apply music volume (currently just stores value for AudioStreamPlayer usage)
+# Apply music volume to background music player
 func _apply_music_volume():
-	pass
+	if background_music_player:
+		set_audio_stream_player_volume(background_music_player, "music")
 
 # Apply SFX volume (currently just stores value for future SFX sources)
 func _apply_sfx_volume():
@@ -146,3 +157,86 @@ func reset_to_defaults():
 	set_sfx_volume(1.0)
 	set_midi_volume(1.0)
 	print("Audio volumes reset to defaults")
+
+# Background Music Management Functions
+
+# Play background music from file path
+func play_background_music(path: String, from_position: float = 0.0, volume_multiplier: float = 1.0):
+	if not background_music_player:
+		print("Error: Background music player not initialized")
+		return
+		
+	if path == "":
+		print("No background music path provided")
+		return
+		
+	if not FileAccess.file_exists(path):
+		print("Background music file not found: ", path)
+		return
+	
+	# Load the audio stream
+	var audio_stream = load(path)
+	if audio_stream == null:
+		print("Failed to load background music: ", path)
+		return
+		
+	if not audio_stream is AudioStream:
+		print("Loaded resource is not an AudioStream: ", path)
+		return
+		
+	# Stop any currently playing music
+	stop_background_music()
+		
+	# Set stream and volume
+	background_music_player.stream = audio_stream
+	set_audio_stream_player_volume(background_music_player, "music")
+	
+	# Apply volume multiplier if provided
+	if volume_multiplier != 1.0:
+		var current_db = background_music_player.volume_db
+		var linear_volume = db_to_linear(current_db) * volume_multiplier
+		background_music_player.volume_db = linear_to_db(linear_volume)
+		print("Applied background music volume multiplier: ", volume_multiplier)
+	
+	# Play from position
+	background_music_player.play(from_position)
+	print("Background music started: ", path, " at position: ", from_position)
+
+# Stop background music
+func stop_background_music():
+	if background_music_player and background_music_player.playing:
+		background_music_player.stop()
+		print("Background music stopped")
+
+# Pause background music
+func pause_background_music():
+	if background_music_player and background_music_player.playing:
+		background_music_player.stream_paused = true
+		print("Background music paused")
+
+# Resume background music
+func resume_background_music():
+	if background_music_player and background_music_player.stream_paused:
+		background_music_player.stream_paused = false
+		print("Background music resumed")
+
+# Get current playback position
+func get_background_music_position() -> float:
+	if background_music_player and background_music_player.playing:
+		return background_music_player.get_playback_position()
+	return 0.0
+
+# Check if background music is playing
+func is_background_music_playing() -> bool:
+	return background_music_player != null and background_music_player.playing
+
+# Set background music to specific position
+func seek_background_music(position: float):
+	if background_music_player and background_music_player.stream:
+		background_music_player.seek(position)
+		print("Background music seeked to: ", position)
+
+# Callback when background music finishes
+func _on_background_music_finished():
+	background_music_finished.emit()
+	print("Background music finished playing")

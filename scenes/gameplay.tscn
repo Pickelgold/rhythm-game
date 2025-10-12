@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bw63y8ipai8gu" path="res://scripts/JudgementSystem.gd" id="5_judgement_system"]
 [ext_resource type="Script" uid="uid://c054lcwk4d6s7" path="res://scripts/SongProgressManager.gd" id="6_song_progress"]
 [ext_resource type="Script" uid="uid://coldk6btvm4lq" path="res://scripts/FPSDisplay.gd" id="7_fps_display"]
+[ext_resource type="Script" path="res://scripts/GameplayController.gd" id="8_gameplay_controller"]
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -3677,3 +3678,6 @@ script = ExtResource("6_song_progress")
 
 [node name="FPSDisplay" type="Node" parent="."]
 script = ExtResource("7_fps_display")
+
+[node name="GameplayController" type="Node" parent="."]
+script = ExtResource("8_gameplay_controller")

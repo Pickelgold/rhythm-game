@@ -1,5 +1,8 @@
 extends Node
 
+# Signals
+signal song_finished()
+
 # Reference to the note scene
 var note_scene = preload("res://scenes/Note.tscn")
 
@@ -9,8 +12,7 @@ var MIDIBeatmapLoaderScript = preload("res://scripts/MIDIBeatmapLoader.gd")
 # MIDI loader
 var midi_loader
 
-# Background music player
-var background_music_player: AudioStreamPlayer
+# Background music timing (no longer managing the player itself)
 var background_music_start_time: float = 0.0  # When background music should start
 var background_music_started: bool = false  # Track if background music has started
 
@@ -31,6 +33,10 @@ var lookahead_time: float = 0.0  # Will be calculated based on travel time
 var spawned_notes: Dictionary = {}  # note_id -> spawn_time
 var active_notes: Array[Node] = []  # Currently active note instances
 
+# Song completion tracking
+var has_finished: bool = false
+var total_duration: float = 0.0
+
 # Configuration - Will be loaded from GameGlobals
 var midi_file_path: String = ""
 var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
@@ -39,7 +45,7 @@ var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 # Background music configuration
 var background_music_path: String = ""
 var audio_offset: float = 0.0  # Negative: audio first, Positive: MIDI first
-# Background music volume is now managed by AudioManager singleton
+var background_volume_multiplier: float = 1.0  # Volume multiplier for this song
 
 # Note timing configuration
 @export var note_visibility_seconds: float = 1.0  # How long notes are visible before hitting judgment line (this stays exported for gameplay tuning)
@@ -49,6 +55,10 @@ func _ready():
 	if not GameGlobals.current_beatmap_config.is_empty():
 		midi_file_path = GameGlobals.current_beatmap_config.get("beatmap_path", "")
 		background_music_path = GameGlobals.current_beatmap_config.get("audio_path", "")
+		
+		# Store background path in GameGlobals for results screen
+		var background_path = GameGlobals.current_beatmap_config.get("background_path", "")
+		GameGlobals.current_background_path = background_path
 		
 		# Get all three offset values
 		var global_offset = GameGlobals.current_beatmap_config.get("global_audio_offset", 0.0)
@@ -64,6 +74,9 @@ func _ready():
 		# Total offset = global + author + user (all additive)
 		audio_offset = global_offset + author_offset + user_offset
 		
+		# Get background volume multiplier
+		background_volume_multiplier = mapset_settings.get("background_audio_volume", 1.0)
+		
 		# Apply difficulty scroll speed if set
 		var diff_scroll_speed = difficulty_settings.get("scroll_speed", null)
 		if diff_scroll_speed != null and diff_scroll_speed > 0:
@@ -72,7 +85,6 @@ func _ready():
 			note_visibility_seconds = 1.0 / diff_scroll_speed
 		
 		# Load and set background image if available
-		var background_path = GameGlobals.current_beatmap_config.get("background_path", "")
 		if background_path != "" and FileAccess.file_exists(background_path):
 			var background_texture_rect = get_node("../UI/Image")
 			if background_texture_rect:
@@ -102,9 +114,6 @@ func _ready():
 	# Calculate dynamic lookahead time based on note travel time
 	_calculate_lookahead_time()
 	
-	# Initialize background music player
-	_setup_background_music()
-	
 	# Initialize MIDI loader
 	midi_loader = MIDIBeatmapLoaderScript.new()
 	midi_loader.set_channel_base_notes(channel_base_notes)
@@ -117,6 +126,9 @@ func _ready():
 	# Load the MIDI file with enabled channels if we have a path
 	if midi_file_path != "" and midi_loader.load_midi_file(midi_file_path, enabled_channels):
 		_debug_print_notes()
+		# Get total duration for song end detection
+		total_duration = midi_loader.get_total_duration()
+		print("Song total duration: ", total_duration, " seconds")
 		# Start the song with precise timing
 		start_song()
 		
@@ -134,6 +146,21 @@ func _process(delta):
 	
 	# Update song time using absolute time calculation
 	current_song_time = get_absolute_song_time()
+	
+	# Debug: Show progress every 5 seconds
+	var time_int = int(current_song_time)
+	if time_int % 5 == 0 and time_int != int(current_song_time - delta):
+		print("Song progress: ", current_song_time, " / ", total_duration, " seconds (", int((current_song_time / total_duration) * 100), "%)")
+	
+	# Check if song has finished (with 1 second buffer)
+	if not has_finished and total_duration > 0 and current_song_time >= total_duration + 1.0:
+		has_finished = true
+		print("Song finished! Emitting signal...")
+		print("  - Current song time: ", current_song_time)
+		print("  - Total duration: ", total_duration)
+		print("  - Threshold (duration + 1): ", total_duration + 1.0)
+		song_finished.emit()
+		print("Signal emitted successfully")
 	
 	# Check if background music should start with precise timing
 	_check_background_music_timing()
@@ -155,6 +182,7 @@ func get_absolute_song_time() -> float:
 
 # Start the song with precise timing
 func start_song():
+	has_finished = false
 	song_start_time_msec = Time.get_ticks_msec()
 	
 	if audio_offset < 0:
@@ -180,9 +208,8 @@ func pause_song():
 		song_offset_seconds = current_song_time
 		is_song_playing = false
 		
-		# Pause background music
-		if background_music_player and background_music_player.playing:
-			background_music_player.stream_paused = true
+		# Pause background music using AudioManager
+		AudioManager.pause_background_music()
 
 # Resume the song
 func resume_song():
@@ -190,9 +217,8 @@ func resume_song():
 		song_start_time_msec = Time.get_ticks_msec()
 		is_song_playing = true
 		
-		# Resume background music
-		if background_music_player and background_music_player.stream_paused:
-			background_music_player.stream_paused = false
+		# Resume background music using AudioManager
+		AudioManager.resume_background_music()
 
 # Calculate actual lane dimensions from the UI
 func _calculate_lane_dimensions():
@@ -387,63 +413,19 @@ func update_note_positions():
 func _debug_print_notes():
 	pass
 
-# Setup background music player
-func _setup_background_music():
-	# Create AudioStreamPlayer for background music
-	background_music_player = AudioStreamPlayer.new()
-	add_child(background_music_player)
-	
-	# Load background music if path is provided
-	if background_music_path != "":
-		print("Attempting to load background music: ", background_music_path)
-		
-		# Check if file exists
-		if not FileAccess.file_exists(background_music_path):
-			print("Background music file not found: ", background_music_path)
-			return
-		
-		# Try to load the audio stream
-		var audio_stream = load(background_music_path)
-		if audio_stream == null:
-			print("Failed to load background music (null stream): ", background_music_path)
-			print("Make sure the audio file is imported properly in Godot")
-			return
-		
-		if not audio_stream is AudioStream:
-			print("Loaded resource is not an AudioStream: ", background_music_path)
-			return
-		
-		background_music_player.stream = audio_stream
-		# Set volume using AudioManager
-		AudioManager.set_audio_stream_player_volume(background_music_player, "music")
-		
-		# Apply mapset background audio volume multiplier
-		var mapset_settings = GameGlobals.current_beatmap_config.get("mapset_settings", {})
-		var bg_volume_mult = mapset_settings.get("background_audio_volume", 1.0)
-		var current_db = background_music_player.volume_db
-		# Convert to linear, apply multiplier, convert back to dB
-		var linear_volume = db_to_linear(current_db) * bg_volume_mult
-		background_music_player.volume_db = linear_to_db(linear_volume)
-		
-		print("Background music loaded successfully: ", background_music_path)
-		print("Audio stream type: ", audio_stream.get_class())
-		print("Background music volume set with mapset multiplier: ", bg_volume_mult)
-	else:
-		print("No background music path specified")
-
-# Start background music with proper timing
+# Start background music with proper timing (using AudioManager)
 func _start_background_music():
-	if not background_music_player or not background_music_player.stream:
+	if background_music_path == "":
 		return
 	
-	# background_music_start_time is already calculated in start_song()
+	# Calculate when to start playing
 	background_music_started = false
 	
 	if background_music_start_time <= current_song_time:
 		# Background music should start now or has already started
 		var seek_position = current_song_time - background_music_start_time
 		if seek_position >= 0:
-			background_music_player.play(seek_position)
+			AudioManager.play_background_music(background_music_path, seek_position, background_volume_multiplier)
 			background_music_started = true
 			print("Background music started at position: ", seek_position)
 	else:
@@ -452,12 +434,12 @@ func _start_background_music():
 
 # Check if background music should start with precise timing
 func _check_background_music_timing():
-	if not background_music_player or not background_music_player.stream or background_music_started:
+	if background_music_started or background_music_path == "":
 		return
 	
 	# Check if it's time to start background music
 	if current_song_time >= background_music_start_time:
-		background_music_player.play()
+		AudioManager.play_background_music(background_music_path, 0.0, background_volume_multiplier)
 		background_music_started = true
 		print("Background music started at precise time: ", current_song_time)
 
@@ -468,9 +450,11 @@ func set_midi_file(path: String):
 	spawned_notes.clear()
 	active_notes.clear()
 	is_song_playing = false
+	has_finished = false
 	if midi_loader:
 		midi_loader.set_channel_base_notes(channel_base_notes)
 		midi_loader.load_midi_file(path, enabled_channels)
+		total_duration = midi_loader.get_total_duration()
 		# Restart the song with new timing
 		start_song()
 
@@ -508,6 +492,7 @@ func reset_song_time():
 			note.queue_free()
 	active_notes.clear()
 	spawned_notes.clear()
+	has_finished = false
 	
 	# Restart the song timing
 	start_song()
@@ -515,10 +500,10 @@ func reset_song_time():
 # Stop the song completely
 func stop_song():
 	is_song_playing = false
+	has_finished = false
 	
-	# Stop background music and reset state
-	if background_music_player and background_music_player.playing:
-		background_music_player.stop()
+	# Stop background music using AudioManager
+	AudioManager.stop_background_music()
 	background_music_started = false
 	
 	# Clear all active notes
