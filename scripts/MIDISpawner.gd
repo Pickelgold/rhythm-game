@@ -39,8 +39,9 @@ var total_duration: float = 0.0
 
 # Configuration - Will be loaded from GameGlobals
 var midi_file_path: String = ""
-var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
-var enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  # All MIDI channels (0-15)
+var channel_base_notes: Dictionary = {}  # Base note for each MIDI channel (default: C4/48 if not specified)
+var enabled_channels: Dictionary = {}  # Enabled state for each MIDI channel (0=disabled, non-zero=enabled, default 1 if not specified)
+var DEFAULT_BASE_NOTE: int = 48  # C4
 
 # Background music configuration
 var background_music_path: String = ""
@@ -469,18 +470,18 @@ func set_channel_base_note(channel: int, base_note: int):
 # Get base MIDI note for a specific channel
 func get_channel_base_note(channel: int) -> int:
 	if channel >= 0 and channel < 16:
-		return channel_base_notes[channel]
-	return 48  # Default C4 for invalid channels
+		return channel_base_notes.get(channel, DEFAULT_BASE_NOTE)
+	return DEFAULT_BASE_NOTE  # Default C4 for invalid channels
 
 # Reset a channel base note to default (C4/48)
 func reset_channel_base_note(channel: int):
 	if channel >= 0 and channel < 16:
-		channel_base_notes[channel] = 48  # Set to C4/48 default
+		channel_base_notes[channel] = DEFAULT_BASE_NOTE  # Set to C4/48 default
 		if midi_loader:
 			midi_loader.set_channel_base_notes(channel_base_notes)
 			midi_loader.reprocess_with_channels(enabled_channels)
 
-func set_enabled_channels(channels: Array[int]):
+func set_enabled_channels(channels: Dictionary):
 	enabled_channels = channels
 	if midi_loader:
 		midi_loader.reprocess_with_channels(channels)

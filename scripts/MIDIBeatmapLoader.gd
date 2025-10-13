@@ -2,7 +2,8 @@ class_name MIDIBeatmapLoader
 extends RefCounted
 
 # Configuration variables
-var channel_base_notes: Array[int] = [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]  # Base note for each MIDI channel (default: C4/48)
+var channel_base_notes: Dictionary = {}  # Base note for each MIDI channel (default: C4/48 if not specified)
+var DEFAULT_BASE_NOTE: int = 48  # C4
 
 # MIDI data
 var smf_data: SMF.SMFData
@@ -15,7 +16,7 @@ var dominant_channel_base_note: int = 48  # Base note from the channel with most
 var dominant_channel_average_velocity: int = 64  # Average velocity from dominant channel only (for audio feedback)
 
 # Load and parse a MIDI file
-func load_midi_file(path: String, enabled_channels: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) -> bool:
+func load_midi_file(path: String, enabled_channels: Dictionary = {}) -> bool:
 	var smf = SMF.new()
 	var result = smf.read_file(path)
 	
@@ -79,7 +80,7 @@ func convert_midi_time_to_seconds(midi_ticks: int) -> float:
 	return total_seconds
 
 # Capture initial program changes for each channel
-func _capture_initial_program_changes(enabled_channels: Array[int]):
+func _capture_initial_program_changes(enabled_channels: Dictionary):
 	channel_programs.clear()
 	
 	# Set defaults first
@@ -97,7 +98,8 @@ func _capture_initial_program_changes(enabled_channels: Array[int]):
 		for event_chunk in track.events:
 			if event_chunk.event is SMF.MIDIEventNoteOn:
 				var channel = event_chunk.channel_number
-				if enabled_channels.has(channel):
+				# Check if channel is enabled (not 0, default to 1 if not specified)
+				if enabled_channels.get(channel, 1) != 0:
 					var time = convert_midi_time_to_seconds(event_chunk.time)
 					if not first_note_time_per_channel.has(channel):
 						first_note_time_per_channel[channel] = time
@@ -109,7 +111,8 @@ func _capture_initial_program_changes(enabled_channels: Array[int]):
 		for event_chunk in track.events:
 			if event_chunk.event is SMF.MIDIEventProgramChange:
 				var channel = event_chunk.channel_number
-				if enabled_channels.has(channel):
+				# Check if channel is enabled (not 0, default to 1 if not specified)
+				if enabled_channels.get(channel, 1) != 0:
 					var program = event_chunk.event.number
 					var time = convert_midi_time_to_seconds(event_chunk.time)
 					
@@ -120,7 +123,7 @@ func _capture_initial_program_changes(enabled_channels: Array[int]):
 	# Debug output
 	print("Channel programs captured:")
 	for channel in range(16):
-		if enabled_channels.has(channel) and channel_programs.has(channel):
+		if enabled_channels.get(channel, 1) != 0 and channel_programs.has(channel):
 			var program = channel_programs[channel]
 			var instrument_name = "Unknown"
 			if channel == 9:
@@ -134,15 +137,16 @@ func _capture_initial_program_changes(enabled_channels: Array[int]):
 			print("  Channel ", channel, ": Program ", program, " (", instrument_name, ")")
 
 # Process all MIDI notes and convert them to game format
-func _process_midi_notes(enabled_channels: Array[int] = []):
+func _process_midi_notes(enabled_channels: Dictionary = {}):
 	processed_notes.clear()
 	tempo_map.clear()
 	
 	# Debug: Print channel base note configuration
 	print("Channel base note configuration:")
 	for channel in range(16):
-		if enabled_channels.has(channel):
-			var base_note = channel_base_notes[channel]
+		# Check if channel is enabled (not 0, default to 1 if not specified)
+		if enabled_channels.get(channel, 1) != 0:
+			var base_note = channel_base_notes.get(channel, DEFAULT_BASE_NOTE)
 			var note_name = _midi_note_to_name(base_note)
 			print("  Channel ", channel, ": ", note_name, " (", base_note, ")")
 	
@@ -172,8 +176,8 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 				found_channels[channel] = true
 				found_notes[event.note] = true
 			
-			# Skip if this channel is not enabled
-			if not enabled_channels.has(channel):
+			# Skip if this channel is not enabled (check if value is 0)
+			if enabled_channels.get(channel, 1) == 0:
 				continue
 			
 			# Handle note events
@@ -243,7 +247,7 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 				dominant_channel = channel
 		
 		# Set the dominant channel's base note for audio feedback
-		dominant_channel_base_note = channel_base_notes[dominant_channel]
+		dominant_channel_base_note = channel_base_notes.get(dominant_channel, DEFAULT_BASE_NOTE)
 		
 		# Calculate average velocity from dominant channel only
 		var dominant_channel_total_velocity = 0
@@ -284,9 +288,9 @@ func _process_midi_notes(enabled_channels: Array[int] = []):
 
 # Convert MIDI note number to lane number using channel-specific base note
 func _midi_note_to_lane(midi_note: int, channel: int) -> int:
-	var base_note = 48  # Default C4
+	var base_note = DEFAULT_BASE_NOTE  # Default C4
 	if channel >= 0 and channel < 16:
-		base_note = channel_base_notes[channel]
+		base_note = channel_base_notes.get(channel, DEFAULT_BASE_NOTE)
 	
 	var lane = (midi_note - base_note) + 1
 	
@@ -376,7 +380,7 @@ func get_all_notes() -> Array[Dictionary]:
 	return processed_notes
 
 # Set the per-channel base notes configuration
-func set_channel_base_notes(base_notes: Array[int]):
+func set_channel_base_notes(base_notes: Dictionary):
 	channel_base_notes = base_notes.duplicate()
 
 # Set base MIDI note for a specific channel
@@ -387,16 +391,16 @@ func set_channel_base_note(channel: int, base_note: int):
 # Get base MIDI note for a specific channel
 func get_channel_base_note(channel: int) -> int:
 	if channel >= 0 and channel < 16:
-		return channel_base_notes[channel]
-	return 48  # Default C4 for invalid channels
+		return channel_base_notes.get(channel, DEFAULT_BASE_NOTE)
+	return DEFAULT_BASE_NOTE  # Default C4 for invalid channels
 
 # Reset a channel base note to default (C4/48)
 func reset_channel_base_note(channel: int):
 	if channel >= 0 and channel < 16:
-		channel_base_notes[channel] = 48  # Set to C4/48 default
+		channel_base_notes[channel] = DEFAULT_BASE_NOTE  # Set to C4/48 default
 
 # Reprocess MIDI notes with new channel configuration
-func reprocess_with_channels(channels: Array[int]):
+func reprocess_with_channels(channels: Dictionary):
 	if smf_data != null:
 		_process_midi_notes(channels)  # Reprocess with new channels
 
