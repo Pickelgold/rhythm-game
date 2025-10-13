@@ -174,8 +174,46 @@ func play_background_music(path: String, from_position: float = 0.0, volume_mult
 		print("Background music file not found: ", path)
 		return
 	
-	# Load the audio stream
-	var audio_stream = load(path)
+	# Load the audio stream - handle both res:// and user directory paths
+	var audio_stream: AudioStream = null
+	
+	if path.begins_with("res://"):
+		# Load from project resources
+		audio_stream = load(path)
+	else:
+		# Load from external file (user directory)
+		var file_extension = path.get_extension().to_lower()
+		
+		if file_extension == "ogg":
+			# Load OGG Vorbis file
+			var ogg_stream = AudioStreamOggVorbis.new()
+			ogg_stream = AudioStreamOggVorbis.load_from_file(path)
+			audio_stream = ogg_stream
+		elif file_extension == "mp3":
+			# Load MP3 file
+			var file = FileAccess.open(path, FileAccess.READ)
+			if file:
+				var mp3_stream = AudioStreamMP3.new()
+				mp3_stream.data = file.get_buffer(file.get_length())
+				file.close()
+				audio_stream = mp3_stream
+		elif file_extension == "wav":
+			# Load WAV file
+			var file = FileAccess.open(path, FileAccess.READ)
+			if file:
+				var wav_stream = AudioStreamWAV.new()
+				# Skip WAV header (44 bytes for standard WAV)
+				file.seek(44)
+				wav_stream.data = file.get_buffer(file.get_length() - 44)
+				wav_stream.format = AudioStreamWAV.FORMAT_16_BITS
+				wav_stream.stereo = true
+				wav_stream.mix_rate = 44100  # Standard sample rate
+				file.close()
+				audio_stream = wav_stream
+		else:
+			print("Unsupported audio format: ", file_extension)
+			return
+	
 	if audio_stream == null:
 		print("Failed to load background music: ", path)
 		return
